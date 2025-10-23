@@ -5,18 +5,17 @@ CABLES.OPS=CABLES.OPS||{};
 
 var Ops=Ops || {};
 Ops.Gl=Ops.Gl || {};
-Ops.Ui=Ops.Ui || {};
 Ops.Anim=Ops.Anim || {};
 Ops.Html=Ops.Html || {};
 Ops.Math=Ops.Math || {};
 Ops.Array=Ops.Array || {};
-Ops.Number=Ops.Number || {};
 Ops.Trigger=Ops.Trigger || {};
 Ops.Graphics=Ops.Graphics || {};
 Ops.TimeLine=Ops.TimeLine || {};
 Ops.WebAudio=Ops.WebAudio || {};
 Ops.Gl.Meshes=Ops.Gl.Meshes || {};
 Ops.Gl.Shader=Ops.Gl.Shader || {};
+Ops.Math.Compare=Ops.Math.Compare || {};
 Ops.Html.Elements=Ops.Html.Elements || {};
 Ops.Array.PointArray=Ops.Array.PointArray || {};
 Ops.Graphics.Geometry=Ops.Graphics.Geometry || {};
@@ -4498,11 +4497,11 @@ CABLES.OPS["97e57613-6a51-41cf-9de5-fe3dbc2c69b2"]={f:Ops.TimeLine.TimeLinePlaye
 
 // **************************************************************
 // 
-// Ops.Trigger.NumberByTrigger
+// Ops.Math.Compare.CompareNumbers
 // 
 // **************************************************************
 
-Ops.Trigger.NumberByTrigger= class extends CABLES.Op 
+Ops.Math.Compare.CompareNumbers= class extends CABLES.Op 
 {
 constructor()
 {
@@ -4510,126 +4509,61 @@ super(...arguments);
 const op=this;
 const attachments=op.attachments={};
 const
-    exe0 = op.inTriggerButton("0"),
-    exe1 = op.inTriggerButton("1"),
-    exe2 = op.inTriggerButton("2"),
-    exe3 = op.inTriggerButton("3"),
-    exe4 = op.inTriggerButton("4"),
-    exe5 = op.inTriggerButton("5"),
-    exe6 = op.inTriggerButton("6"),
-    exe7 = op.inTriggerButton("7"),
-    number = op.outNumber("number");
+    numberIn_1 = op.inFloat("Value in", 0),
+    logicSelectMode = op.inSwitch("Comparison mode", [">", "<", ">=", "<=", "==", "!=", "><", ">=<"], ">"),
+    numberIn_2 = op.inFloat("Condition value", 1),
+    numberIn_3 = op.inFloat("Max", 1),
+    resultNumberOut = op.outNumber("Result");
 
-number.changeAlways = true;
-const outTrig = op.outTrigger("Triggered");
+let logicFunc;
 
-exe0.onTriggered = function () { number.set(0); outTrig.trigger(); };
-exe1.onTriggered = function () { number.set(1); outTrig.trigger(); };
-exe2.onTriggered = function () { number.set(2); outTrig.trigger(); };
-exe3.onTriggered = function () { number.set(3); outTrig.trigger(); };
-exe4.onTriggered = function () { number.set(4); outTrig.trigger(); };
-exe5.onTriggered = function () { number.set(5); outTrig.trigger(); };
-exe6.onTriggered = function () { number.set(6); outTrig.trigger(); };
-exe7.onTriggered = function () { number.set(7); outTrig.trigger(); };
+logicSelectMode.onChange = onFilterChange;
 
+numberIn_1.onChange = numberIn_2.onChange = numberIn_3.onChange = update;
+
+onFilterChange();
+
+function onFilterChange()
+{
+    let logicSelectValue = logicSelectMode.get();
+    if (logicSelectValue === ">") logicFunc = function (a, b, c) { if (a > b) return 1; return 0; };
+    else if (logicSelectValue === "<") logicFunc = function (a, b, c) { if (a < b) return 1; return 0; };
+    else if (logicSelectValue === ">=") logicFunc = function (a, b, c) { if (a >= b) return 1; return 0; };
+    else if (logicSelectValue === "<=") logicFunc = function (a, b, c) { if (a <= b) return 1; return 0; };
+    else if (logicSelectValue === "==") logicFunc = function (a, b, c) { if (a === b) return 1; return 0; };
+    else if (logicSelectValue === "!=") logicFunc = function (a, b, c) { if (a !== b) return 1; return 0; };
+    else if (logicSelectValue === "><") logicFunc = function (a, b, c) { if (a > Math.min(b, c) && a < Math.max(b, c)) return 1; return 0; };
+    else if (logicSelectValue === ">=<") logicFunc = function (a, b, c) { if (a >= Math.min(b, c) && a <= Math.max(b, c)) return 1; return 0; };
+
+    if (logicSelectValue === "><" || logicSelectValue === ">=<")
+    {
+        numberIn_3.setUiAttribs({ "greyout": false });
+        numberIn_2.setUiAttribs({ "title": "Min" });
+    }
+    else
+    {
+        numberIn_3.setUiAttribs({ "greyout": true });
+        numberIn_2.setUiAttribs({ "title": "Condition value" });
+    }
+    update();
+    op.setUiAttrib({ "extendTitle": logicSelectValue });
 }
-};
-
-CABLES.OPS["43ed1123-1312-4383-b843-27b8ec540c09"]={f:Ops.Trigger.NumberByTrigger,objName:"Ops.Trigger.NumberByTrigger"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Number.Number
-// 
-// **************************************************************
-
-Ops.Number.Number= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    v = op.inValueFloat("value"),
-    result = op.outNumber("result");
-
-v.onChange = exec;
-
-let isLinked = false;
-v.onLinkChanged = () =>
-{
-    if (!isLinked && v.isLinked())op.setUiAttribs({ "extendTitle": null });
-    isLinked = v.isLinked();
-};
-
-function exec()
-{
-    if (CABLES.UI && !isLinked) op.setUiAttribs({ "extendTitle": v.get() });
-
-    result.set(Number(v.get()));
-}
-
-}
-};
-
-CABLES.OPS["8fb2bb5d-665a-4d0a-8079-12710ae453be"]={f:Ops.Number.Number,objName:"Ops.Number.Number"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Ui.VizNumber
-// 
-// **************************************************************
-
-Ops.Ui.VizNumber= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const inNum = op.inFloat("Number", 0);
-const outNum = op.outNumber("Result");
-
-op.setUiAttrib({ "widthOnlyGrow": true });
-
-inNum.onChange = update;
-
-update();
 
 function update()
 {
-    let n = inNum.get();
-    // if (op.patch.isEditorMode())
-    // {
-    //     let str = "";
-    //     if (n === null)str = "null";
-    //     else if (isNaN(n))str = "NaN";
-    //     else if (n === undefined)str = "undefined";
-    //     else
-    //     {
-    //         str = "" + Math.round(n * 10000) / 10000;
+    let n1 = numberIn_1.get();
+    let n2 = numberIn_2.get();
+    let n3 = numberIn_3.get();
 
-    //         if (str[0] != "-")str = " " + str;
-    //     }
+    let resultNumber = logicFunc(n1, n2, n3);
 
-    //     op.setUiAttribs({ "extendTitle": str });
-    // }
-    op.setUiAttribs({ "extendTitle": inNum.getValueForDisplay() });
-
-    outNum.set(n);
+    resultNumberOut.set(resultNumber);
 }
 
 }
 };
 
-CABLES.OPS["2b60d12d-2884-4ad0-bda4-0caeb6882f5c"]={f:Ops.Ui.VizNumber,objName:"Ops.Ui.VizNumber"};
+CABLES.OPS["169137db-9853-4384-ac5b-d10a0bbda5c2"]={f:Ops.Math.Compare.CompareNumbers,objName:"Ops.Math.Compare.CompareNumbers"};
 
 
 
