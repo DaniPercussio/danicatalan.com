@@ -221,15 +221,15 @@
             "portsIn": [
                 {
                     "name": "r",
-                    "value": 0.91
+                    "value": 1
                 },
                 {
                     "name": "g",
-                    "value": 0.91
+                    "value": 1
                 },
                 {
                     "name": "b",
-                    "value": 0.91
+                    "value": 1
                 },
                 {
                     "name": "a",
@@ -471,11 +471,11 @@
                 },
                 {
                     "name": "Rot X",
-                    "value": 272.08699094789364
+                    "value": 90
                 },
                 {
                     "name": "Rot Y",
-                    "value": 88.05289306640626
+                    "value": 90
                 }
             ],
             "objName": "Ops.Graphics.OrbitControls_v3"
@@ -1325,7 +1325,7 @@
             "portsOut": [
                 {
                     "name": "Current Volume",
-                    "value": 1
+                    "value": 0
                 },
                 {
                     "name": "Number Of Channels",
@@ -1381,11 +1381,11 @@
                 },
                 {
                     "name": "Average Volume Time-Domain",
-                    "value": 0.4969482421875
+                    "value": 0.5
                 },
                 {
                     "name": "RMS Volume",
-                    "value": 0.4969587819221685
+                    "value": 0.5
                 }
             ],
             "objName": "Ops.WebAudio.AudioAnalyzer_v2"
@@ -3074,7 +3074,7 @@
                 },
                 {
                     "name": "current frame",
-                    "value": 2093
+                    "value": 2923
                 }
             ],
             "objName": "Ops.TimeLine.TimeLinePlayer"
@@ -3244,7 +3244,7 @@
         }
     ],
     "export": {
-        "time": "2025-10-23 10:33",
+        "time": "2025-10-23 16:20",
         "service": "html",
         "exportNumber": 1
     }
