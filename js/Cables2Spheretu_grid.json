@@ -50,11 +50,11 @@
                 },
                 {
                     "name": "width",
-                    "value": 1208.697876572609
+                    "value": 685.2083106040955
                 },
                 {
                     "name": "height",
-                    "value": 650.4687284231186
+                    "value": 438.4374854564667
                 },
                 {
                     "name": "Pixel Density",
@@ -471,11 +471,11 @@
                 },
                 {
                     "name": "Rot X",
-                    "value": 133.9076050845401
+                    "value": 272.08699094789364
                 },
                 {
                     "name": "Rot Y",
-                    "value": 94.35130554199222
+                    "value": 88.05289306640626
                 }
             ],
             "objName": "Ops.Graphics.OrbitControls_v3"
@@ -645,6 +645,10 @@
             "uiAttribs": {},
             "portsIn": [
                 {
+                    "name": "Translate X",
+                    "value": 0
+                },
+                {
                     "name": "Translate Y",
                     "value": 0
                 },
@@ -653,24 +657,12 @@
                     "value": 0
                 },
                 {
-                    "name": "Scale X",
-                    "value": 0.14
-                },
-                {
                     "name": "Scale Y",
                     "value": 0.13
                 },
                 {
                     "name": "Scale Z",
                     "value": 0.11
-                },
-                {
-                    "name": "Rotation Y",
-                    "value": -7.56
-                },
-                {
-                    "name": "Rotation Z",
-                    "value": 0
                 }
             ],
             "portsOut": [
@@ -681,6 +673,12 @@
                             "portIn": "Exe",
                             "portOut": "Next",
                             "objIn": "4ok18jut9",
+                            "objOut": "uvce3zc7w"
+                        },
+                        {
+                            "portIn": "Update",
+                            "portOut": "Next",
+                            "objIn": "2i5a416rk",
                             "objOut": "uvce3zc7w"
                         }
                     ]
@@ -880,7 +878,7 @@
             "portsOut": [
                 {
                     "name": "Current Volume",
-                    "value": 1
+                    "value": 0
                 },
                 {
                     "name": "Number Of Channels",
@@ -947,11 +945,11 @@
                 },
                 {
                     "name": "Average Volume Time-Domain",
-                    "value": 0.7100830078125
+                    "value": 0.5
                 },
                 {
                     "name": "RMS Volume",
-                    "value": 0.7171796145867906
+                    "value": 0.5
                 }
             ],
             "objName": "Ops.WebAudio.AudioAnalyzer_v2"
@@ -1327,7 +1325,7 @@
             "portsOut": [
                 {
                     "name": "Current Volume",
-                    "value": 0
+                    "value": 1
                 },
                 {
                     "name": "Number Of Channels",
@@ -1383,11 +1381,11 @@
                 },
                 {
                     "name": "Average Volume Time-Domain",
-                    "value": 0.5
+                    "value": 0.4969482421875
                 },
                 {
                     "name": "RMS Volume",
-                    "value": 0.5
+                    "value": 0.4969587819221685
                 }
             ],
             "objName": "Ops.WebAudio.AudioAnalyzer_v2"
@@ -1899,6 +1897,19 @@
                     "value": "Lost pose"
                 }
             ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "Reset",
+                            "portOut": "Next",
+                            "objIn": "2bt8t8ncz",
+                            "objOut": "ox13psesb"
+                        }
+                    ]
+                }
+            ],
             "objName": "Ops.Trigger.TriggerSend"
         },
         {
@@ -1969,6 +1980,19 @@
                     "value": "Bodies"
                 }
             ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "Reset",
+                            "portOut": "Next",
+                            "objIn": "flu1d9uy2",
+                            "objOut": "oqd41sqn6"
+                        }
+                    ]
+                }
+            ],
             "objName": "Ops.Trigger.TriggerSend"
         },
         {
@@ -2029,7 +2053,7 @@
                 },
                 {
                     "name": "Inc factor",
-                    "value": 50,
+                    "value": 100,
                     "title": "Inc/Dec factor"
                 },
                 {
@@ -2278,7 +2302,7 @@
                         {
                             "portIn": "Update",
                             "portOut": "Trigger Out",
-                            "objIn": "kw23e1lbx",
+                            "objIn": "fushwfxc8",
                             "objOut": "bhmw8og6c"
                         }
                     ]
@@ -2294,12 +2318,6 @@
                             "portIn": "number1",
                             "portOut": "Average Volume",
                             "objIn": "auvgeqz2f",
-                            "objOut": "bhmw8og6c"
-                        },
-                        {
-                            "portIn": "Value",
-                            "portOut": "Average Volume",
-                            "objIn": "kw23e1lbx",
                             "objOut": "bhmw8og6c"
                         }
                     ]
@@ -2534,15 +2552,15 @@
                     "name": "Out Value",
                     "links": [
                         {
-                            "portIn": "perc",
+                            "portIn": "Value",
                             "portOut": "Out Value",
-                            "objIn": "sy0clgy0t",
+                            "objIn": "tjjp34noe",
                             "objOut": "skpyfamxv"
                         },
                         {
                             "portIn": "Value",
                             "portOut": "Out Value",
-                            "objIn": "tjjp34noe",
+                            "objIn": "2i5a416rk",
                             "objOut": "skpyfamxv"
                         }
                     ]
@@ -2672,7 +2690,7 @@
                 },
                 {
                     "name": "Inc factor",
-                    "value": 50,
+                    "value": 100,
                     "title": "Inc/Dec factor"
                 },
                 {
@@ -2883,7 +2901,7 @@
             "portsIn": [
                 {
                     "name": "old min",
-                    "value": 0.86
+                    "value": 1.25
                 },
                 {
                     "name": "old max",
@@ -2891,11 +2909,11 @@
                 },
                 {
                     "name": "new min",
-                    "value": -0.66
+                    "value": 0.16
                 },
                 {
                     "name": "new max",
-                    "value": 0.7
+                    "value": 1.55
                 },
                 {
                     "name": "Easing index",
@@ -2915,7 +2933,7 @@
                     "name": "result",
                     "links": [
                         {
-                            "portIn": "Translate X",
+                            "portIn": "Scale X",
                             "portOut": "result",
                             "objIn": "uvce3zc7w",
                             "objOut": "pi1caj6ed"
@@ -2935,7 +2953,7 @@
                 },
                 {
                     "name": "Inc factor",
-                    "value": 5.3,
+                    "value": 18.18,
                     "title": "Inc/Dec factor"
                 },
                 {
@@ -2991,67 +3009,6 @@
             "objName": "Ops.Anim.Timer_v2"
         },
         {
-            "id": "kw23e1lbx",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "Separate inc/dec",
-                    "value": 1
-                },
-                {
-                    "name": "Inc factor",
-                    "value": 4.44,
-                    "title": "Inc factor"
-                },
-                {
-                    "name": "Dec factor",
-                    "value": 14.45
-                }
-            ],
-            "portsOut": [
-                {
-                    "name": "Next",
-                    "links": [
-                        {
-                            "portIn": "Update",
-                            "portOut": "Next",
-                            "objIn": "fushwfxc8",
-                            "objOut": "kw23e1lbx"
-                        }
-                    ]
-                },
-                {
-                    "name": "Result",
-                    "links": [
-                        {
-                            "portIn": "number1",
-                            "portOut": "Result",
-                            "objIn": "ej0iz7gg8",
-                            "objOut": "kw23e1lbx"
-                        }
-                    ]
-                }
-            ],
-            "objName": "Ops.Anim.Smooth"
-        },
-        {
-            "id": "ej0iz7gg8",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "number2",
-                    "value": 8.52
-                }
-            ],
-            "portsOut": [
-                {
-                    "name": "result",
-                    "value": 0
-                }
-            ],
-            "objName": "Ops.Math.Multiply"
-        },
-        {
             "id": "btt0irp0e",
             "uiAttribs": {},
             "portsOut": [
@@ -3100,81 +3057,194 @@
                 },
                 {
                     "name": "current time",
-                    "value": 96.6108999999999
+                    "links": [
+                        {
+                            "portIn": "Value in",
+                            "portOut": "current time",
+                            "objIn": "204tr5mgy",
+                            "objOut": "20fy4f2pd"
+                        },
+                        {
+                            "portIn": "Value in",
+                            "portOut": "current time",
+                            "objIn": "z9crnizd0",
+                            "objOut": "20fy4f2pd"
+                        }
+                    ]
                 },
                 {
                     "name": "current frame",
-                    "value": 2898
+                    "value": 2093
                 }
             ],
             "objName": "Ops.TimeLine.TimeLinePlayer"
         },
         {
-            "id": "s5604uzo0",
-            "uiAttribs": {},
-            "portsOut": [
-                {
-                    "name": "number",
-                    "value": 0
-                }
-            ],
-            "objName": "Ops.Trigger.NumberByTrigger"
-        },
-        {
-            "id": "v9dy1ifnv",
+            "id": "2i5a416rk",
             "uiAttribs": {},
             "portsIn": [
                 {
-                    "name": "Number",
+                    "name": "Separate inc/dec",
                     "value": 0
+                },
+                {
+                    "name": "Inc factor",
+                    "value": 100,
+                    "title": "Inc/Dec factor"
+                },
+                {
+                    "name": "Dec factor",
+                    "value": 4
                 }
             ],
             "portsOut": [
                 {
-                    "name": "Out Value",
+                    "name": "Result",
                     "links": [
                         {
-                            "portIn": "Number",
-                            "portOut": "Out Value",
-                            "objIn": "rzidznzq4",
-                            "objOut": "v9dy1ifnv"
+                            "portIn": "perc",
+                            "portOut": "Result",
+                            "objIn": "sy0clgy0t",
+                            "objOut": "2i5a416rk"
                         }
                     ]
                 }
             ],
-            "objName": "Ops.Trigger.TriggerNumber"
+            "objName": "Ops.Anim.Smooth"
         },
         {
-            "id": "ojt650ruo",
+            "id": "204tr5mgy",
             "uiAttribs": {},
             "portsIn": [
                 {
-                    "name": "value",
-                    "value": 0
-                }
-            ],
-            "portsOut": [
+                    "name": "Comparison mode index",
+                    "value": 6
+                },
                 {
-                    "name": "result",
-                    "value": 0
+                    "name": "Comparison mode",
+                    "value": "><"
+                },
+                {
+                    "name": "Condition value",
+                    "value": 69.37,
+                    "title": "Min"
+                },
+                {
+                    "name": "Max",
+                    "value": 114
                 }
             ],
-            "objName": "Ops.Number.Number"
-        },
-        {
-            "id": "rzidznzq4",
-            "uiAttribs": {},
             "portsOut": [
                 {
                     "name": "Result",
+                    "links": [
+                        {
+                            "portIn": "Play",
+                            "portOut": "Result",
+                            "objIn": "2bt8t8ncz",
+                            "objOut": "204tr5mgy"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Math.Compare.CompareNumbers"
+        },
+        {
+            "id": "2bt8t8ncz",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Speed",
+                    "value": 20
+                },
+                {
+                    "name": "Sync to timeline",
                     "value": 0
                 }
             ],
-            "objName": "Ops.Ui.VizNumber"
+            "portsOut": [
+                {
+                    "name": "Time",
+                    "links": [
+                        {
+                            "portIn": "Rotation Z",
+                            "portOut": "Time",
+                            "objIn": "uvce3zc7w",
+                            "objOut": "2bt8t8ncz"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Anim.Timer_v2"
+        },
+        {
+            "id": "z9crnizd0",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Comparison mode index",
+                    "value": 6
+                },
+                {
+                    "name": "Comparison mode",
+                    "value": "><"
+                },
+                {
+                    "name": "Condition value",
+                    "value": 99,
+                    "title": "Min"
+                },
+                {
+                    "name": "Max",
+                    "value": 114
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Result",
+                    "links": [
+                        {
+                            "portIn": "Play",
+                            "portOut": "Result",
+                            "objIn": "flu1d9uy2",
+                            "objOut": "z9crnizd0"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Math.Compare.CompareNumbers"
+        },
+        {
+            "id": "flu1d9uy2",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Speed",
+                    "value": 40
+                },
+                {
+                    "name": "Sync to timeline",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Time",
+                    "links": [
+                        {
+                            "portIn": "Rotation Y",
+                            "portOut": "Time",
+                            "objIn": "uvce3zc7w",
+                            "objOut": "flu1d9uy2"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Anim.Timer_v2"
         }
     ],
     "export": {
-        "time": "2025-10-22 17:49",
+        "time": "2025-10-23 10:33",
         "service": "html",
         "exportNumber": 1
     }
