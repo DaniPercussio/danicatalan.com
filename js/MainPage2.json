@@ -3025,6 +3025,12 @@
                             "portOut": "Next",
                             "objIn": "wpdbhyigb",
                             "objOut": "a3p04jjr7"
+                        },
+                        {
+                            "portIn": "Calculate",
+                            "portOut": "Next",
+                            "objIn": "3t0wof2rh",
+                            "objOut": "a3p04jjr7"
                         }
                     ]
                 }
@@ -4091,17 +4097,6 @@
                             "objOut": "wpdbhyigb"
                         }
                     ]
-                },
-                {
-                    "name": "trigger 1",
-                    "links": [
-                        {
-                            "portIn": "Exec",
-                            "portOut": "trigger 1",
-                            "objIn": "xjz7l41g0",
-                            "objOut": "wpdbhyigb"
-                        }
-                    ]
                 }
             ],
             "objName": "Ops.Trigger.Sequence"
@@ -4654,33 +4649,11 @@
                 }
             ],
             "objName": "Ops.Anim.Timer_v2"
-        },
-        {
-            "id": "xjz7l41g0",
-            "uiAttribs": {},
-            "portsOut": [
-                {
-                    "name": "Next",
-                    "links": [
-                        {
-                            "portIn": "Calculate",
-                            "portOut": "Next",
-                            "objIn": "3t0wof2rh",
-                            "objOut": "xjz7l41g0"
-                        }
-                    ]
-                },
-                {
-                    "name": "Was Triggered",
-                    "value": 1
-                }
-            ],
-            "objName": "Ops.Trigger.TriggerOnce"
         }
     ],
     "export": {
-        "time": "2025-10-29 17:46",
+        "time": "2025-10-29 17:56",
         "service": "html",
-        "exportNumber": 49
+        "exportNumber": 50
     }
 }
