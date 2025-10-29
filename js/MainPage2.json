@@ -194,15 +194,15 @@
                 },
                 {
                     "name": "radius",
-                    "value": 3
+                    "value": 2
                 },
                 {
                     "name": "Rot X",
-                    "value": 390.7521281251705
+                    "value": 90
                 },
                 {
                     "name": "Rot Y",
-                    "value": 68.81947448730472
+                    "value": 90
                 }
             ],
             "objName": "Ops.Graphics.OrbitControls_v3"
@@ -4091,6 +4091,17 @@
                             "objOut": "wpdbhyigb"
                         }
                     ]
+                },
+                {
+                    "name": "trigger 1",
+                    "links": [
+                        {
+                            "portIn": "Exec",
+                            "portOut": "trigger 1",
+                            "objIn": "xjz7l41g0",
+                            "objOut": "wpdbhyigb"
+                        }
+                    ]
                 }
             ],
             "objName": "Ops.Trigger.Sequence"
@@ -4643,11 +4654,33 @@
                 }
             ],
             "objName": "Ops.Anim.Timer_v2"
+        },
+        {
+            "id": "xjz7l41g0",
+            "uiAttribs": {},
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "Calculate",
+                            "portOut": "Next",
+                            "objIn": "3t0wof2rh",
+                            "objOut": "xjz7l41g0"
+                        }
+                    ]
+                },
+                {
+                    "name": "Was Triggered",
+                    "value": 1
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerOnce"
         }
     ],
     "export": {
-        "time": "2025-10-29 17:24",
+        "time": "2025-10-29 17:46",
         "service": "html",
-        "exportNumber": 50
+        "exportNumber": 49
     }
 }
