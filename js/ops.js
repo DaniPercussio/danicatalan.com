@@ -10,7 +10,9 @@ Ops.Anim=Ops.Anim || {};
 Ops.Html=Ops.Html || {};
 Ops.Math=Ops.Math || {};
 Ops.Array=Ops.Array || {};
+Ops.Local=Ops.Local || {};
 Ops.Number=Ops.Number || {};
+Ops.Boolean=Ops.Boolean || {};
 Ops.Gl.GLTF=Ops.Gl.GLTF || {};
 Ops.Trigger=Ops.Trigger || {};
 Ops.Graphics=Ops.Graphics || {};
@@ -18,10 +20,652 @@ Ops.Html.CSS=Ops.Html.CSS || {};
 Ops.WebAudio=Ops.WebAudio || {};
 Ops.Gl.Meshes=Ops.Gl.Meshes || {};
 Ops.Gl.Shader=Ops.Gl.Shader || {};
+Ops.Gl.Textures=Ops.Gl.Textures || {};
 Ops.Math.Compare=Ops.Math.Compare || {};
 Ops.Html.Elements=Ops.Html.Elements || {};
 Ops.Array.PointArray=Ops.Array.PointArray || {};
 Ops.Graphics.Geometry=Ops.Graphics.Geometry || {};
+
+
+
+// **************************************************************
+// 
+// Ops.Local.SubPatch0
+// 
+// **************************************************************
+
+Ops.Local.SubPatch0= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={"inc_gen_ports_js":"const port_59tlafryu=op.inArray(\"59tlafryu\");\nport_59tlafryu.setUiAttribs({title:\"Sequence Array\",});\n\nconst port_721cku440=op.inTrigger(\"721cku440\");\nport_721cku440.setUiAttribs({title:\"Stop\",display:\"button\",});\n\nconst port_ycqzyx3mg=op.inTrigger(\"ycqzyx3mg\");\nport_ycqzyx3mg.setUiAttribs({title:\"exe\",});\n\nconst port_hhjmki6s5=op.outObject(\"hhjmki6s5\");\nport_hhjmki6s5.setUiAttribs({title:\"texture_out\",display:\"texture\",objType:\"texture\",objType:\"texture\"});\n\nop.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\nconst innerOut_59tlafryu = addedOps[i].outArray(\"innerOut_59tlafryu\");\ninnerOut_59tlafryu.setUiAttribs({title:\"Sequence Array\"});\nport_59tlafryu.on(\"change\", (a,v) => { innerOut_59tlafryu.setRef(a); });\n\nconst innerOut_721cku440 = addedOps[i].outTrigger(\"innerOut_721cku440\");\ninnerOut_721cku440.setUiAttribs({title:\"Stop\"});\nport_721cku440.onTriggered = () => { innerOut_721cku440.trigger(); };\n\nconst innerOut_ycqzyx3mg = addedOps[i].outTrigger(\"innerOut_ycqzyx3mg\");\ninnerOut_ycqzyx3mg.setUiAttribs({title:\"exe\"});\nport_ycqzyx3mg.onTriggered = () => { innerOut_ycqzyx3mg.trigger(); };\n\n    }\nif(addedOps[i].innerOutput)\n{\nconst innerIn_hhjmki6s5 = addedOps[i].inObject(\"innerIn_hhjmki6s5\");\ninnerIn_hhjmki6s5.setUiAttribs({title:\"texture_out\"});\ninnerIn_hhjmki6s5.on(\"change\", (a,v) => { port_hhjmki6s5.setRef(a); });\n\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"899nceo6w\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"Steps index\",\"value\":31},{\"name\":\"Steps\",\"value\":\"32\"}],\"portsOut\":[{\"name\":\"Sequence Trigger Output\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"r3yyqc239\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"lili4hv6g\",\"objOut\":\"899nceo6w\"}]},{\"name\":\"Sequenced Value\",\"value\":0},{\"name\":\"Current Step\",\"value\":5}],\"objName\":\"Ops.WebAudio.ClockSequencerPattern\"},{\"id\":\"inz1z4uby\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"BPM\",\"value\":130}],\"portsOut\":[{\"name\":\"1/2 Note Trigger\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"r3yyqc239\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"lili4hv6g\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"1/16 Note Trigger\",\"links\":[{\"portIn\":\"Clock Trigger Input\",\"portOut\":\"1/16 Note Trigger\",\"objIn\":\"899nceo6w\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"Sequencer Running\",\"value\":false},{\"name\":\"BPM Out\",\"value\":130}],\"objName\":\"Ops.WebAudio.ClockSequencer\"},{\"id\":\"pjr0f0sfh\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"r\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"pjr0f0sfh\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"lili4hv6g\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"b\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"lili4hv6g\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"r3yyqc239\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"g\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"r3yyqc239\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"gdhde7qeq\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"a\",\"value\":1}],\"portsOut\":[{\"name\":\"texture_out\",\"links\":[{\"portIn\":\"innerIn_hhjmki6s5\",\"portOut\":\"texture_out\",\"objIn\":\"pyktvp87m\",\"objOut\":\"gdhde7qeq\"}]}],\"objName\":\"Ops.Gl.Textures.ColorTexture\"},{\"id\":\"rho87gl00\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsOut\":[{\"name\":\"innerOut_59tlafryu\",\"title\":\"Sequence Array\",\"links\":[{\"portIn\":\"Sequence Array\",\"portOut\":\"innerOut_59tlafryu\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_721cku440\",\"title\":\"Stop\",\"links\":[{\"portIn\":\"Start\",\"portOut\":\"innerOut_721cku440\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_ycqzyx3mg\",\"title\":\"exe\",\"links\":[{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Stop\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]}],\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"pyktvp87m\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"innerIn_hhjmki6s5\",\"title\":\"texture_out\"}],\"objName\":\"Ops.Ui.SubPatchOutput\"},{\"id\":\"yejvqgrtk\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"portsIn\":[{\"name\":\"value\",\"value\":0}],\"portsOut\":[{\"name\":\"result\",\"value\":0}],\"storage\":{\"ref\":\"yejvqgrtk\"},\"objName\":\"Ops.Number.Number\"}]}",};
+const port_59tlafryu=op.inArray("59tlafryu");
+port_59tlafryu.setUiAttribs({title:"Sequence Array",});
+
+const port_721cku440=op.inTrigger("721cku440");
+port_721cku440.setUiAttribs({title:"Stop",display:"button",});
+
+const port_ycqzyx3mg=op.inTrigger("ycqzyx3mg");
+port_ycqzyx3mg.setUiAttribs({title:"exe",});
+
+const port_hhjmki6s5=op.outObject("hhjmki6s5");
+port_hhjmki6s5.setUiAttribs({title:"texture_out",display:"texture",objType:"texture",objType:"texture"});
+
+op.initInnerPorts=function(addedOps)
+{
+  for(let i=0;i<addedOps.length;i++)
+  {
+    if(addedOps[i].innerInput)
+    {
+const innerOut_59tlafryu = addedOps[i].outArray("innerOut_59tlafryu");
+innerOut_59tlafryu.setUiAttribs({title:"Sequence Array"});
+port_59tlafryu.on("change", (a,v) => { innerOut_59tlafryu.setRef(a); });
+
+const innerOut_721cku440 = addedOps[i].outTrigger("innerOut_721cku440");
+innerOut_721cku440.setUiAttribs({title:"Stop"});
+port_721cku440.onTriggered = () => { innerOut_721cku440.trigger(); };
+
+const innerOut_ycqzyx3mg = addedOps[i].outTrigger("innerOut_ycqzyx3mg");
+innerOut_ycqzyx3mg.setUiAttribs({title:"exe"});
+port_ycqzyx3mg.onTriggered = () => { innerOut_ycqzyx3mg.trigger(); };
+
+    }
+if(addedOps[i].innerOutput)
+{
+const innerIn_hhjmki6s5 = addedOps[i].inObject("innerIn_hhjmki6s5");
+innerIn_hhjmki6s5.setUiAttribs({title:"texture_out"});
+innerIn_hhjmki6s5.on("change", (a,v) => { port_hhjmki6s5.setRef(a); });
+
+}
+}
+};
+
+const patchId = "bp2sub_" + op.id;
+
+new CABLES.SubPatchOp(op, { "subId": patchId });
+
+initializeSubpatch();
+
+function initializeSubpatch()
+{
+    if(!attachments || !attachments.subpatch_json) return;
+
+    const p = JSON.parse(attachments.subpatch_json);
+
+    CABLES.Patch.replaceOpIds(p,
+        {
+            "parentSubPatchId": patchId,
+            "prefixHash": patchId,
+            "oldIdAsRef": true,
+            "doNotUnlinkLostLinks": true
+        });
+
+    for (let i = 0; i < p.ops.length; i++)
+    {
+        p.ops[i].uiAttribs.blueprintSubpatch2 = true;
+    }
+
+    op.loadDependencies(p, () =>
+    {
+        op.patch.deSerialize(p, { "opsCreated": op.initInnerPorts });
+        if (CABLES.UI)gui.savedState.setSaved("blueprintloaded", patchId);
+        op.patch.emitEvent("subpatchExpose", patchId);
+        op.setStorage({ "blueprintVer": 2 });
+        op.patch.emitEvent("subpatchExpose", patchId);
+    });
+}
+
+}
+};
+
+CABLES.OPS["f104d02f-aad0-4f0d-9f12-1505cfb2e979"]={f:Ops.Local.SubPatch0,objName:"Ops.Local.SubPatch0"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.WebAudio.ClockSequencerPattern
+// 
+// **************************************************************
+
+Ops.WebAudio.ClockSequencerPattern= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const STEPS = Array(32).fill().map((_, i) => 1 + i);
+
+const inTrigger = op.inTrigger("Clock Trigger Input");
+const inSequenceArray = op.inArray("Sequence Array");
+const inSteps = op.inDropDown("Steps", STEPS, "16");
+const inReset = op.inTriggerButton("Reset");
+
+const outTrigger = op.outTrigger("Sequence Trigger Output");
+const outValue = op.outNumber("Sequenced Value");
+const outTickCount = op.outNumber("Current Step");
+
+let updateParameters = false;
+let arrayChanged = false;
+let hasArray = false;
+
+let COUNT_MODULO = Number(inSteps.get());
+let tickCount = 0;
+inSteps.onChange = () =>
+{
+    if (inTrigger.isLinked())
+    {
+        updateParameters = true;
+        return;
+    }
+    COUNT_MODULO = Number(inSteps.get());
+};
+
+inSequenceArray.onChange = () => arrayChanged = true;
+let resetCount = false;
+inReset.onTriggered = () => resetCount = true;
+
+inTrigger.onTriggered = () =>
+{
+    if (updateParameters)
+    {
+        COUNT_MODULO = Number(inSteps.get());
+        updateParameters = false;
+    }
+
+    if (resetCount)
+    {
+        tickCount = 0;
+        resetCount = false;
+    }
+    const arr = inSequenceArray.get();
+
+    if (arrayChanged)
+    {
+        if (!arr)
+        {
+            op.setUiError("noArr", "No array connected. Passing through clock.", 1);
+            hasArray = false;
+        }
+        else
+        {
+            op.setUiError("noArr", null);
+            hasArray = true;
+        }
+        arrayChanged = false;
+    }
+
+    if (hasArray)
+    {
+        if (arr[tickCount])
+        {
+            outTrigger.trigger();
+            outValue.set(arr[tickCount]);
+        }
+        else
+        {
+            outValue.set(0);
+        }
+    }
+    else
+    {
+        outTrigger.trigger();
+    }
+    outTickCount.set(tickCount);
+    tickCount = (tickCount + 1) % COUNT_MODULO;
+};
+
+}
+};
+
+CABLES.OPS["3b9b9ff5-4c25-42e3-9897-262b11c9cb94"]={f:Ops.WebAudio.ClockSequencerPattern,objName:"Ops.WebAudio.ClockSequencerPattern"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.WebAudio.ClockSequencer
+// 
+// **************************************************************
+
+Ops.WebAudio.ClockSequencer= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={"worker_js":"let timerIDs = [];\r\nlet timerID = null;\r\nconst LOOKAHEAD_IN_MS = 25.;\r\nonmessage = (e) => {\r\n    if (e.data === \"start\") {\r\n        timerID = setInterval(() => postMessage(\"tick\"), LOOKAHEAD_IN_MS);\r\n        return;\r\n    }\r\n\r\n    if (e.data === \"stop\") {\r\n        clearInterval(timerID);\r\n        timerID = null;\r\n        console.log(\"stopped\");\r\n    }\r\n};\r\n\r\nonerror = (e) => {\r\n    console.log(\"worker error\", e);\r\n}\r\n",};
+const audioCtx = CABLES.WEBAUDIO.createAudioContext(op);
+
+const inBPM = op.inInt("BPM", 100);
+const inStart = op.inTriggerButton("Start");
+const inStop = op.inTriggerButton("Stop");
+const inReset = op.inTriggerButton("Reset");
+
+const outTriggers = [];
+for (let i = 0; i < 7 * 3; i += 1)
+{
+    const noteValue = Math.pow(2, i % 7);
+    let string = "1/" + noteValue;
+    if (i > 6 && i < 14)
+    {
+        string = "1/" + noteValue + " Triplet";
+    }
+    else if (i > 13)
+    {
+        string = "1/" + noteValue + " Dotted";
+    }
+    outTriggers[i] = op.outTrigger(string + " Note Trigger");
+}
+
+const outRunning = op.outBool("Sequencer Running");
+const outBPM = op.outNumber("BPM Out");
+const outStart = op.outTrigger("Start Out");
+const outStop = op.outTrigger("Stop Out");
+const outReset = op.outTrigger("Reset Out");
+
+const MIN_BPM = 20;
+
+const NOTE_QUEUE = [];
+const LOOKAHEAD_IN_MS = 25.0;
+const SCHEDULEAHEAD_IN_S = 0.1;
+
+const MULTIPLIERS = [
+    4, 2, 1, 1 / 2, 1 / 4, 1 / 8, 1 / 16,
+    8 / 3, 4 / 3, 2 / 3, 1 / 3, 1 / 6, 1 / 12, 1 / 24, // triplet
+    6, 3, 3 / 2, 3 / 4, 3 / 8, 3 / 16, 3 / 32 // dotted
+];
+
+const MODULO_PER_NOTE = MULTIPLIERS.map((val) => Math.floor(val * 48 / 2));
+const TICK_INDEX = 7 * 2 - 1; // 1/64 triplet fastest note
+const MAX_ENUMERATOR = 288;
+let NOTES_IN_S = [];
+let QUARTER_NOTE_S = 60 / inBPM.get();
+NOTES_IN_S = MULTIPLIERS.map((multiplier) => multiplier * QUARTER_NOTE_S);
+let TICK_S = NOTES_IN_S[TICK_INDEX] / 2;
+
+outBPM.set(inBPM.get());
+
+let resetTickCount = false;
+let changeWhileRunning = false;
+inBPM.onChange = updateBpm;
+
+let worker = null;
+let isPlaying = false;
+let currentNote = 0;
+let nextNoteTime = null;
+let tickCount = 0;
+let workerRunning = false;
+let waitForSchedule = false;
+updateBpm();
+
+function updateBpm()
+{
+    outBPM.set(inBPM.get());
+
+    if (workerRunning)
+    {
+        changeWhileRunning = true;
+        return;
+    }
+    QUARTER_NOTE_S = 60 / inBPM.get();
+    NOTES_IN_S = MULTIPLIERS.map((multiplier) => multiplier * QUARTER_NOTE_S);
+    TICK_S = NOTES_IN_S[TICK_INDEX];
+}
+
+function nextNote()
+{
+    nextNoteTime += TICK_S;
+    tickCount = (tickCount + 1) % MAX_ENUMERATOR;
+}
+
+function scheduleNote()
+{
+    if (waitForSchedule)
+    { // code block to swallow initial hickup when starting the sequencer
+        let compareValue = 8;
+        if (inBPM.get() > 140) compareValue = 12;
+        if (inBPM.get() > 160) compareValue = 20;
+        if (tickCount === compareValue)
+        { // half of highest value
+            resetTickCount = true;
+            waitForSchedule = false;
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    if (resetTickCount)
+    {
+        tickCount = 0;
+        resetTickCount = false;
+    }
+    for (let i = 0, len = MODULO_PER_NOTE.length; i < len; i += 1)
+    {
+        if (tickCount % MODULO_PER_NOTE[i] === 0) outTriggers[i].trigger();
+    }
+}
+function startScheduling()
+{
+    if (changeWhileRunning)
+    {
+        QUARTER_NOTE_S = 60 / inBPM.get();
+        NOTES_IN_S = MULTIPLIERS.map((multiplier) => multiplier * QUARTER_NOTE_S);
+        TICK_S = NOTES_IN_S[TICK_INDEX];
+        changeWhileRunning = false;
+    }
+    while (nextNoteTime < audioCtx.currentTime + SCHEDULEAHEAD_IN_S)
+    {
+        scheduleNote();
+        nextNote();
+    }
+}
+
+inStart.onTriggered = () =>
+{
+    if (workerRunning) return;
+
+    if (!worker)
+    {
+        const blob = new Blob([attachments.worker_js], { "type": "text/javascript" });
+        const fileURL = URL.createObjectURL(blob);
+
+        worker = new Worker(fileURL, { "name": "ClockSequencer with op-id: " + op.id });
+        worker.addEventListener("message", (e) =>
+        {
+            if (e.data === "tick") startScheduling();
+            if (e.data === "stopped") workerRunning = false;
+        },
+        false);
+
+        nextNoteTime = audioCtx.currentTime;
+        /* dummy buffer source for time */
+        const audioBuffer = audioCtx.createBufferSource();
+        audioBuffer.start(0);
+        workerRunning = true;
+        tickCount = 0;
+        worker.postMessage("start");
+        waitForSchedule = true;
+        outRunning.set(workerRunning);
+    }
+
+    outStart.trigger();
+};
+
+inStop.onTriggered = () =>
+{
+    if (worker)
+    {
+        worker.postMessage("stop");
+        worker.terminate();
+        worker = null;
+        workerRunning = false;
+        outRunning.set(workerRunning);
+    }
+
+    outStop.trigger();
+};
+
+inReset.onTriggered = () =>
+{
+    resetTickCount = true;
+    outReset.trigger();
+};
+
+op.onDelete = () =>
+{
+    if (!inStart.isLinked())
+    {
+        if (worker)
+        {
+            worker.postMessage("stop");
+            worker.terminate();
+            worker = null;
+            workerRunning = false;
+        }
+    }
+};
+inStart.onLinkChanged = () =>
+{
+    if (!inStart.isLinked())
+    {
+        if (worker)
+        {
+            worker.postMessage("stop");
+            worker.terminate();
+            worker = null;
+            workerRunning = false;
+            outRunning.set(workerRunning);
+        }
+    }
+};
+
+}
+};
+
+CABLES.OPS["7994c33f-d4ca-455b-af72-83dcbf5ae83f"]={f:Ops.WebAudio.ClockSequencer,objName:"Ops.WebAudio.ClockSequencer"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.TriggerRandomNumber_v3
+// 
+// **************************************************************
+
+Ops.Math.TriggerRandomNumber_v3= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTriggerButton("Generate"),
+    min = op.inValue("min", 0),
+    max = op.inValue("max", 1),
+    outTrig = op.outTrigger("next"),
+    result = op.outNumber("result"),
+    inInteger = op.inValueBool("Integer", false),
+    noDupe = op.inValueBool("No consecutive duplicates", false);
+
+op.setPortGroup("Value Range", [min, max]);
+
+exe.onTriggered = genRandom;
+
+genRandom();
+
+function genRandom()
+{
+    let r = (Math.random() * (max.get() - min.get())) + min.get();
+
+    if (inInteger.get())r = randInt();
+
+    if (min.get() != max.get() && max.get() > min.get())
+        while (noDupe.get() && r == result.get()) r = randInt();
+
+    result.set(r);
+    outTrig.trigger();
+}
+
+function randInt()
+{
+    return Math.floor((Math.random() * ((max.get() - min.get() + 1))) + min.get());
+}
+
+}
+};
+
+CABLES.OPS["d082beaf-ef4b-4e57-a900-9ee87c0c9fe4"]={f:Ops.Math.TriggerRandomNumber_v3,objName:"Ops.Math.TriggerRandomNumber_v3"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Gl.Textures.ColorTexture
+// 
+// **************************************************************
+
+Ops.Gl.Textures.ColorTexture= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    r = op.inValueSlider("r", Math.random()),
+    g = op.inValueSlider("g", Math.random()),
+    b = op.inValueSlider("b", Math.random()),
+    a = op.inValueSlider("a", 1.0),
+    texOut = op.outTexture("texture_out");
+
+r.setUiAttribs({ "colorPick": true });
+const cgl = op.patch.cgl;
+let fb = null;
+let wasFp = false;
+
+r.onChange =
+    g.onChange =
+    b.onChange =
+    a.onChange = () => { cgl.addNextFrameOnceCallback(render); };
+
+cgl.addNextFrameOnceCallback(render);
+
+function render()
+{
+    const fp = wasFp || r.get() < 0.0 || r.get() > 1.0 || g.get() < 0.0 || g.get() > 1.0 || b.get() < 0.0 || b.get() > 1.0;
+
+    if (!fb || wasFp != fp)
+    {
+        if (fb)fb.dispose();
+        if (cgl.glVersion == 1) fb = new CGL.Framebuffer(cgl, 8, 8, { "name": "colorTexture" });
+        else fb = new CGL.Framebuffer2(cgl, 8, 8, { "name": "colorTexture", "depth": false, "isFloatingPointTexture": fp });
+        fb.setFilter(CGL.Texture.FILTER_LINEAR);
+        wasFp = fp;
+    }
+
+    fb.renderStart();
+    cgl.gl.clearColor(r.get(), g.get(), b.get(), a.get());
+    cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT);
+    fb.renderEnd();
+    texOut.setRef(fb.getTextureColor());
+}
+
+op.onDelete = () =>
+{
+    fb.dispose();
+};
+
+}
+};
+
+CABLES.OPS["59b94270-0364-4c0f-a9fc-ba2561696a23"]={f:Ops.Gl.Textures.ColorTexture,objName:"Ops.Gl.Textures.ColorTexture"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Ui.SubPatchInput
+// 
+// **************************************************************
+
+Ops.Ui.SubPatchInput= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+op.innerInput = true;
+
+const goto = op.inTriggerButton("Goto SubPatchOp");
+goto.setUiAttribs({ "hidePort": true });
+goto.onTriggered = () =>
+{
+    const parent = op.patch.getSubPatchOuterOp(op.uiAttribs.subPatch);
+    gui.patchView.centerSelectOp(parent.id);
+};
+
+}
+};
+
+CABLES.OPS["c4e4e933-136e-479e-8de8-0b35b75d9217"]={f:Ops.Ui.SubPatchInput,objName:"Ops.Ui.SubPatchInput"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Ui.SubPatchOutput
+// 
+// **************************************************************
+
+Ops.Ui.SubPatchOutput= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+op.innerOutput = true;
+
+}
+};
+
+CABLES.OPS["02d45073-7936-4830-81ad-59a162febf1f"]={f:Ops.Ui.SubPatchOutput,objName:"Ops.Ui.SubPatchOutput"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Number.Number
+// 
+// **************************************************************
+
+Ops.Number.Number= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    v = op.inValueFloat("value"),
+    result = op.outNumber("result");
+
+v.onChange = exec;
+
+let isLinked = false;
+v.onLinkChanged = () =>
+{
+    if (!isLinked && v.isLinked())op.setUiAttribs({ "extendTitle": null });
+    isLinked = v.isLinked();
+};
+
+function exec()
+{
+    if (CABLES.UI && !isLinked) op.setUiAttribs({ "extendTitle": v.get() });
+
+    result.set(Number(v.get()));
+}
+
+}
+};
+
+CABLES.OPS["8fb2bb5d-665a-4d0a-8079-12710ae453be"]={f:Ops.Number.Number,objName:"Ops.Number.Number"};
+
 
 
 
@@ -4710,101 +5354,6 @@ CABLES.OPS["09296117-7312-4f80-982b-7b4a81d22cf8"]={f:Ops.Array.InterpolateArray
 
 // **************************************************************
 // 
-// Ops.Number.Number
-// 
-// **************************************************************
-
-Ops.Number.Number= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    v = op.inValueFloat("value"),
-    result = op.outNumber("result");
-
-v.onChange = exec;
-
-let isLinked = false;
-v.onLinkChanged = () =>
-{
-    if (!isLinked && v.isLinked())op.setUiAttribs({ "extendTitle": null });
-    isLinked = v.isLinked();
-};
-
-function exec()
-{
-    if (CABLES.UI && !isLinked) op.setUiAttribs({ "extendTitle": v.get() });
-
-    result.set(Number(v.get()));
-}
-
-}
-};
-
-CABLES.OPS["8fb2bb5d-665a-4d0a-8079-12710ae453be"]={f:Ops.Number.Number,objName:"Ops.Number.Number"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Ui.Area
-// 
-// **************************************************************
-
-Ops.Ui.Area= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inTitle = op.inString("Title", ""),
-    inDelete = op.inTriggerButton("Delete");
-
-inTitle.setUiAttribs({ "hidePort": true });
-
-op.setUiAttrib({ "hasArea": true });
-
-op.init =
-    inTitle.onChange =
-    op.onLoaded = update;
-
-update();
-
-function update()
-{
-    if (CABLES.UI)
-    {
-        gui.savedState.setUnSaved("areaOp", op.getSubPatch());
-        op.uiAttr(
-            {
-                "comment_title": inTitle.get() || " "
-            });
-
-        op.name = inTitle.get();
-    }
-}
-
-inDelete.onTriggered = () =>
-{
-    op.patch.deleteOp(op.id);
-};
-
-}
-};
-
-CABLES.OPS["38f79614-b0de-4960-8da5-2827e7f43415"]={f:Ops.Ui.Area,objName:"Ops.Ui.Area"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.Html.Elements.DivElement_v3
 // 
 // **************************************************************
@@ -6573,6 +7122,60 @@ CABLES.OPS["c8fb181e-0b03-4b41-9e55-06b6267bc634"]={f:Ops.Math.Sum,objName:"Ops.
 
 // **************************************************************
 // 
+// Ops.Ui.Area
+// 
+// **************************************************************
+
+Ops.Ui.Area= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inTitle = op.inString("Title", ""),
+    inDelete = op.inTriggerButton("Delete");
+
+inTitle.setUiAttribs({ "hidePort": true });
+
+op.setUiAttrib({ "hasArea": true });
+
+op.init =
+    inTitle.onChange =
+    op.onLoaded = update;
+
+update();
+
+function update()
+{
+    if (CABLES.UI)
+    {
+        gui.savedState.setUnSaved("areaOp", op.getSubPatch());
+        op.uiAttr(
+            {
+                "comment_title": inTitle.get() || " "
+            });
+
+        op.name = inTitle.get();
+    }
+}
+
+inDelete.onTriggered = () =>
+{
+    op.patch.deleteOp(op.id);
+};
+
+}
+};
+
+CABLES.OPS["38f79614-b0de-4960-8da5-2827e7f43415"]={f:Ops.Ui.Area,objName:"Ops.Ui.Area"};
+
+
+
+
+// **************************************************************
+// 
 // Ops.Array.PointArray.FillPointArrayDuplicates
 // 
 // **************************************************************
@@ -6685,52 +7288,6 @@ function update()
 };
 
 CABLES.OPS["2b60d12d-2884-4ad0-bda4-0caeb6882f5c"]={f:Ops.Ui.VizNumber,objName:"Ops.Ui.VizNumber"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Trigger.TriggerOnce
-// 
-// **************************************************************
-
-Ops.Trigger.TriggerOnce= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    exe = op.inTriggerButton("Exec"),
-    reset = op.inTriggerButton("Reset"),
-    next = op.outTrigger("Next"),
-    outTriggered = op.outBoolNum("Was Triggered");
-
-let triggered = false;
-
-op.toWorkPortsNeedToBeLinked(exe);
-
-reset.onTriggered = function ()
-{
-    triggered = false;
-    outTriggered.set(triggered);
-};
-
-exe.onTriggered = function ()
-{
-    if (triggered) return;
-
-    triggered = true;
-    next.trigger();
-    outTriggered.set(triggered);
-};
-
-}
-};
-
-CABLES.OPS["cf3544e4-e392-432b-89fd-fcfb5c974388"]={f:Ops.Trigger.TriggerOnce,objName:"Ops.Trigger.TriggerOnce"};
 
 
 
@@ -7167,6 +7724,316 @@ inTrigger.onTriggered = function ()
 };
 
 CABLES.OPS["ff9bf46c-676f-4aa1-95bf-5595a6813ed7"]={f:Ops.WebAudio.AudioAnalyzer_v2,objName:"Ops.WebAudio.AudioAnalyzer_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Array.StringToArray_v2
+// 
+// **************************************************************
+
+Ops.Array.StringToArray_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const text = op.inStringEditor("text", "1,2,3"),
+    separator = op.inString("separator", ","),
+    toNumber = op.inValueBool("Numbers", true),
+    trim = op.inValueBool("Trim", true),
+    splitNewLines = op.inBool("Split Lines", false),
+    arr = op.outArray("array"),
+    parsed = op.outTrigger("Parsed"),
+    len = op.outNumber("length");
+
+text.setUiAttribs({ "ignoreBigPort": true });
+
+text.onChange = separator.onChange = toNumber.onChange = trim.onChange = parse;
+
+splitNewLines.onChange = () =>
+{
+    separator.setUiAttribs({ "greyout": splitNewLines.get() });
+    parse();
+};
+
+parse();
+
+function parse()
+{
+    if (!text.get())
+    {
+        arr.set(null);
+        arr.set([]);
+        len.set(0);
+        return;
+    }
+
+    let textInput = text.get();
+    if (trim.get() && textInput)
+    {
+        textInput = textInput.replace(/^\s+|\s+$/g, "");
+        textInput = textInput.trim();
+    }
+
+    let r;
+    let sep = separator.get();
+    if (separator.get() === "\\n") sep = "\n";
+    if (splitNewLines.get()) r = textInput.split("\n");
+    else r = textInput.split(sep);
+
+    if (r[r.length - 1] === "") r.length -= 1;
+
+    len.set(r.length);
+
+    if (trim.get())
+    {
+        for (let i = 0; i < r.length; i++)
+        {
+            r[i] = r[i].replace(/^\s+|\s+$/g, "");
+            r[i] = r[i].trim();
+        }
+    }
+
+    op.setUiError("notnum", null);
+    if (toNumber.get())
+    {
+        let hasStrings = false;
+        for (let i = 0; i < r.length; i++)
+        {
+            r[i] = Number(r[i]);
+            if (!CABLES.isNumeric(r[i]))
+            {
+                hasStrings = true;
+            }
+        }
+        if (hasStrings)
+        {
+            op.setUiError("notnum", "Parse Error / Not all values numerical!", 1);
+        }
+    }
+
+    arr.setRef(r);
+    parsed.trigger();
+}
+
+}
+};
+
+CABLES.OPS["c974de41-4ce4-4432-b94d-724741109c71"]={f:Ops.Array.StringToArray_v2,objName:"Ops.Array.StringToArray_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Gl.Textures.SwitchTextures_v2
+// 
+// **************************************************************
+
+Ops.Gl.Textures.SwitchTextures_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exec = op.inTrigger("exec"),
+    num = this.inValueInt("num"),
+    defaultTransparent = op.inValueBool("Default Texture Transparent", true),
+    next = op.outTrigger("Next"),
+    textureOut = this.outTexture("texture");
+
+const cgl = op.patch.cgl;
+const texturePorts = [];
+let index = 0;
+let lastIndex = -1;
+let tempTexture = CGL.Texture.getEmptyTexture(cgl);
+
+op.toWorkPortsNeedToBeLinked(exec);
+exec.onTriggered = function () { updateTexture(); next.trigger(); };
+
+defaultTransparent.onChange = function ()
+{
+    if (defaultTransparent.get()) tempTexture = CGL.Texture.getEmptyTexture(cgl);
+    else tempTexture = CGL.Texture.getTempTexture(cgl);
+
+    updateTexture(true);
+};
+
+for (let i = 0; i < 16; i++)
+{
+    const tex = op.inTexture("texture" + i);
+    texturePorts.push(tex);
+    tex.onChange = forceUpdateTexture;
+}
+
+function forceUpdateTexture()
+{
+    updateTexture(true);
+}
+
+function updateTexture(force)
+{
+    index = parseInt(num.get(), 10);
+    if (!force)
+    {
+        if (index == lastIndex) return;
+        if (index != index) return;
+    }
+    if (
+	    isNaN(index) ||
+	    index < 0 ||
+	    index > texturePorts.length - 1
+    )
+        index = 0;
+
+    if (texturePorts[index].get()) textureOut.setRef(texturePorts[index].get());
+    else textureOut.setRef(tempTexture);
+
+    lastIndex = index;
+}
+
+}
+};
+
+CABLES.OPS["a82ae429-ac07-4760-882b-595a857c7ae0"]={f:Ops.Gl.Textures.SwitchTextures_v2,objName:"Ops.Gl.Textures.SwitchTextures_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Boolean.IfTrueThen_v2
+// 
+// **************************************************************
+
+Ops.Boolean.IfTrueThen_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTrigger("exe"),
+    boolean = op.inValueBool("boolean", false),
+    triggerThen = op.outTrigger("then"),
+    triggerElse = op.outTrigger("else");
+
+exe.onTriggered = exec;
+
+// let b = false;
+
+// boolean.onChange = () =>
+// {
+//     b = boolean.get();
+// };
+
+function exec()
+{
+    if (boolean.get()) triggerThen.trigger();
+    else triggerElse.trigger();
+}
+
+}
+};
+
+CABLES.OPS["9549e2ed-a544-4d33-a672-05c7854ccf5d"]={f:Ops.Boolean.IfTrueThen_v2,objName:"Ops.Boolean.IfTrueThen_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Trigger.TriggerCounter
+// 
+// **************************************************************
+
+Ops.Trigger.TriggerCounter= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTriggerButton("exe"),
+    reset = op.inTriggerButton("reset"),
+    trigger = op.outTrigger("trigger"),
+    num = op.outNumber("timesTriggered");
+
+op.toWorkPortsNeedToBeLinked(exe);
+
+op.setUiAttrib({ "extendTitle": 0 });
+let n = 0;
+
+reset.onTriggered =
+op.onLoaded =
+    doReset;
+
+exe.onTriggered = function ()
+{
+    n++;
+    num.set(n);
+    op.setUiAttrib({ "extendTitle": n });
+    trigger.trigger();
+};
+
+function doReset()
+{
+    n = 0;
+    op.setUiAttrib({ "extendTitle": n });
+    num.set(n);
+}
+
+}
+};
+
+CABLES.OPS["e640619f-235c-4543-bbf8-b358e0283180"]={f:Ops.Trigger.TriggerCounter,objName:"Ops.Trigger.TriggerCounter"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.Multiply
+// 
+// **************************************************************
+
+Ops.Math.Multiply= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    number1 = op.inValueFloat("number1", 1),
+    number2 = op.inValueFloat("number2", 1),
+    result = op.outNumber("result");
+
+op.setUiAttribs({ "mathTitle": true });
+
+number1.onChange = number2.onChange = update;
+update();
+
+function update()
+{
+    const n1 = number1.get();
+    const n2 = number2.get();
+
+    result.set(n1 * n2);
+}
+
+}
+};
+
+CABLES.OPS["1bbdae06-fbb2-489b-9bcc-36c9d65bd441"]={f:Ops.Math.Multiply,objName:"Ops.Math.Multiply"};
 
 
 
