@@ -8037,6 +8037,193 @@ CABLES.OPS["1bbdae06-fbb2-489b-9bcc-36c9d65bd441"]={f:Ops.Math.Multiply,objName:
 
 
 
+
+// **************************************************************
+// 
+// Ops.Trigger.TriggerSend
+// 
+// **************************************************************
+
+Ops.Trigger.TriggerSend= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    trigger = op.inTriggerButton("Trigger"),
+    next = op.outTrigger("Next");
+
+op.varName = op.inValueSelect("Named Trigger", [], "", true);
+
+op.varName.onChange = updateName;
+
+trigger.onTriggered = doTrigger;
+
+op.patch.addEventListener("namedTriggersChanged", updateVarNamesDropdown);
+
+updateVarNamesDropdown();
+
+op.varName.setUiAttribs({ "_triggerSelect": true });
+
+function updateVarNamesDropdown()
+{
+    if (CABLES.UI)
+    {
+        let varnames = [];
+        const vars = op.patch.namedTriggers;
+        varnames.push("+ create new one");
+        for (const i in vars) varnames.push(i);
+        varnames = varnames.sort();
+        op.varName.uiAttribs.values = varnames;
+    }
+}
+
+function updateName()
+{
+    if (CABLES.UI)
+    {
+        if (op.varName.get() == "+ create new one")
+        {
+            new CABLES.UI.ModalDialog({
+                "prompt": true,
+                "title": "New Trigger",
+                "text": "Enter a name for the new trigger",
+                "promptValue": "",
+                "promptOk": (str) =>
+                {
+                    op.varName.set(str);
+                    op.patch.namedTriggers[str] = op.patch.namedTriggers[str] || [];
+                    updateVarNamesDropdown();
+                }
+            });
+            return;
+        }
+
+        op.refreshParams();
+    }
+
+    if (!op.patch.namedTriggers[op.varName.get()])
+    {
+        op.patch.namedTriggers[op.varName.get()] = op.patch.namedTriggers[op.varName.get()] || [];
+        op.patch.emitEvent("namedTriggersChanged");
+    }
+
+    op.setTitle(">" + op.varName.get());
+
+    op.refreshParams();
+    op.patch.emitEvent("opTriggerNameChanged", op, op.varName.get());
+}
+
+function doTrigger()
+{
+    const arr = op.patch.namedTriggers[op.varName.get()];
+    // fire an event even if noone is receiving this trigger
+    // this way TriggerReceiveFilter can still handle it
+    op.patch.emitEvent("namedTriggerSent", op.varName.get());
+
+    if (!arr)
+    {
+        op.setUiError("unknowntrigger", "unknown trigger");
+        return;
+    }
+    else op.setUiError("unknowntrigger", null);
+
+    for (let i = 0; i < arr.length; i++)
+    {
+        arr[i]();
+    }
+
+    next.trigger();
+}
+
+}
+};
+
+CABLES.OPS["ce1eaf2b-943b-4dc0-ab5e-ee11b63c9ed0"]={f:Ops.Trigger.TriggerSend,objName:"Ops.Trigger.TriggerSend"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Trigger.TriggerReceive
+// 
+// **************************************************************
+
+Ops.Trigger.TriggerReceive= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const next = op.outTrigger("Triggered");
+op.varName = op.inValueSelect("Named Trigger", [], "", true);
+
+op.varName.setUiAttribs({ "_triggerSelect": true });
+
+updateVarNamesDropdown();
+op.patch.addEventListener("namedTriggersChanged", updateVarNamesDropdown);
+
+let oldName = null;
+
+function doTrigger()
+{
+    next.trigger();
+}
+
+function updateVarNamesDropdown()
+{
+    if (CABLES.UI)
+    {
+        let varnames = [];
+        let vars = op.patch.namedTriggers;
+
+        for (let i in vars) varnames.push(i);
+        varnames = varnames.sort();
+        op.varName.uiAttribs.values = varnames;
+    }
+}
+
+op.varName.onChange = function ()
+{
+    if (oldName)
+    {
+        let oldCbs = op.patch.namedTriggers[oldName];
+        let a = oldCbs.indexOf(doTrigger);
+        if (a != -1) oldCbs.splice(a, 1);
+    }
+
+    op.setTitle(">" + op.varName.get());
+    op.patch.namedTriggers[op.varName.get()] = op.patch.namedTriggers[op.varName.get()] || [];
+    let cbs = op.patch.namedTriggers[op.varName.get()];
+
+    cbs.push(doTrigger);
+    oldName = op.varName.get();
+    updateError();
+    op.patch.emitEvent("opTriggerNameChanged", op, op.varName.get());
+};
+
+op.on("uiParamPanel", updateError);
+
+function updateError()
+{
+    if (!op.varName.get())
+    {
+        op.setUiError("unknowntrigger", "unknown trigger");
+    }
+    else op.setUiError("unknowntrigger", null);
+}
+
+}
+};
+
+CABLES.OPS["0816c999-f2db-466b-9777-2814573574c5"]={f:Ops.Trigger.TriggerReceive,objName:"Ops.Trigger.TriggerReceive"};
+
+
+
 window.addEventListener('load', function(event) {
 CABLES.jsLoaded=new Event('CABLES.jsLoaded');
 document.dispatchEvent(CABLES.jsLoaded);
