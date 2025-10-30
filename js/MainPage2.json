@@ -35,12 +35,6 @@
                     "name": "trigger",
                     "links": [
                         {
-                            "portIn": "render",
-                            "portOut": "trigger",
-                            "objIn": "khv5y73m5",
-                            "objOut": "9ugsjop1j"
-                        },
-                        {
                             "portIn": "Execute",
                             "portOut": "trigger",
                             "objIn": "pvw8u53kf",
@@ -57,16 +51,22 @@
                             "portOut": "trigger",
                             "objIn": "a3p04jjr7",
                             "objOut": "9ugsjop1j"
+                        },
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "khv5y73m5",
+                            "objOut": "9ugsjop1j"
                         }
                     ]
                 },
                 {
                     "name": "width",
-                    "value": 1122.447879433632
+                    "value": 765.4687246084213
                 },
                 {
                     "name": "height",
-                    "value": 648.0728951692581
+                    "value": 431.24998569488525
                 },
                 {
                     "name": "Pixel Density",
@@ -189,6 +189,12 @@
                             "portOut": "trigger",
                             "objIn": "ecw1dad6v",
                             "objOut": "ywu6skpwc"
+                        },
+                        {
+                            "portIn": "exec",
+                            "portOut": "trigger",
+                            "objIn": "4u27ieshk",
+                            "objOut": "ywu6skpwc"
                         }
                     ]
                 },
@@ -198,11 +204,11 @@
                 },
                 {
                     "name": "Rot X",
-                    "value": 90
+                    "value": 109.80141300678488
                 },
                 {
                     "name": "Rot Y",
-                    "value": 90
+                    "value": 83.98955841064453
                 }
             ],
             "objName": "Ops.Graphics.OrbitControls_v3"
@@ -375,11 +381,11 @@
                 },
                 {
                     "name": "Sphere size",
-                    "value": 0.96
+                    "value": 0.9
                 },
                 {
                     "name": "Random seed",
-                    "value": -1.26
+                    "value": 0
                 },
                 {
                     "name": "Random distance from sphere",
@@ -824,17 +830,6 @@
                 }
             ],
             "objName": "Ops.Number.Number"
-        },
-        {
-            "id": "y9rl33peu",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "Title",
-                    "value": ""
-                }
-            ],
-            "objName": "Ops.Ui.Area"
         },
         {
             "id": "mgd54gd1n",
@@ -1849,15 +1844,15 @@
                     "name": "Next",
                     "links": [
                         {
-                            "portIn": "Exec",
-                            "portOut": "Next",
-                            "objIn": "n233zw6ig",
-                            "objOut": "0dgctj92d"
-                        },
-                        {
                             "portIn": "Transform",
                             "portOut": "Next",
                             "objIn": "gh7utnu72",
+                            "objOut": "0dgctj92d"
+                        },
+                        {
+                            "portIn": "Calculate",
+                            "portOut": "Next",
+                            "objIn": "26e7vdx29",
                             "objOut": "0dgctj92d"
                         }
                     ]
@@ -1950,17 +1945,6 @@
                 }
             ],
             "objName": "Ops.Array.PointArray.FillPointArrayDuplicates"
-        },
-        {
-            "id": "dxbxczs5c",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "Title",
-                    "value": ""
-                }
-            ],
-            "objName": "Ops.Ui.Area"
         },
         {
             "id": "wh3x5djem",
@@ -2403,6 +2387,12 @@
                             "portOut": "Is Playing",
                             "objIn": "95yn1ntwo",
                             "objOut": "mat201iva"
+                        },
+                        {
+                            "portIn": "Speed",
+                            "portOut": "Is Playing",
+                            "objIn": "8h9joetiv",
+                            "objOut": "mat201iva"
                         }
                     ]
                 },
@@ -2477,6 +2467,23 @@
             ],
             "portsOut": [
                 {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "Reset",
+                            "portOut": "Next",
+                            "objIn": "8h9joetiv",
+                            "objOut": "1705tdbv0"
+                        },
+                        {
+                            "portIn": "721cku440",
+                            "portOut": "Next",
+                            "objIn": "y1b09uflu",
+                            "objOut": "1705tdbv0"
+                        }
+                    ]
+                },
+                {
                     "name": "Out Value",
                     "links": [
                         {
@@ -2489,6 +2496,12 @@
                             "portIn": "number2",
                             "portOut": "Out Value",
                             "objIn": "09vdthd7u",
+                            "objOut": "1705tdbv0"
+                        },
+                        {
+                            "portIn": "number1",
+                            "portOut": "Out Value",
+                            "objIn": "261mlpck2",
                             "objOut": "1705tdbv0"
                         }
                     ]
@@ -2507,6 +2520,17 @@
             ],
             "portsOut": [
                 {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "ycqzyx3mg",
+                            "portOut": "Next",
+                            "objIn": "y1b09uflu",
+                            "objOut": "qqpos9dlh"
+                        }
+                    ]
+                },
+                {
                     "name": "Out Value",
                     "links": [
                         {
@@ -2519,6 +2543,12 @@
                             "portIn": "number2",
                             "portOut": "Out Value",
                             "objIn": "09vdthd7u",
+                            "objOut": "qqpos9dlh"
+                        },
+                        {
+                            "portIn": "number1",
+                            "portOut": "Out Value",
+                            "objIn": "261mlpck2",
                             "objOut": "qqpos9dlh"
                         }
                     ]
@@ -2576,6 +2606,12 @@
                             "portIn": "Update",
                             "portOut": "Next",
                             "objIn": "69j3xr25a",
+                            "objOut": "ai3i81kvr"
+                        },
+                        {
+                            "portIn": "exe",
+                            "portOut": "Next",
+                            "objIn": "afea4m2g1",
                             "objOut": "ai3i81kvr"
                         }
                     ]
@@ -2666,34 +2702,6 @@
                 }
             ],
             "objName": "Ops.Ui.VizNumber"
-        },
-        {
-            "id": "n233zw6ig",
-            "uiAttribs": {},
-            "portsOut": [
-                {
-                    "name": "Next",
-                    "links": [
-                        {
-                            "portIn": "Calculate",
-                            "portOut": "Next",
-                            "objIn": "26e7vdx29",
-                            "objOut": "n233zw6ig"
-                        },
-                        {
-                            "portIn": "Reset",
-                            "portOut": "Next",
-                            "objIn": "md4qpbe0t",
-                            "objOut": "n233zw6ig"
-                        }
-                    ]
-                },
-                {
-                    "name": "Was Triggered",
-                    "value": 1
-                }
-            ],
-            "objName": "Ops.Trigger.TriggerOnce"
         },
         {
             "id": "mf70pqlfp",
@@ -2848,7 +2856,7 @@
                     "value": 0
                 },
                 {
-                    "name": "Rotation Y",
+                    "name": "Rotation Z",
                     "value": 0
                 }
             ],
@@ -4628,7 +4636,7 @@
                 },
                 {
                     "name": "Play",
-                    "value": 0
+                    "value": 1
                 },
                 {
                     "name": "Sync to timeline",
@@ -4640,7 +4648,7 @@
                     "name": "Time",
                     "links": [
                         {
-                            "portIn": "Rotation Z",
+                            "portIn": "Rotation Y",
                             "portOut": "Time",
                             "objIn": "313jemelm",
                             "objOut": "md4qpbe0t"
@@ -4649,10 +4657,290 @@
                 }
             ],
             "objName": "Ops.Anim.Timer_v2"
+        },
+        {
+            "id": "913j2nsxf",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "text",
+                    "value": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,"
+                },
+                {
+                    "name": "separator",
+                    "value": ","
+                },
+                {
+                    "name": "Numbers",
+                    "value": 1
+                },
+                {
+                    "name": "Trim",
+                    "value": 1
+                },
+                {
+                    "name": "Split Lines",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "array",
+                    "links": [
+                        {
+                            "portIn": "59tlafryu",
+                            "portOut": "array",
+                            "objIn": "y1b09uflu",
+                            "objOut": "913j2nsxf"
+                        }
+                    ]
+                },
+                {
+                    "name": "length",
+                    "value": 32
+                }
+            ],
+            "objName": "Ops.Array.StringToArray_v2"
+        },
+        {
+            "id": "4u27ieshk",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Default Texture Transparent",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "texture",
+                    "links": [
+                        {
+                            "portIn": "texture",
+                            "portOut": "texture",
+                            "objIn": "ecw1dad6v",
+                            "objOut": "4u27ieshk"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.Textures.SwitchTextures_v2"
+        },
+        {
+            "id": "4hc7dljx1",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "r",
+                    "value": 0.9116514905293782
+                },
+                {
+                    "name": "g",
+                    "value": 0.5995563728764817
+                },
+                {
+                    "name": "b",
+                    "value": 0.8167990528113411
+                },
+                {
+                    "name": "a",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "texture_out",
+                    "links": [
+                        {
+                            "portIn": "texture0",
+                            "portOut": "texture_out",
+                            "objIn": "4u27ieshk",
+                            "objOut": "4hc7dljx1"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.Textures.ColorTexture"
+        },
+        {
+            "id": "8h9joetiv",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Play",
+                    "value": 1
+                },
+                {
+                    "name": "Sync to timeline",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Time",
+                    "links": [
+                        {
+                            "portIn": "Value in",
+                            "portOut": "Time",
+                            "objIn": "xty9f8j2r",
+                            "objOut": "8h9joetiv"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Anim.Timer_v2"
+        },
+        {
+            "id": "xty9f8j2r",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Comparison mode index",
+                    "value": 0
+                },
+                {
+                    "name": "Comparison mode",
+                    "value": ">"
+                },
+                {
+                    "name": "Condition value",
+                    "value": 199,
+                    "title": "Condition value"
+                },
+                {
+                    "name": "Max",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Result",
+                    "links": [
+                        {
+                            "portIn": "boolean",
+                            "portOut": "Result",
+                            "objIn": "afea4m2g1",
+                            "objOut": "xty9f8j2r"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Math.Compare.CompareNumbers"
+        },
+        {
+            "id": "afea4m2g1",
+            "uiAttribs": {},
+            "portsOut": [
+                {
+                    "name": "then",
+                    "links": [
+                        {
+                            "portIn": "Reset",
+                            "portOut": "then",
+                            "objIn": "8h9joetiv",
+                            "objOut": "afea4m2g1"
+                        },
+                        {
+                            "portIn": "exe",
+                            "portOut": "then",
+                            "objIn": "gv9nmdkhn",
+                            "objOut": "afea4m2g1"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Boolean.IfTrueThen_v2"
+        },
+        {
+            "id": "gv9nmdkhn",
+            "uiAttribs": {},
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "Set",
+                            "portOut": "trigger",
+                            "objIn": "qqpos9dlh",
+                            "objOut": "gv9nmdkhn"
+                        }
+                    ]
+                },
+                {
+                    "name": "timesTriggered",
+                    "value": 6
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerCounter"
+        },
+        {
+            "id": "y1b09uflu",
+            "uiAttribs": {},
+            "storage": {
+                "blueprintVer": 2,
+                "subPatchVer": 2
+            },
+            "portsIn": [
+                {
+                    "name": "59tlafryu",
+                    "title": "Sequence Array"
+                },
+                {
+                    "name": "721cku440",
+                    "title": "Stop"
+                },
+                {
+                    "name": "ycqzyx3mg",
+                    "title": "exe"
+                },
+                {
+                    "name": "patchId",
+                    "value": "bp2sub_y1b09uflu"
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "hhjmki6s5",
+                    "title": "texture_out",
+                    "links": [
+                        {
+                            "portIn": "texture2",
+                            "portOut": "hhjmki6s5",
+                            "objIn": "4u27ieshk",
+                            "objOut": "y1b09uflu"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Local.SubPatch0"
+        },
+        {
+            "id": "261mlpck2",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "number2",
+                    "value": 2
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "result",
+                    "links": [
+                        {
+                            "portIn": "num",
+                            "portOut": "result",
+                            "objIn": "4u27ieshk",
+                            "objOut": "261mlpck2"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Math.Multiply"
         }
     ],
     "export": {
-        "time": "2025-10-29 17:56",
+        "time": "2025-10-30 12:04",
         "service": "html",
         "exportNumber": 50
     }
