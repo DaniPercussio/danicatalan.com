@@ -62,7 +62,7 @@
                 },
                 {
                     "name": "width",
-                    "value": 766.6666412353516
+                    "value": 765.4687246084213
                 },
                 {
                     "name": "height",
@@ -922,6 +922,12 @@
                             "portIn": "Restart",
                             "portOut": "Clicked",
                             "objIn": "mkhmtvag8",
+                            "objOut": "mgd54gd1n"
+                        },
+                        {
+                            "portIn": "Trigger",
+                            "portOut": "Clicked",
+                            "objIn": "w96xmolx0",
                             "objOut": "mgd54gd1n"
                         }
                     ]
@@ -2043,6 +2049,12 @@
                             "portIn": "Set",
                             "portOut": "Clicked",
                             "objIn": "1705tdbv0",
+                            "objOut": "e8kj6j04b"
+                        },
+                        {
+                            "portIn": "Trigger",
+                            "portOut": "Clicked",
+                            "objIn": "k71zelx0u",
                             "objOut": "e8kj6j04b"
                         }
                     ]
@@ -3289,6 +3301,12 @@
                             "portIn": "Set",
                             "portOut": "Clicked",
                             "objIn": "7m74og40j",
+                            "objOut": "i4pb7o0zf"
+                        },
+                        {
+                            "portIn": "Trigger",
+                            "portOut": "Clicked",
+                            "objIn": "k5p1ttxh2",
                             "objOut": "i4pb7o0zf"
                         }
                     ]
@@ -4937,11 +4955,188 @@
                 }
             ],
             "objName": "Ops.Math.Multiply"
+        },
+        {
+            "id": "w96xmolx0",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Named Trigger",
+                    "value": "AntigoneClick"
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerSend"
+        },
+        {
+            "id": "r54i1gj09",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Named Trigger",
+                    "value": "AntigoneClick"
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Triggered",
+                    "links": [
+                        {
+                            "portIn": "Set",
+                            "portOut": "Triggered",
+                            "objIn": "7g343lx6h",
+                            "objOut": "r54i1gj09"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerReceive"
+        },
+        {
+            "id": "k5p1ttxh2",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Named Trigger",
+                    "value": "SerenadeClick"
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerSend"
+        },
+        {
+            "id": "4c3cxtmb8",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Named Trigger",
+                    "value": "SerenadeClick"
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Triggered",
+                    "links": [
+                        {
+                            "portIn": "Set",
+                            "portOut": "Triggered",
+                            "objIn": "cnfpn8tke",
+                            "objOut": "4c3cxtmb8"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerReceive"
+        },
+        {
+            "id": "k71zelx0u",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Named Trigger",
+                    "value": "HeartshipClick"
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerSend"
+        },
+        {
+            "id": "w9amda7fa",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Named Trigger",
+                    "value": "AntigoneClick"
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Triggered",
+                    "links": [
+                        {
+                            "portIn": "Set",
+                            "portOut": "Triggered",
+                            "objIn": "qqpos9dlh",
+                            "objOut": "w9amda7fa"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerReceive"
+        },
+        {
+            "id": "waa2uoxoz",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Named Trigger",
+                    "value": "SerenadeClick"
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Triggered",
+                    "links": [
+                        {
+                            "portIn": "Set",
+                            "portOut": "Triggered",
+                            "objIn": "qqpos9dlh",
+                            "objOut": "waa2uoxoz"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerReceive"
+        },
+        {
+            "id": "ttggbaz9i",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Named Trigger",
+                    "value": "HeartshipClick"
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Triggered",
+                    "links": [
+                        {
+                            "portIn": "Set",
+                            "portOut": "Triggered",
+                            "objIn": "7g343lx6h",
+                            "objOut": "ttggbaz9i"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerReceive"
+        },
+        {
+            "id": "nqsvq0w4l",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Named Trigger",
+                    "value": "HeartshipClick"
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Triggered",
+                    "links": [
+                        {
+                            "portIn": "Set",
+                            "portOut": "Triggered",
+                            "objIn": "cnfpn8tke",
+                            "objOut": "nqsvq0w4l"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerReceive"
         }
     ],
     "export": {
-        "time": "2025-10-30 12:10",
+        "time": "2025-10-30 12:37",
         "service": "html",
-        "exportNumber": 52
+        "exportNumber": 53
     }
 }
