@@ -12,6 +12,7 @@ Ops.Math=Ops.Math || {};
 Ops.Array=Ops.Array || {};
 Ops.Local=Ops.Local || {};
 Ops.Number=Ops.Number || {};
+Ops.String=Ops.String || {};
 Ops.Boolean=Ops.Boolean || {};
 Ops.Gl.GLTF=Ops.Gl.GLTF || {};
 Ops.Trigger=Ops.Trigger || {};
@@ -40,7 +41,7 @@ constructor()
 {
 super(...arguments);
 const op=this;
-const attachments=op.attachments={"inc_gen_ports_js":"const port_59tlafryu=op.inArray(\"59tlafryu\");\nport_59tlafryu.setUiAttribs({title:\"Sequence Array\",});\n\nconst port_721cku440=op.inTrigger(\"721cku440\");\nport_721cku440.setUiAttribs({title:\"Stop\",display:\"button\",});\n\nconst port_ycqzyx3mg=op.inTrigger(\"ycqzyx3mg\");\nport_ycqzyx3mg.setUiAttribs({title:\"exe\",});\n\nconst port_hhjmki6s5=op.outObject(\"hhjmki6s5\");\nport_hhjmki6s5.setUiAttribs({title:\"texture_out\",display:\"texture\",objType:\"texture\",objType:\"texture\"});\n\nop.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\nconst innerOut_59tlafryu = addedOps[i].outArray(\"innerOut_59tlafryu\");\ninnerOut_59tlafryu.setUiAttribs({title:\"Sequence Array\"});\nport_59tlafryu.on(\"change\", (a,v) => { innerOut_59tlafryu.setRef(a); });\n\nconst innerOut_721cku440 = addedOps[i].outTrigger(\"innerOut_721cku440\");\ninnerOut_721cku440.setUiAttribs({title:\"Stop\"});\nport_721cku440.onTriggered = () => { innerOut_721cku440.trigger(); };\n\nconst innerOut_ycqzyx3mg = addedOps[i].outTrigger(\"innerOut_ycqzyx3mg\");\ninnerOut_ycqzyx3mg.setUiAttribs({title:\"exe\"});\nport_ycqzyx3mg.onTriggered = () => { innerOut_ycqzyx3mg.trigger(); };\n\n    }\nif(addedOps[i].innerOutput)\n{\nconst innerIn_hhjmki6s5 = addedOps[i].inObject(\"innerIn_hhjmki6s5\");\ninnerIn_hhjmki6s5.setUiAttribs({title:\"texture_out\"});\ninnerIn_hhjmki6s5.on(\"change\", (a,v) => { port_hhjmki6s5.setRef(a); });\n\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"899nceo6w\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"Steps index\",\"value\":31},{\"name\":\"Steps\",\"value\":\"32\"}],\"portsOut\":[{\"name\":\"Sequence Trigger Output\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"r3yyqc239\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"lili4hv6g\",\"objOut\":\"899nceo6w\"}]},{\"name\":\"Sequenced Value\",\"value\":0},{\"name\":\"Current Step\",\"value\":5}],\"objName\":\"Ops.WebAudio.ClockSequencerPattern\"},{\"id\":\"inz1z4uby\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"BPM\",\"value\":130}],\"portsOut\":[{\"name\":\"1/2 Note Trigger\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"r3yyqc239\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"lili4hv6g\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"1/16 Note Trigger\",\"links\":[{\"portIn\":\"Clock Trigger Input\",\"portOut\":\"1/16 Note Trigger\",\"objIn\":\"899nceo6w\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"Sequencer Running\",\"value\":false},{\"name\":\"BPM Out\",\"value\":130}],\"objName\":\"Ops.WebAudio.ClockSequencer\"},{\"id\":\"pjr0f0sfh\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"r\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"pjr0f0sfh\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"lili4hv6g\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"b\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"lili4hv6g\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"r3yyqc239\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"g\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"r3yyqc239\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"gdhde7qeq\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"a\",\"value\":1}],\"portsOut\":[{\"name\":\"texture_out\",\"links\":[{\"portIn\":\"innerIn_hhjmki6s5\",\"portOut\":\"texture_out\",\"objIn\":\"pyktvp87m\",\"objOut\":\"gdhde7qeq\"}]}],\"objName\":\"Ops.Gl.Textures.ColorTexture\"},{\"id\":\"rho87gl00\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsOut\":[{\"name\":\"innerOut_59tlafryu\",\"title\":\"Sequence Array\",\"links\":[{\"portIn\":\"Sequence Array\",\"portOut\":\"innerOut_59tlafryu\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_721cku440\",\"title\":\"Stop\",\"links\":[{\"portIn\":\"Start\",\"portOut\":\"innerOut_721cku440\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_ycqzyx3mg\",\"title\":\"exe\",\"links\":[{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Stop\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]}],\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"pyktvp87m\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"storage\":{},\"portsIn\":[{\"name\":\"innerIn_hhjmki6s5\",\"title\":\"texture_out\"}],\"objName\":\"Ops.Ui.SubPatchOutput\"},{\"id\":\"yejvqgrtk\",\"uiAttribs\":{\"subPatch\":\"ra8jvcnbh\"},\"portsIn\":[{\"name\":\"value\",\"value\":0}],\"portsOut\":[{\"name\":\"result\",\"value\":0}],\"storage\":{\"ref\":\"yejvqgrtk\"},\"objName\":\"Ops.Number.Number\"}]}",};
+const attachments=op.attachments={"inc_gen_ports_js":"const port_59tlafryu=op.inArray(\"59tlafryu\");\nport_59tlafryu.setUiAttribs({title:\"Sequence Array\",});\n\nconst port_721cku440=op.inTrigger(\"721cku440\");\nport_721cku440.setUiAttribs({title:\"Stop\",display:\"button\",});\n\nconst port_ycqzyx3mg=op.inTrigger(\"ycqzyx3mg\");\nport_ycqzyx3mg.setUiAttribs({title:\"exe\",});\n\nconst port_hhjmki6s5=op.outObject(\"hhjmki6s5\");\nport_hhjmki6s5.setUiAttribs({title:\"texture_out\",display:\"texture\",objType:\"texture\",objType:\"texture\"});\n\nop.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\nconst innerOut_59tlafryu = addedOps[i].outArray(\"innerOut_59tlafryu\");\ninnerOut_59tlafryu.setUiAttribs({title:\"Sequence Array\"});\nport_59tlafryu.on(\"change\", (a,v) => { innerOut_59tlafryu.setRef(a); });\n\nconst innerOut_721cku440 = addedOps[i].outTrigger(\"innerOut_721cku440\");\ninnerOut_721cku440.setUiAttribs({title:\"Stop\"});\nport_721cku440.onTriggered = () => { innerOut_721cku440.trigger(); };\n\nconst innerOut_ycqzyx3mg = addedOps[i].outTrigger(\"innerOut_ycqzyx3mg\");\ninnerOut_ycqzyx3mg.setUiAttribs({title:\"exe\"});\nport_ycqzyx3mg.onTriggered = () => { innerOut_ycqzyx3mg.trigger(); };\n\n    }\nif(addedOps[i].innerOutput)\n{\nconst innerIn_hhjmki6s5 = addedOps[i].inObject(\"innerIn_hhjmki6s5\");\ninnerIn_hhjmki6s5.setUiAttribs({title:\"texture_out\"});\ninnerIn_hhjmki6s5.on(\"change\", (a,v) => { port_hhjmki6s5.setRef(a); });\n\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"899nceo6w\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"Steps index\",\"value\":31},{\"name\":\"Steps\",\"value\":\"32\"}],\"portsOut\":[{\"name\":\"Sequence Trigger Output\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"r3yyqc239\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"lili4hv6g\",\"objOut\":\"899nceo6w\"}]},{\"name\":\"Sequenced Value\",\"value\":1},{\"name\":\"Current Step\",\"value\":27}],\"objName\":\"Ops.WebAudio.ClockSequencerPattern\"},{\"id\":\"inz1z4uby\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"BPM\",\"value\":130}],\"portsOut\":[{\"name\":\"1/2 Note Trigger\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"r3yyqc239\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"lili4hv6g\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"1/16 Note Trigger\",\"links\":[{\"portIn\":\"Clock Trigger Input\",\"portOut\":\"1/16 Note Trigger\",\"objIn\":\"899nceo6w\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"Sequencer Running\",\"value\":true},{\"name\":\"BPM Out\",\"value\":130}],\"objName\":\"Ops.WebAudio.ClockSequencer\"},{\"id\":\"pjr0f0sfh\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"r\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"pjr0f0sfh\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"lili4hv6g\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"b\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"lili4hv6g\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"r3yyqc239\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"g\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"r3yyqc239\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"gdhde7qeq\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"a\",\"value\":1}],\"portsOut\":[{\"name\":\"texture_out\",\"links\":[{\"portIn\":\"innerIn_hhjmki6s5\",\"portOut\":\"texture_out\",\"objIn\":\"pyktvp87m\",\"objOut\":\"gdhde7qeq\"}]}],\"objName\":\"Ops.Gl.Textures.ColorTexture\"},{\"id\":\"rho87gl00\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsOut\":[{\"name\":\"innerOut_59tlafryu\",\"title\":\"Sequence Array\",\"links\":[{\"portIn\":\"Sequence Array\",\"portOut\":\"innerOut_59tlafryu\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_721cku440\",\"title\":\"Stop\",\"links\":[{\"portIn\":\"Start\",\"portOut\":\"innerOut_721cku440\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_ycqzyx3mg\",\"title\":\"exe\",\"links\":[{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Stop\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]}],\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"pyktvp87m\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"innerIn_hhjmki6s5\",\"title\":\"texture_out\"}],\"objName\":\"Ops.Ui.SubPatchOutput\"},{\"id\":\"yejvqgrtk\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"value\",\"value\":0}],\"portsOut\":[{\"name\":\"result\",\"value\":0}],\"objName\":\"Ops.Number.Number\"}]}",};
 const port_59tlafryu=op.inArray("59tlafryu");
 port_59tlafryu.setUiAttribs({title:"Sequence Array",});
 
@@ -121,6 +122,96 @@ function initializeSubpatch()
 };
 
 CABLES.OPS["f104d02f-aad0-4f0d-9f12-1505cfb2e979"]={f:Ops.Local.SubPatch0,objName:"Ops.Local.SubPatch0"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Local.SubPatch1
+// 
+// **************************************************************
+
+Ops.Local.SubPatch1= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={"inc_gen_ports_js":"const port_ryzonyqik=op.inArray(\"ryzonyqik\");\nport_ryzonyqik.setUiAttribs({title:\"Array\",});\n\nconst port_0ekitsejo=op.inArray(\"0ekitsejo\");\nport_0ekitsejo.setUiAttribs({title:\"Array\",});\n\nconst port_pmpcafkxc=op.inArray(\"pmpcafkxc\");\nport_pmpcafkxc.setUiAttribs({title:\"Array\",});\n\nop.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\nconst innerOut_ryzonyqik = addedOps[i].outArray(\"innerOut_ryzonyqik\");\ninnerOut_ryzonyqik.setUiAttribs({title:\"Array\"});\nport_ryzonyqik.on(\"change\", (a,v) => { innerOut_ryzonyqik.setRef(a); });\n\nconst innerOut_0ekitsejo = addedOps[i].outArray(\"innerOut_0ekitsejo\");\ninnerOut_0ekitsejo.setUiAttribs({title:\"Array\"});\nport_0ekitsejo.on(\"change\", (a,v) => { innerOut_0ekitsejo.setRef(a); });\n\nconst innerOut_pmpcafkxc = addedOps[i].outArray(\"innerOut_pmpcafkxc\");\ninnerOut_pmpcafkxc.setUiAttribs({title:\"Array\"});\nport_pmpcafkxc.on(\"change\", (a,v) => { innerOut_pmpcafkxc.setRef(a); });\n\n    }\nif(addedOps[i].innerOutput)\n{\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"oe7yodzio\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"Text\",\"value\":\"\"},{\"name\":\"Id\",\"value\":\"\"},{\"name\":\"Class\",\"value\":\"\"},{\"name\":\"Style\",\"value\":\"position:fixed;\\nz-index:100;\\nheight: 1px;\\nbackground: black;\\n\"},{\"name\":\"Interactive\",\"value\":0},{\"name\":\"Visible\",\"value\":1},{\"name\":\"Convert Line Breaks\",\"value\":0},{\"name\":\"Propagate Click-Events\",\"value\":1}],\"portsOut\":[{\"name\":\"DOM Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"DOM Element\",\"objIn\":\"9oq8kvs49\",\"objOut\":\"oe7yodzio\"}]},{\"name\":\"Hover\",\"value\":0}],\"objName\":\"Ops.Html.Elements.DivElement_v3\"},{\"id\":\"f9x2rca43\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"0wo0fc2bc\",\"objOut\":\"f9x2rca43\"},{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"69h9mdf53\",\"objOut\":\"f9x2rca43\"}]},{\"name\":\"Average Y\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average Y\",\"objIn\":\"1qbtb7kd8\",\"objOut\":\"f9x2rca43\"}]},{\"name\":\"Average Z\",\"value\":0}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"1qbtb7kd8\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":14.83}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"9oq8kvs49\",\"objOut\":\"1qbtb7kd8\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"9oq8kvs49\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"top\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"portsOut\":[{\"name\":\"HTML Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"HTML Element\",\"objIn\":\"kyy7cem59\",\"objOut\":\"9oq8kvs49\"}]}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"m2k4fe4pk\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"ftstfr6y5\",\"objOut\":\"m2k4fe4pk\"}]},{\"name\":\"Average Y\",\"value\":72.75652313232422},{\"name\":\"Average Z\",\"value\":0}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"0wo0fc2bc\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":8}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"0j40co374\",\"objOut\":\"0wo0fc2bc\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"kyy7cem59\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"width\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"portsOut\":[{\"name\":\"HTML Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"HTML Element\",\"objIn\":\"0j40co374\",\"objOut\":\"kyy7cem59\"}]}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"snw7xv8h4\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number2\",\"portOut\":\"Average X\",\"objIn\":\"bgp4ktj6k\",\"objOut\":\"snw7xv8h4\"}]},{\"name\":\"Average Y\",\"value\":16.695653915405273},{\"name\":\"Average Z\",\"value\":1}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"bgp4ktj6k\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"result\",\"objIn\":\"528xswgca\",\"objOut\":\"bgp4ktj6k\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"0j40co374\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"left\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"69h9mdf53\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number2\",\"portOut\":\"result\",\"objIn\":\"528xswgca\",\"objOut\":\"69h9mdf53\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"528xswgca\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"kyy7cem59\",\"objOut\":\"528xswgca\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"ftstfr6y5\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":10}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"result\",\"objIn\":\"bgp4ktj6k\",\"objOut\":\"ftstfr6y5\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"io5hrgcp4\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"innerOut_ryzonyqik\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_ryzonyqik\",\"objIn\":\"f9x2rca43\",\"objOut\":\"io5hrgcp4\"}]},{\"name\":\"innerOut_0ekitsejo\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_0ekitsejo\",\"objIn\":\"m2k4fe4pk\",\"objOut\":\"io5hrgcp4\"}]},{\"name\":\"innerOut_pmpcafkxc\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_pmpcafkxc\",\"objIn\":\"snw7xv8h4\",\"objOut\":\"io5hrgcp4\"}]}],\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"35h804ntp\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"objName\":\"Ops.Ui.SubPatchOutput\"}]}",};
+const port_ryzonyqik=op.inArray("ryzonyqik");
+port_ryzonyqik.setUiAttribs({title:"Array",});
+
+const port_0ekitsejo=op.inArray("0ekitsejo");
+port_0ekitsejo.setUiAttribs({title:"Array",});
+
+const port_pmpcafkxc=op.inArray("pmpcafkxc");
+port_pmpcafkxc.setUiAttribs({title:"Array",});
+
+op.initInnerPorts=function(addedOps)
+{
+  for(let i=0;i<addedOps.length;i++)
+  {
+    if(addedOps[i].innerInput)
+    {
+const innerOut_ryzonyqik = addedOps[i].outArray("innerOut_ryzonyqik");
+innerOut_ryzonyqik.setUiAttribs({title:"Array"});
+port_ryzonyqik.on("change", (a,v) => { innerOut_ryzonyqik.setRef(a); });
+
+const innerOut_0ekitsejo = addedOps[i].outArray("innerOut_0ekitsejo");
+innerOut_0ekitsejo.setUiAttribs({title:"Array"});
+port_0ekitsejo.on("change", (a,v) => { innerOut_0ekitsejo.setRef(a); });
+
+const innerOut_pmpcafkxc = addedOps[i].outArray("innerOut_pmpcafkxc");
+innerOut_pmpcafkxc.setUiAttribs({title:"Array"});
+port_pmpcafkxc.on("change", (a,v) => { innerOut_pmpcafkxc.setRef(a); });
+
+    }
+if(addedOps[i].innerOutput)
+{
+}
+}
+};
+
+const patchId = "bp2sub_" + op.id;
+
+new CABLES.SubPatchOp(op, { "subId": patchId });
+
+initializeSubpatch();
+
+function initializeSubpatch()
+{
+    if(!attachments || !attachments.subpatch_json) return;
+
+    const p = JSON.parse(attachments.subpatch_json);
+
+    CABLES.Patch.replaceOpIds(p,
+        {
+            "parentSubPatchId": patchId,
+            "prefixHash": patchId,
+            "oldIdAsRef": true,
+            "doNotUnlinkLostLinks": true
+        });
+
+    for (let i = 0; i < p.ops.length; i++)
+    {
+        p.ops[i].uiAttribs.blueprintSubpatch2 = true;
+    }
+
+    op.loadDependencies(p, () =>
+    {
+        op.patch.deSerialize(p, { "opsCreated": op.initInnerPorts });
+        if (CABLES.UI)gui.savedState.setSaved("blueprintloaded", patchId);
+        op.patch.emitEvent("subpatchExpose", patchId);
+        op.setStorage({ "blueprintVer": 2 });
+        op.patch.emitEvent("subpatchExpose", patchId);
+    });
+}
+
+}
+};
+
+CABLES.OPS["a8ff4535-2e9c-4dc3-bdb3-098ba09c7355"]={f:Ops.Local.SubPatch1,objName:"Ops.Local.SubPatch1"};
 
 
 
@@ -665,6 +756,482 @@ function exec()
 };
 
 CABLES.OPS["8fb2bb5d-665a-4d0a-8079-12710ae453be"]={f:Ops.Number.Number,objName:"Ops.Number.Number"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Html.Elements.DivElement_v3
+// 
+// **************************************************************
+
+Ops.Html.Elements.DivElement_v3= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inText = op.inString("Text", "Hello Div"),
+    inId = op.inString("Id"),
+    inClass = op.inString("Class"),
+    inStyle = op.inStringEditor("Style", "position:absolute;\nz-index:100;", "inline-css"),
+    inInteractive = op.inValueBool("Interactive", false),
+    inVisible = op.inValueBool("Visible", true),
+    inBreaks = op.inValueBool("Convert Line Breaks", false),
+    inPropagation = op.inValueBool("Propagate Click-Events", true),
+    outElement = op.outObject("DOM Element", null, "element"),
+    outHover = op.outBoolNum("Hover"),
+    outClicked = op.outTrigger("Clicked");
+
+let listenerElement = null;
+let oldStr = null;
+let prevDisplay = "block";
+let div = null;
+
+const canvas = op.patch.cgl.canvas.parentElement;
+
+createElement();
+
+inClass.onChange = updateClass;
+inBreaks.onChange = inText.onChange = updateText;
+inStyle.onChange = updateStyle;
+inInteractive.onChange = updateInteractive;
+inVisible.onChange = updateVisibility;
+
+updateText();
+updateStyle();
+warning();
+updateInteractive();
+
+op.onDelete = removeElement;
+
+outElement.onLinkChanged = updateStyle;
+
+inInteractive.onLinkChanged =
+outClicked.onLinkChanged = () =>
+{
+    op.setUiError("interactiveProblem", null);
+    if (outClicked.isLinked() && !inInteractive.get() && !inInteractive.isLinked())
+        op.setUiError("interactiveProblem", "Interactive should be activated when linking clicked port");
+};
+
+function createElement()
+{
+    div = op.patch.getDocument().createElement("div");
+    div.dataset.op = op.id;
+    div.classList.add("cablesEle");
+
+    if (inId.get()) div.id = inId.get();
+
+    canvas.appendChild(div);
+    outElement.setRef(div);
+}
+
+function removeElement()
+{
+    if (div) removeClasses();
+    if (div && div.parentNode) div.parentNode.removeChild(div);
+    oldStr = null;
+    div = null;
+}
+
+function setCSSVisible(visible)
+{
+    if (!visible)
+    {
+        div.style.visibility = "hidden";
+        prevDisplay = div.style.display || "inherit";
+        div.style.display = "none";
+    }
+    else
+    {
+        // prevDisplay=div.style.display||'inherit';
+        if (prevDisplay == "none") prevDisplay = "inherit";
+        div.style.visibility = "visible";
+        div.style.display = prevDisplay;
+    }
+}
+
+function updateVisibility()
+{
+    setCSSVisible(inVisible.get());
+}
+
+function updateText()
+{
+    let str = inText.get();
+
+    if (oldStr === str) return;
+    oldStr = str;
+
+    if (str && inBreaks.get()) str = str.replace(/(?:\r\n|\r|\n)/g, "<br>");
+
+    if (div.innerHTML != str) div.innerHTML = str;
+
+    outElement.setRef(div);
+}
+
+// inline css inisde div
+function updateStyle()
+{
+    if (!div) return;
+    // if (inStyle.get() != div.style)
+    // {
+    div.setAttribute("style", inStyle.get());
+    updateVisibility();
+    outElement.setRef(div);
+    // }
+
+    if (!div.parentElement) canvas.appendChild(div);
+
+    warning();
+}
+
+let oldClassesStr = "";
+
+function removeClasses()
+{
+    if (!div) return;
+
+    const classes = (inClass.get() || "").split(" ");
+    for (let i = 0; i < classes.length; i++)
+    {
+        if (classes[i]) div.classList.remove(classes[i]);
+    }
+    oldClassesStr = "";
+}
+
+function updateClass()
+{
+    const classes = (inClass.get() || "").split(" ");
+    const oldClasses = (oldClassesStr || "").split(" ");
+
+    let found = false;
+
+    for (let i = 0; i < oldClasses.length; i++)
+    {
+        if (
+            oldClasses[i] &&
+            classes.indexOf(oldClasses[i].trim()) == -1)
+        {
+            found = true;
+            div.classList.remove(oldClasses[i]);
+        }
+    }
+
+    for (let i = 0; i < classes.length; i++)
+    {
+        if (classes[i])
+        {
+            div.classList.add(classes[i].trim());
+        }
+    }
+
+    oldClassesStr = inClass.get();
+    warning();
+}
+
+function onMouseEnter(e)
+{
+    outHover.set(true);
+}
+
+function onMouseLeave(e)
+{
+    outHover.set(false);
+}
+
+function onMouseClick(e)
+{
+    if (!inPropagation.get())
+    {
+        e.stopPropagation();
+    }
+    outClicked.trigger();
+}
+
+function updateInteractive()
+{
+    op.setUiError("interactiveProblem", null);
+
+    removeListeners();
+    if (inInteractive.get()) addListeners();
+}
+
+inId.onChange = function ()
+{
+    div.id = inId.get();
+};
+
+function removeListeners()
+{
+    if (listenerElement)
+    {
+        listenerElement.removeEventListener("pointerdown", onMouseClick);
+        listenerElement.removeEventListener("pointerleave", onMouseLeave);
+        listenerElement.removeEventListener("pointerenter", onMouseEnter);
+        listenerElement = null;
+    }
+}
+
+function addListeners()
+{
+    if (listenerElement)removeListeners();
+
+    listenerElement = div;
+
+    if (listenerElement)
+    {
+        listenerElement.addEventListener("pointerdown", onMouseClick);
+        listenerElement.addEventListener("pointerleave", onMouseLeave);
+        listenerElement.addEventListener("pointerenter", onMouseEnter);
+    }
+}
+
+op.addEventListener("onEnabledChange", function (enabled)
+{
+    removeElement();
+    if (enabled)
+    {
+        createElement();
+        updateStyle();
+        updateClass();
+        updateText();
+        updateInteractive();
+    }
+    // if(enabled) updateVisibility();
+    // else setCSSVisible(false);
+});
+
+function warning()
+{
+    if (inClass.get() && inStyle.get())
+    {
+        op.setUiError("error", "Element uses external and inline CSS", 1);
+    }
+    else
+    {
+        op.setUiError("error", null);
+    }
+}
+
+}
+};
+
+CABLES.OPS["d55d398c-e68e-486b-b0ce-d9c4bdf7df05"]={f:Ops.Html.Elements.DivElement_v3,objName:"Ops.Html.Elements.DivElement_v3"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Array.Array3GetAverage
+// 
+// **************************************************************
+
+Ops.Array.Array3GetAverage= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inArr = op.inArray("Array", 3),
+    avgX = op.outNumber("Average X"),
+    avgY = op.outNumber("Average Y"),
+    avgZ = op.outNumber("Average Z");
+op.toWorkPortsNeedToBeLinked(inArr);
+
+inArr.onChange = function ()
+{
+    let arr = inArr.get();
+    if (!arr)
+    {
+        avgX.set(0);
+        avgY.set(0);
+        avgZ.set(0);
+        return;
+    }
+    let x = 0;
+    let y = 0;
+    let z = 0;
+
+    for (let i = 0; i < arr.length; i += 3)
+    {
+        x += arr[i + 0];
+        y += arr[i + 1];
+        z += arr[i + 2];
+    }
+
+    x /= arr.length / 3;
+    y /= arr.length / 3;
+    z /= arr.length / 3;
+
+    avgX.set(x);
+    avgY.set(y);
+    avgZ.set(z);
+};
+
+}
+};
+
+CABLES.OPS["9643edc7-e479-4b26-9f7a-343cdcdc81f4"]={f:Ops.Array.Array3GetAverage,objName:"Ops.Array.Array3GetAverage"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.Sum
+// 
+// **************************************************************
+
+Ops.Math.Sum= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    number1 = op.inValueFloat("number1", 0),
+    number2 = op.inValueFloat("number2", 0),
+    result = op.outNumber("result");
+
+op.setUiAttribs({ "mathTitle": true });
+
+number1.onChange =
+number2.onChange = exec;
+exec();
+
+function exec()
+{
+    const v = number1.get() + number2.get();
+    if (!isNaN(v))
+        result.set(v);
+}
+
+}
+};
+
+CABLES.OPS["c8fb181e-0b03-4b41-9e55-06b6267bc634"]={f:Ops.Math.Sum,objName:"Ops.Math.Sum"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Html.CSS.CSSProperty_v2
+// 
+// **************************************************************
+
+Ops.Html.CSS.CSSProperty_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inEle = op.inObject("Element"),
+    inProperty = op.inString("Property"),
+    inValue = op.inFloat("Value"),
+    inValueSuffix = op.inString("Value Suffix", "px"),
+    outEle = op.outObject("HTML Element", null, "element");
+
+op.setPortGroup("Element", [inEle]);
+op.setPortGroup("Attributes", [inProperty, inValue, inValueSuffix]);
+
+inProperty.onChange = updateProperty;
+inValue.onChange = update;
+inValueSuffix.onChange = update;
+let ele = null;
+
+inEle.onChange = inEle.onLinkChanged = function ()
+{
+    if (ele && ele.style)
+    {
+        ele.style[inProperty.get()] = "initial";
+    }
+    update();
+};
+
+function updateProperty()
+{
+    update();
+    op.setUiAttrib({ "extendTitle": inProperty.get() + "" });
+}
+
+function update()
+{
+    ele = inEle.get();
+    if (ele && ele.style)
+    {
+        const str = inValue.get() + inValueSuffix.get();
+        try
+        {
+            if (ele.style[inProperty.get()] != str)
+                ele.style[inProperty.get()] = str;
+        }
+        catch (e)
+        {
+            op.logError(e);
+        }
+    }
+    else
+    {
+        setTimeout(update, 50);
+    }
+
+    outEle.setRef(inEle.get());
+}
+
+}
+};
+
+CABLES.OPS["c179aa0e-b558-4130-8c2d-2deab2919a07"]={f:Ops.Html.CSS.CSSProperty_v2,objName:"Ops.Html.CSS.CSSProperty_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.Subtract
+// 
+// **************************************************************
+
+Ops.Math.Subtract= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    number1 = op.inValue("number1", 1),
+    number2 = op.inValue("number2", 1),
+    result = op.outNumber("result");
+
+op.setUiAttribs({ "mathTitle": true });
+
+number1.onChange =
+    number2.onChange = exec;
+exec();
+
+function exec()
+{
+    let v = number1.get() - number2.get();
+    if (!isNaN(v)) result.set(v);
+}
+
+}
+};
+
+CABLES.OPS["a4ffe852-d200-4b96-9347-68feb01122ca"]={f:Ops.Math.Subtract,objName:"Ops.Math.Subtract"};
 
 
 
@@ -5354,272 +5921,6 @@ CABLES.OPS["09296117-7312-4f80-982b-7b4a81d22cf8"]={f:Ops.Array.InterpolateArray
 
 // **************************************************************
 // 
-// Ops.Html.Elements.DivElement_v3
-// 
-// **************************************************************
-
-Ops.Html.Elements.DivElement_v3= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inText = op.inString("Text", "Hello Div"),
-    inId = op.inString("Id"),
-    inClass = op.inString("Class"),
-    inStyle = op.inStringEditor("Style", "position:absolute;\nz-index:100;", "inline-css"),
-    inInteractive = op.inValueBool("Interactive", false),
-    inVisible = op.inValueBool("Visible", true),
-    inBreaks = op.inValueBool("Convert Line Breaks", false),
-    inPropagation = op.inValueBool("Propagate Click-Events", true),
-    outElement = op.outObject("DOM Element", null, "element"),
-    outHover = op.outBoolNum("Hover"),
-    outClicked = op.outTrigger("Clicked");
-
-let listenerElement = null;
-let oldStr = null;
-let prevDisplay = "block";
-let div = null;
-
-const canvas = op.patch.cgl.canvas.parentElement;
-
-createElement();
-
-inClass.onChange = updateClass;
-inBreaks.onChange = inText.onChange = updateText;
-inStyle.onChange = updateStyle;
-inInteractive.onChange = updateInteractive;
-inVisible.onChange = updateVisibility;
-
-updateText();
-updateStyle();
-warning();
-updateInteractive();
-
-op.onDelete = removeElement;
-
-outElement.onLinkChanged = updateStyle;
-
-inInteractive.onLinkChanged =
-outClicked.onLinkChanged = () =>
-{
-    op.setUiError("interactiveProblem", null);
-    if (outClicked.isLinked() && !inInteractive.get() && !inInteractive.isLinked())
-        op.setUiError("interactiveProblem", "Interactive should be activated when linking clicked port");
-};
-
-function createElement()
-{
-    div = op.patch.getDocument().createElement("div");
-    div.dataset.op = op.id;
-    div.classList.add("cablesEle");
-
-    if (inId.get()) div.id = inId.get();
-
-    canvas.appendChild(div);
-    outElement.setRef(div);
-}
-
-function removeElement()
-{
-    if (div) removeClasses();
-    if (div && div.parentNode) div.parentNode.removeChild(div);
-    oldStr = null;
-    div = null;
-}
-
-function setCSSVisible(visible)
-{
-    if (!visible)
-    {
-        div.style.visibility = "hidden";
-        prevDisplay = div.style.display || "inherit";
-        div.style.display = "none";
-    }
-    else
-    {
-        // prevDisplay=div.style.display||'inherit';
-        if (prevDisplay == "none") prevDisplay = "inherit";
-        div.style.visibility = "visible";
-        div.style.display = prevDisplay;
-    }
-}
-
-function updateVisibility()
-{
-    setCSSVisible(inVisible.get());
-}
-
-function updateText()
-{
-    let str = inText.get();
-
-    if (oldStr === str) return;
-    oldStr = str;
-
-    if (str && inBreaks.get()) str = str.replace(/(?:\r\n|\r|\n)/g, "<br>");
-
-    if (div.innerHTML != str) div.innerHTML = str;
-
-    outElement.setRef(div);
-}
-
-// inline css inisde div
-function updateStyle()
-{
-    if (!div) return;
-    // if (inStyle.get() != div.style)
-    // {
-    div.setAttribute("style", inStyle.get());
-    updateVisibility();
-    outElement.setRef(div);
-    // }
-
-    if (!div.parentElement) canvas.appendChild(div);
-
-    warning();
-}
-
-let oldClassesStr = "";
-
-function removeClasses()
-{
-    if (!div) return;
-
-    const classes = (inClass.get() || "").split(" ");
-    for (let i = 0; i < classes.length; i++)
-    {
-        if (classes[i]) div.classList.remove(classes[i]);
-    }
-    oldClassesStr = "";
-}
-
-function updateClass()
-{
-    const classes = (inClass.get() || "").split(" ");
-    const oldClasses = (oldClassesStr || "").split(" ");
-
-    let found = false;
-
-    for (let i = 0; i < oldClasses.length; i++)
-    {
-        if (
-            oldClasses[i] &&
-            classes.indexOf(oldClasses[i].trim()) == -1)
-        {
-            found = true;
-            div.classList.remove(oldClasses[i]);
-        }
-    }
-
-    for (let i = 0; i < classes.length; i++)
-    {
-        if (classes[i])
-        {
-            div.classList.add(classes[i].trim());
-        }
-    }
-
-    oldClassesStr = inClass.get();
-    warning();
-}
-
-function onMouseEnter(e)
-{
-    outHover.set(true);
-}
-
-function onMouseLeave(e)
-{
-    outHover.set(false);
-}
-
-function onMouseClick(e)
-{
-    if (!inPropagation.get())
-    {
-        e.stopPropagation();
-    }
-    outClicked.trigger();
-}
-
-function updateInteractive()
-{
-    op.setUiError("interactiveProblem", null);
-
-    removeListeners();
-    if (inInteractive.get()) addListeners();
-}
-
-inId.onChange = function ()
-{
-    div.id = inId.get();
-};
-
-function removeListeners()
-{
-    if (listenerElement)
-    {
-        listenerElement.removeEventListener("pointerdown", onMouseClick);
-        listenerElement.removeEventListener("pointerleave", onMouseLeave);
-        listenerElement.removeEventListener("pointerenter", onMouseEnter);
-        listenerElement = null;
-    }
-}
-
-function addListeners()
-{
-    if (listenerElement)removeListeners();
-
-    listenerElement = div;
-
-    if (listenerElement)
-    {
-        listenerElement.addEventListener("pointerdown", onMouseClick);
-        listenerElement.addEventListener("pointerleave", onMouseLeave);
-        listenerElement.addEventListener("pointerenter", onMouseEnter);
-    }
-}
-
-op.addEventListener("onEnabledChange", function (enabled)
-{
-    removeElement();
-    if (enabled)
-    {
-        createElement();
-        updateStyle();
-        updateClass();
-        updateText();
-        updateInteractive();
-    }
-    // if(enabled) updateVisibility();
-    // else setCSSVisible(false);
-});
-
-function warning()
-{
-    if (inClass.get() && inStyle.get())
-    {
-        op.setUiError("error", "Element uses external and inline CSS", 1);
-    }
-    else
-    {
-        op.setUiError("error", null);
-    }
-}
-
-}
-};
-
-CABLES.OPS["d55d398c-e68e-486b-b0ce-d9c4bdf7df05"]={f:Ops.Html.Elements.DivElement_v3,objName:"Ops.Html.Elements.DivElement_v3"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.Math.MapRange
 // 
 // **************************************************************
@@ -7083,45 +7384,6 @@ CABLES.OPS["fbb89f72-f2e3-4d34-ad01-7d884a1bcdc0"]={f:Ops.Number.SwitchNumber,ob
 
 // **************************************************************
 // 
-// Ops.Math.Sum
-// 
-// **************************************************************
-
-Ops.Math.Sum= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    number1 = op.inValueFloat("number1", 0),
-    number2 = op.inValueFloat("number2", 0),
-    result = op.outNumber("result");
-
-op.setUiAttribs({ "mathTitle": true });
-
-number1.onChange =
-number2.onChange = exec;
-exec();
-
-function exec()
-{
-    const v = number1.get() + number2.get();
-    if (!isNaN(v))
-        result.set(v);
-}
-
-}
-};
-
-CABLES.OPS["c8fb181e-0b03-4b41-9e55-06b6267bc634"]={f:Ops.Math.Sum,objName:"Ops.Math.Sum"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.Ui.Area
 // 
 // **************************************************************
@@ -7950,57 +8212,6 @@ CABLES.OPS["9549e2ed-a544-4d33-a672-05c7854ccf5d"]={f:Ops.Boolean.IfTrueThen_v2,
 
 // **************************************************************
 // 
-// Ops.Trigger.TriggerCounter
-// 
-// **************************************************************
-
-Ops.Trigger.TriggerCounter= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    exe = op.inTriggerButton("exe"),
-    reset = op.inTriggerButton("reset"),
-    trigger = op.outTrigger("trigger"),
-    num = op.outNumber("timesTriggered");
-
-op.toWorkPortsNeedToBeLinked(exe);
-
-op.setUiAttrib({ "extendTitle": 0 });
-let n = 0;
-
-reset.onTriggered =
-op.onLoaded =
-    doReset;
-
-exe.onTriggered = function ()
-{
-    n++;
-    num.set(n);
-    op.setUiAttrib({ "extendTitle": n });
-    trigger.trigger();
-};
-
-function doReset()
-{
-    n = 0;
-    op.setUiAttrib({ "extendTitle": n });
-    num.set(n);
-}
-
-}
-};
-
-CABLES.OPS["e640619f-235c-4543-bbf8-b358e0283180"]={f:Ops.Trigger.TriggerCounter,objName:"Ops.Trigger.TriggerCounter"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.Math.Multiply
 // 
 // **************************************************************
@@ -8221,6 +8432,1269 @@ function updateError()
 };
 
 CABLES.OPS["0816c999-f2db-466b-9777-2814573574c5"]={f:Ops.Trigger.TriggerReceive,objName:"Ops.Trigger.TriggerReceive"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Html.CSS.CssClass
+// 
+// **************************************************************
+
+Ops.Html.CSS.CssClass= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inStr = op.inStringEditor("CSS", ""),
+    inClassName = op.inString("Class Name", "");
+
+op.toWorkPortsNeedsString(inClassName);
+
+const styleEle = op.patch.getDocument().createElement("style");
+styleEle.type = "text/css";
+styleEle.id = "style" + CABLES.uuid();
+styleEle.textContent = attachments.css_spinner;
+styleEle.classList.add("cablesEle");
+
+const head = op.patch.getDocument().getElementsByTagName("body")[0];
+head.appendChild(styleEle);
+
+inClassName.onChange =
+    inStr.onChange = () =>
+    {
+        const content = inStr.get() || "";
+        styleEle.textContent = "." + inClassName.get() + " {\n" + content + "\n}\n";
+    };
+
+op.onDelete = () =>
+{
+    styleEle.remove();
+};
+
+}
+};
+
+CABLES.OPS["d0eebfda-eba0-4702-9bcb-a3d31ea05ab4"]={f:Ops.Html.CSS.CssClass,objName:"Ops.Html.CSS.CssClass"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Boolean.ToggleBool_v2
+// 
+// **************************************************************
+
+Ops.Boolean.ToggleBool_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    trigger = op.inTriggerButton("trigger"),
+    reset = op.inTriggerButton("reset"),
+    inDefault = op.inBool("Default", false),
+    next = op.outTrigger("Next"),
+    outBool = op.outBoolNum("result");
+
+let theBool = false;
+
+op.onLoadedValueSet = () =>
+{
+    theBool = inDefault.get();
+    outBool.set(inDefault.get());
+    next.trigger();
+};
+
+trigger.onTriggered = function ()
+{
+    theBool = !theBool;
+    outBool.set(theBool);
+    next.trigger();
+};
+
+reset.onTriggered = function ()
+{
+    theBool = inDefault.get();
+    outBool.set(theBool);
+    next.trigger();
+};
+
+}
+};
+
+CABLES.OPS["4313d9bb-96b6-43bc-9190-6068cfb2593c"]={f:Ops.Boolean.ToggleBool_v2,objName:"Ops.Boolean.ToggleBool_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Boolean.IfFalseThen
+// 
+// **************************************************************
+
+Ops.Boolean.IfFalseThen= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTrigger("Exe"),
+    boolean = op.inValueBool("Boolean", false),
+    triggerThen = op.outTrigger("then"),
+    triggerElse = op.outTrigger("else");
+
+boolean.onChange = execBool;
+exe.onTriggered = exec;
+
+function execBool()
+{
+    if (exe.isLinked()) return;
+    exec();
+}
+
+function exec()
+{
+    if (!boolean.get()) triggerThen.trigger();
+    else triggerElse.trigger();
+}
+
+}
+};
+
+CABLES.OPS["91cf65f1-94ac-423f-a536-af71eed08440"]={f:Ops.Boolean.IfFalseThen,objName:"Ops.Boolean.IfFalseThen"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Graphics.Transform
+// 
+// **************************************************************
+
+Ops.Graphics.Transform= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    render = op.inTrigger("render"),
+    posX = op.inValue("posX", 0),
+    posY = op.inValue("posY", 0),
+    posZ = op.inValue("posZ", 0),
+    scale = op.inValue("scale", 1),
+    rotX = op.inValue("rotX", 0),
+    rotY = op.inValue("rotY", 0),
+    rotZ = op.inValue("rotZ", 0),
+    trigger = op.outTrigger("trigger");
+
+op.setPortGroup("Rotation", [rotX, rotY, rotZ]);
+op.setPortGroup("Position", [posX, posY, posZ]);
+op.setPortGroup("Scale", [scale]);
+op.setUiAxisPorts(posX, posY, posZ);
+
+op.toWorkPortsNeedToBeLinked(render, trigger);
+
+const vPos = vec3.create();
+const vScale = vec3.create();
+const transMatrix = mat4.create();
+mat4.identity(transMatrix);
+
+let
+    doScale = false,
+    doTranslate = false,
+    translationChanged = true,
+    scaleChanged = true,
+    rotChanged = true;
+
+rotX.onChange = rotY.onChange = rotZ.onChange = setRotChanged;
+posX.onChange = posY.onChange = posZ.onChange = setTranslateChanged;
+scale.onChange = setScaleChanged;
+
+render.onTriggered = function ()
+{
+    // if(!CGL.TextureEffect.checkOpNotInTextureEffect(op)) return;
+
+    let updateMatrix = false;
+    if (translationChanged)
+    {
+        updateTranslation();
+        updateMatrix = true;
+    }
+    if (scaleChanged)
+    {
+        updateScale();
+        updateMatrix = true;
+    }
+    if (rotChanged) updateMatrix = true;
+
+    if (updateMatrix) doUpdateMatrix();
+
+    const cg = op.patch.cg || op.patch.cgl;
+    cg.pushModelMatrix();
+    mat4.multiply(cg.mMatrix, cg.mMatrix, transMatrix);
+
+    trigger.trigger();
+    cg.popModelMatrix();
+
+    if (CABLES.UI)
+    {
+        if (!posX.isLinked() && !posY.isLinked() && !posZ.isLinked())
+        {
+            gui.setTransform(op.id, posX.get(), posY.get(), posZ.get());
+
+            if (op.isCurrentUiOp())
+                gui.setTransformGizmo(
+                    {
+                        "posX": posX,
+                        "posY": posY,
+                        "posZ": posZ,
+                    });
+        }
+    }
+};
+
+// op.transform3d = function ()
+// {
+//     return { "pos": [posX, posY, posZ] };
+// };
+
+function doUpdateMatrix()
+{
+    mat4.identity(transMatrix);
+    if (doTranslate)mat4.translate(transMatrix, transMatrix, vPos);
+
+    if (rotX.get() !== 0)mat4.rotateX(transMatrix, transMatrix, rotX.get() * CGL.DEG2RAD);
+    if (rotY.get() !== 0)mat4.rotateY(transMatrix, transMatrix, rotY.get() * CGL.DEG2RAD);
+    if (rotZ.get() !== 0)mat4.rotateZ(transMatrix, transMatrix, rotZ.get() * CGL.DEG2RAD);
+
+    if (doScale)mat4.scale(transMatrix, transMatrix, vScale);
+    rotChanged = false;
+}
+
+function updateTranslation()
+{
+    doTranslate = false;
+    if (posX.get() !== 0.0 || posY.get() !== 0.0 || posZ.get() !== 0.0) doTranslate = true;
+    vec3.set(vPos, posX.get(), posY.get(), posZ.get());
+    translationChanged = false;
+}
+
+function updateScale()
+{
+    // doScale=false;
+    // if(scale.get()!==0.0)
+    doScale = true;
+    vec3.set(vScale, scale.get(), scale.get(), scale.get());
+    scaleChanged = false;
+}
+
+function setTranslateChanged()
+{
+    translationChanged = true;
+}
+
+function setScaleChanged()
+{
+    scaleChanged = true;
+}
+
+function setRotChanged()
+{
+    rotChanged = true;
+}
+
+doUpdateMatrix();
+
+}
+};
+
+CABLES.OPS["650baeb1-db2d-4781-9af6-ab4e9d4277be"]={f:Ops.Graphics.Transform,objName:"Ops.Graphics.Transform"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.String.StringEditor
+// 
+// **************************************************************
+
+Ops.String.StringEditor= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    v = op.inStringEditor("value", ""),
+    syntax = op.inValueSelect("Syntax", ["text", "glsl", "css", "html", "xml", "json", "javascript", "inline-css", "sql"], "text"),
+    result = op.outString("Result");
+
+syntax.onChange = updateSyntax;
+
+function updateSyntax()
+{
+    let s = syntax.get();
+    if (s == "javascript")s = "js";
+    v.setUiAttribs({ "editorSyntax": s });
+}
+
+v.onChange = function ()
+{
+    result.set(v.get());
+};
+
+}
+};
+
+CABLES.OPS["6468b7c1-f63e-4db4-b809-4b203d27ead3"]={f:Ops.String.StringEditor,objName:"Ops.String.StringEditor"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Html.Elements.InputElement
+// 
+// **************************************************************
+
+Ops.Html.Elements.InputElement= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inElType = op.inSwitch("Element", ["Input", "Textarea"], "Input"),
+    inType = op.inSwitch("Type", ["Text", "Number", "Password", "Date"], "Text"),
+    inText = op.inString("Default Value", ""),
+    inPlaceHolder = op.inString("Placeholder", "Type here..."),
+    inId = op.inString("Id"),
+    inClass = op.inString("Class"),
+    inStyle = op.inStringEditor("Style", "color:#ccc;\nbackground-color:#222;\nborder:none;\npadding:4px;\n", "inline-css"),
+
+    inAutoComplete = op.inBool("Autocomplete", false),
+    inMaxLength = op.inInt("Max Length", 0),
+
+    inInteractive = op.inValueBool("Interactive", false),
+    inVisible = op.inValueBool("Visible", true),
+
+    inFocus = op.inTriggerButton("Focus"),
+    inBlur = op.inTriggerButton("Blur"),
+    inClear = op.inTriggerButton("Clear"),
+    inSelect = op.inTriggerButton("Select"),
+
+    outElement = op.outObject("DOM Element", null, "element"),
+    outString = op.outString("Value"),
+    outHover = op.outBoolNum("Hover");
+
+let listenerElement = null;
+let prevDisplay = "block";
+let div = null;
+
+const canvas = op.patch.cgl.canvas.parentElement;
+
+createElement();
+
+inSelect.onTriggered = () =>
+{
+    div.select();
+};
+
+inClear.onTriggered = () =>
+{
+    div.value = "";
+};
+
+inFocus.onTriggered = () =>
+{
+    div.focus();
+};
+
+inBlur.onTriggered = () =>
+{
+    div.blur();
+};
+
+inElType.onChange = () =>
+{
+    createElement();
+    updateStyle();
+};
+
+inMaxLength.onChange =
+    inType.onChange =
+    inAutoComplete.onChange =
+    inClass.onChange = updateClass;
+
+inPlaceHolder.onChange = inText.onChange = updateText;
+
+inStyle.onChange = updateStyle;
+inInteractive.onChange = updateInteractive;
+inVisible.onChange = updateVisibility;
+
+updateText();
+updateStyle();
+warning();
+updateInteractive();
+
+op.onDelete = removeElement;
+
+outElement.onLinkChanged = updateStyle;
+
+function createElement()
+{
+    removeElement();
+    div = document.createElement(inElType.get().toLowerCase());
+
+    div.addEventListener("input", () =>
+    {
+        outString.set(div.value);
+    });
+
+    div.dataset.op = op.id;
+    div.classList.add("cablesEle");
+
+    if (inId.get()) div.id = inId.get();
+
+    canvas.appendChild(div);
+    outElement.set(div);
+}
+
+function removeElement()
+{
+    if (div) removeClasses();
+    if (div && div.parentNode) div.parentNode.removeChild(div);
+    div = null;
+}
+
+function setCSSVisible(visible)
+{
+    if (!visible)
+    {
+        div.style.visibility = "hidden";
+        prevDisplay = div.style.display || "block";
+        div.style.display = "none";
+    }
+    else
+    {
+        if (prevDisplay == "none") prevDisplay = "block";
+        div.style.visibility = "visible";
+        div.style.display = prevDisplay;
+    }
+}
+
+function updateVisibility()
+{
+    setCSSVisible(inVisible.get());
+}
+
+function updateText()
+{
+    let str = inText.get();
+
+    div.setAttribute("placeholder", inPlaceHolder.get());
+    div.value = str;
+
+    outString.set(str);
+
+    outElement.setRef(div);
+}
+
+function updateStyle()
+{
+    if (!div) return;
+
+    div.setAttribute("style", inStyle.get());
+    updateVisibility();
+    outElement.set(null);
+    outElement.set(div);
+
+    if (!div.parentElement)
+    {
+        canvas.appendChild(div);
+    }
+
+    warning();
+}
+
+let oldClassesStr = "";
+
+function removeClasses()
+{
+    if (!div) return;
+
+    const classes = (inClass.get() || "").split(" ");
+    for (let i = 0; i < classes.length; i++)
+    {
+        if (classes[i]) div.classList.remove(classes[i]);
+    }
+    oldClassesStr = "";
+}
+
+function updateClass()
+{
+    div.setAttribute("tabindex", 0);
+    div.setAttribute("maxlength", inMaxLength.get() || null);
+    div.setAttribute("type", inType.get().toLowerCase());
+
+    if (inAutoComplete.get()) div.setAttribute("autocomplete", "on");
+    else div.setAttribute("autocomplete", "off");
+
+    const classes = (inClass.get() || "").split(" ");
+    const oldClasses = (oldClassesStr || "").split(" ");
+
+    let found = false;
+
+    for (let i = 0; i < oldClasses.length; i++)
+    {
+        if (
+            oldClasses[i] &&
+            classes.indexOf(oldClasses[i].trim()) == -1)
+        {
+            found = true;
+            div.classList.remove(oldClasses[i]);
+        }
+    }
+
+    for (let i = 0; i < classes.length; i++)
+    {
+        if (classes[i])
+        {
+            div.classList.add(classes[i].trim());
+        }
+    }
+
+    oldClassesStr = inClass.get();
+    warning();
+}
+
+function onMouseEnter(e)
+{
+    outHover.set(true);
+}
+
+function onMouseLeave(e)
+{
+    outHover.set(false);
+}
+
+function updateInteractive()
+{
+    removeListeners();
+    if (inInteractive.get()) addListeners();
+}
+
+inId.onChange = function ()
+{
+    div.id = inId.get();
+};
+
+function removeListeners()
+{
+    if (listenerElement)
+    {
+        listenerElement.removeEventListener("pointerleave", onMouseLeave);
+        listenerElement.removeEventListener("pointerenter", onMouseEnter);
+        listenerElement = null;
+    }
+}
+
+function addListeners()
+{
+    if (listenerElement)removeListeners();
+
+    listenerElement = div;
+
+    if (listenerElement)
+    {
+        listenerElement.addEventListener("pointerleave", onMouseLeave);
+        listenerElement.addEventListener("pointerenter", onMouseEnter);
+    }
+}
+
+op.addEventListener("onEnabledChange", function (enabled)
+{
+    removeElement();
+    if (enabled)
+    {
+        createElement();
+        updateStyle();
+        updateClass();
+        updateText();
+        updateInteractive();
+    }
+});
+
+function warning()
+{
+    if (inClass.get() && inStyle.get())
+    {
+        op.setUiError("error", "Element uses external and inline CSS", 1);
+    }
+    else
+    {
+        op.setUiError("error", null);
+    }
+}
+
+}
+};
+
+CABLES.OPS["b7e1635c-b5c0-43e1-be03-2f137e6e61ea"]={f:Ops.Html.Elements.InputElement,objName:"Ops.Html.Elements.InputElement"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Html.Elements.Element_v2
+// 
+// **************************************************************
+
+Ops.Html.Elements.Element_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inText = op.inString("Text", "Element"),
+    inPos = op.inSwitch("Position", ["Absolute", "Static", "Relative", "Fixed"], "Absolute"),
+    inInteractive = op.inSwitch("Interactive", ["True", "False", "No Pointer Events"], "True"),
+
+    inSetSize = op.inValueBool("Set Size", false),
+    inWidth = op.inFloat("Width", 100),
+    inHeight = op.inFloat("Height", 100),
+    inSizeUnit = op.inSwitch("Size  Units", ["px", "%", "vwh"], "px"),
+
+    inOverflow = op.inSwitch("Overflow", ["Visible", "Hidden", "Scroll", "Auto"], "Hidden"),
+
+    inStyle = op.inStringEditor("Inline Style", "", "inline-css"),
+    inClass = op.inString("CSS Class"),
+    inBlacklist = op.inString("Disable CSS Props"),
+
+    inDisplay = op.inDropDown("Display", ["None", "Block", "Inline", "inline-block", "flex", "inline-flex", "grid", "inline-grid", "flow-root"], "Block"),
+    inTag = op.inString("Tag Name", "div"),
+    inOpacity = op.inFloatSlider("Opacity", 1),
+    inPropagation = op.inValueBool("Propagate Click-Events", true),
+
+    outElement = op.outObject("DOM Element", null, "element"),
+    outHover = op.outBoolNum("Hovering"),
+    outClicked = op.outTrigger("Clicked");
+
+op.setPortGroup("Area", [inWidth, inHeight, inSetSize, inSizeUnit, inOverflow]);
+op.setPortGroup("CSS", [inClass, inStyle, inBlacklist]);
+
+let listenerElement = null;
+let oldStr = null;
+let prevDisplay = "block";
+let div = null;
+
+const parent = op.patch.cgl.canvas.parentElement;
+
+createElement();
+
+inClass.onChange = updateClass;
+inText.onChange = updateText;
+
+inTag.onChange = () =>
+{
+    removeElement();
+    createElement();
+    updateClass();
+    updateText();
+};
+
+inSetSize.onChange =
+    updateUiAndStyle;
+
+inDisplay.onChange =
+    inOpacity.onChange =
+    inPos.onChange =
+    inWidth.onChange =
+    inHeight.onChange =
+    inOverflow.onChange =
+    inSizeUnit.onChange =
+    inHeight.onChange =
+    inStyle.onChange = updateStyle;
+
+inInteractive.onChange = updateInteractive;
+
+updateText();
+updateStyle();
+warning();
+updateInteractive();
+
+let oldClassesStr = "";
+op.onDelete = removeElement;
+
+outElement.onLinkChanged = updateStyle;
+
+inInteractive.onLinkChanged =
+outClicked.onLinkChanged = () =>
+{
+    op.setUiError("interactiveProblem", null);
+    if (outClicked.isLinked() && !isInteractive())
+        op.setUiError("interactiveProblem", "Interactive should be activated when linking clicked port");
+};
+
+function updateUiAndStyle()
+{
+    inWidth.setUiAttribs({ "greyout": !inSetSize.get() });
+    inHeight.setUiAttribs({ "greyout": !inSetSize.get() });
+    updateStyle();
+}
+
+function createElement()
+{
+    div = op.patch.getDocument().createElement(inTag.get() || "div");
+    div.dataset.op = op.id;
+    div.classList.add("cablesEle");
+
+    parent.appendChild(div);
+    outElement.setRef(div);
+    updateStyle();
+}
+
+function removeElement()
+{
+    if (div) removeClasses();
+    if (div && div.parentNode) div.parentNode.removeChild(div);
+    oldStr = null;
+    div = null;
+}
+
+function updateText()
+{
+    let str = inText.get();
+
+    if (oldStr === str) return;
+    oldStr = str;
+
+    if (div.innerHTML != str) div.innerHTML = str;
+}
+
+function updateStyle()
+{
+    if (!div) return;
+
+    div.setAttribute("style", inStyle.get());
+
+    div.style.position = inPos.get().toLowerCase();
+
+    div.style.overflow = inOverflow.get().toLowerCase();
+    div.style.display = inDisplay.get();
+    div.style.opacity = inOpacity.get();
+    if (inInteractive.get() == "No Pointer Events")div.style.pointerEvents = "none";
+
+    if (inSetSize.get())
+    {
+        div.style.width = inWidth.get() + inSizeUnit.get();
+        div.style.height = inHeight.get() + inSizeUnit.get();
+    }
+    else
+    {
+        div.style.width = "";
+        div.style.height = "";
+    }
+
+    outElement.setRef(div);
+
+    if (!div.parentElement) parent.appendChild(div);
+
+    warning();
+}
+
+function removeClasses()
+{
+    if (!div) return;
+
+    const classes = (inClass.get() || "").split(" ");
+    for (let i = 0; i < classes.length; i++)
+    {
+        if (classes[i]) div.classList.remove(classes[i]);
+    }
+    oldClassesStr = "";
+}
+
+function updateClass()
+{
+    const classes = (inClass.get() || "").split(" ");
+    const oldClasses = (oldClassesStr || "").split(" ");
+
+    let found = false;
+
+    for (let i = 0; i < oldClasses.length; i++)
+    {
+        if (
+            oldClasses[i] &&
+            classes.indexOf(oldClasses[i].trim()) == -1)
+        {
+            found = true;
+            div.classList.remove(oldClasses[i]);
+        }
+    }
+
+    for (let i = 0; i < classes.length; i++)
+    {
+        if (classes[i])
+        {
+            div.classList.add(classes[i].trim());
+        }
+    }
+
+    oldClassesStr = inClass.get();
+    warning();
+    outElement.setRef(div);
+}
+
+function onMouseEnter(e)
+{
+    outHover.set(true);
+}
+
+function onMouseLeave(e)
+{
+    outHover.set(false);
+}
+
+function onKey(e)
+{
+    if (e.keyCode == 13 || e.keyCode == 32)outClicked.trigger();
+}
+
+function onMouseClick(e)
+{
+    if (!inPropagation.get()) e.stopPropagation();
+    outClicked.trigger();
+}
+
+function isInteractive()
+{
+    return inInteractive.get() != "No Pointer Events";
+}
+
+function updateInteractive()
+{
+    op.setUiError("interactiveProblem", null);
+
+    removeListeners();
+    if (isInteractive()) addListeners();
+    updateStyle();
+}
+
+function removeListeners()
+{
+    if (listenerElement)
+    {
+        listenerElement.removeEventListener("pointerdown", onMouseClick);
+        listenerElement.removeEventListener("pointerleave", onMouseLeave);
+        listenerElement.removeEventListener("pointerenter", onMouseEnter);
+        listenerElement.removeEventListener("keydown", onKey, false);
+        listenerElement.removeAttribute("tabindex");
+        listenerElement = null;
+    }
+}
+
+function addListeners()
+{
+    if (listenerElement)removeListeners();
+
+    listenerElement = div;
+
+    if (listenerElement)
+    {
+        listenerElement.addEventListener("pointerdown", onMouseClick);
+        listenerElement.addEventListener("pointerleave", onMouseLeave);
+        listenerElement.addEventListener("pointerenter", onMouseEnter);
+        listenerElement.setAttribute("tabindex", 0);
+        listenerElement.addEventListener("keydown", onKey, false);
+    }
+}
+
+op.addEventListener("onEnabledChange", (enabled) =>
+{
+    removeElement();
+    if (!enabled) return;
+
+    createElement();
+    updateStyle();
+    updateClass();
+    updateText();
+    updateInteractive();
+});
+
+function warning()
+{
+    if (inClass.get() && inStyle.get())
+    {
+        op.setUiError("error", "Element uses external and inline CSS", 1);
+    }
+    else
+    {
+        op.setUiError("error", null);
+    }
+}
+
+}
+};
+
+CABLES.OPS["a0d2cc80-0b2f-4422-ba2d-c903ac9ca297"]={f:Ops.Html.Elements.Element_v2,objName:"Ops.Html.Elements.Element_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Anim.Bang
+// 
+// **************************************************************
+
+Ops.Anim.Bang= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inUpdate = op.inTrigger("update"),
+    inBang = op.inTriggerButton("Bang"),
+    inDuration = op.inValue("Duration", 0.1),
+    invert = op.inBool("Invert", false),
+    outTrigger = op.outTrigger("Trigger Out"),
+    outValue = op.outNumber("Value");
+
+const anim = new CABLES.Anim();
+let startTime = CABLES.now();
+op.toWorkPortsNeedToBeLinked(inUpdate);
+
+let needsReset = false;
+
+inBang.onTriggered = function ()
+{
+    needsReset = true;
+};
+
+inUpdate.onTriggered = function ()
+{
+    if (needsReset)
+    {
+        startTime = CABLES.now();
+        anim.clear();
+        anim.setValue(0, 1);
+        anim.setValue(inDuration.get(), 0);
+        needsReset = false;
+    }
+
+    const elapsed = (CABLES.now() - startTime) / 1000;
+    if (elapsed <= inDuration.get())
+    {
+        const v = anim.getValue(elapsed);
+        if (invert.get()) outValue.set(1.0 - v);
+        else outValue.set(v);
+    }
+    else
+    {
+        if (invert.get())
+        {
+            outValue.set(1.0);
+        }
+        else
+        {
+            outValue.set(0);
+        }
+    }
+
+    outTrigger.trigger();
+};
+
+}
+};
+
+CABLES.OPS["92ca45a7-5b4b-4238-956e-23d79bdc659f"]={f:Ops.Anim.Bang,objName:"Ops.Anim.Bang"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Local.ContactFormular
+// 
+// **************************************************************
+
+Ops.Local.ContactFormular= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+// Define inputs
+let inputTrigger = op.inTrigger("Trigger");
+let inputName = op.inString("Name", "");
+let inputEmail = op.inString("Email", "");
+let inputMessage = op.inString("Message", "");
+let inputMailServer = op.inString("Mail Server", "");
+
+// Define outputs
+let outputDone = op.outString("Done", "");
+
+// Define triggers for success and error
+let outputSuccessTrigger = op.outTrigger("Success Trigger");
+let outputErrorTrigger = op.outTrigger("Error Trigger");
+
+// When trigger is activated
+inputTrigger.onTriggered = function() {
+    const url = inputMailServer.get().trim();
+    if (!url) {
+        console.warn("⚠️ No mail server URL provided");
+        outputDone.set("no_url");
+        outputErrorTrigger.trigger();  // Fire error trigger
+        return;
+    }
+
+    fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            name: inputName.get(),
+            email: inputEmail.get(),
+            message: inputMessage.get()
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("✅ Email sent!");
+            outputDone.set("Email sent!");
+            outputSuccessTrigger.trigger(); // Fire success trigger
+        } else {
+            console.log("❌ Failed to send.");
+            outputDone.set("Error, contact danipercussio@yahoo");
+            outputErrorTrigger.trigger();  // Fire error trigger
+        }
+    })
+    .catch(err => {
+        console.error("⚠️ Network error:", err);
+        outputDone.set("Error, contact danipercussio@yahoo");
+        outputErrorTrigger.trigger();      // Fire error trigger
+    });
+};
+
+}
+};
+
+CABLES.OPS["8dac3bae-d0a9-4569-b2f9-678d8f63807c"]={f:Ops.Local.ContactFormular,objName:"Ops.Local.ContactFormular"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Html.CSS.ElementCssText
+// 
+// **************************************************************
+
+Ops.Html.CSS.ElementCssText= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inEle = op.inObject("Element", null, "element"),
+    inFamily = op.inString("Font Family", "sans serif"),
+    inSize = op.inFloat("Text Size", 12),
+    inWeight = op.inString("Font Weight", "normal"),
+
+    inAlign = op.inSwitch("Text Align", ["Left", "Center", "Right", "Justify"], "Left"),
+
+    inOverflow = op.inBool("Overflow Ellipsis", false),
+
+    inLetterSpace = op.inFloat("Letter Spacing", 0),
+
+    inLineHeight = op.inFloat("Line Height", 0),
+
+    inUserSelectNone = op.inBool("Disable Text Select", false),
+
+    // in1 = op.inSwitch("White Space",["Initial","no-wrap"], "Initial"),
+    outEle = op.outObject("HTML Element", null, "element");
+
+let ele = null;
+
+inLetterSpace.onChange =
+    inOverflow.onChange =
+    inEle.onChange =
+    inEle.onLinkChanged =
+    inFamily.onChange =
+    inSize.onChange =
+    inWeight.onChange =
+    inAlign.onChange =
+    inLineHeight.onChange =
+        update;
+
+op.onDelete = remove;
+
+function remove()
+{
+    if (!ele) return;
+    ele.style.removeProperty("font-family");
+    ele.style.removeProperty("user-select");
+    ele.style.removeProperty("letter-spacing");
+    ele.style.removeProperty("text-align");
+    ele.style.removeProperty("line-height");
+    ele.style.removeProperty("font-size");
+}
+
+function update()
+{
+    remove();
+    ele = inEle.get();
+
+    if (ele && ele.style)
+    {
+        ele.style["font-family"] = inFamily.get();
+        ele.style["letter-spacing"] = inLetterSpace.get() + "px";
+
+        ele.style["font-weight"] = inWeight.get();
+        ele.style["text-align"] = inAlign.get().toLowerCase();
+
+        if (inSize.get())ele.style["font-size"] = inSize.get() + "px";
+        else ele.style["font-size"] = "";
+
+        if (inLineHeight.get()) ele.style["line-height"] = inLineHeight.get() + "px";
+        else ele.style["line-height"] = "";
+
+        if (inUserSelectNone.get())ele.style["user-select"] = "none";
+    }
+    else
+    {
+        setTimeout(update, 50);
+    }
+
+    if (outEle != inEle.get())
+        outEle.setRef(inEle.get());
+}
+
+}
+};
+
+CABLES.OPS["8413b842-6b92-487e-b74b-da3c0259bd08"]={f:Ops.Html.CSS.ElementCssText,objName:"Ops.Html.CSS.ElementCssText"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Html.ElementsPositionsByClass
+// 
+// **************************************************************
+
+Ops.Html.ElementsPositionsByClass= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inUpd = op.inTriggerButton("Update"),
+    inClassName = op.inString("Classname", ""),
+    outPosArr = op.outArray("Position", 3),
+    outSizeArr = op.outArray("Size", 3),
+    outNumEle = op.outNumber("Total Elements");
+
+inUpd.onTriggered = () =>
+{
+    const arrPos = [];
+    const arrSize = [];
+
+    const els = document.getElementsByClassName(inClassName.get());
+    const rCanv = op.patch.cgl.canvas.getBoundingClientRect();
+
+    for (let i = 0; i < els.length; i++)
+    {
+        // inClassName.get();
+        let ele = els[i];
+        const r = ele.getBoundingClientRect();
+
+        arrPos.push(r.left - rCanv.left, r.top - rCanv.top, 0);
+        arrSize.push(r.width, r.height, 1);
+    }
+    outPosArr.setRef(arrPos);
+    outSizeArr.setRef(arrSize);
+    outNumEle.set(els.length);
+};
+
+}
+};
+
+CABLES.OPS["43cf60ec-1a62-4bd0-98ee-2aa85681020f"]={f:Ops.Html.ElementsPositionsByClass,objName:"Ops.Html.ElementsPositionsByClass"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Trigger.TriggerOnce
+// 
+// **************************************************************
+
+Ops.Trigger.TriggerOnce= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTriggerButton("Exec"),
+    reset = op.inTriggerButton("Reset"),
+    next = op.outTrigger("Next"),
+    outTriggered = op.outBoolNum("Was Triggered");
+
+let triggered = false;
+
+op.toWorkPortsNeedToBeLinked(exe);
+
+reset.onTriggered = function ()
+{
+    triggered = false;
+    outTriggered.set(triggered);
+};
+
+exe.onTriggered = function ()
+{
+    if (triggered) return;
+
+    triggered = true;
+    next.trigger();
+    outTriggered.set(triggered);
+};
+
+}
+};
+
+CABLES.OPS["cf3544e4-e392-432b-89fd-fcfb5c974388"]={f:Ops.Trigger.TriggerOnce,objName:"Ops.Trigger.TriggerOnce"};
 
 
 
