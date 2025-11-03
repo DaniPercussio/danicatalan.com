@@ -138,7 +138,7 @@ constructor()
 {
 super(...arguments);
 const op=this;
-const attachments=op.attachments={"inc_gen_ports_js":"const port_ryzonyqik=op.inArray(\"ryzonyqik\");\nport_ryzonyqik.setUiAttribs({title:\"Array\",});\n\nconst port_0ekitsejo=op.inArray(\"0ekitsejo\");\nport_0ekitsejo.setUiAttribs({title:\"Array\",});\n\nconst port_pmpcafkxc=op.inArray(\"pmpcafkxc\");\nport_pmpcafkxc.setUiAttribs({title:\"Array\",});\n\nop.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\nconst innerOut_ryzonyqik = addedOps[i].outArray(\"innerOut_ryzonyqik\");\ninnerOut_ryzonyqik.setUiAttribs({title:\"Array\"});\nport_ryzonyqik.on(\"change\", (a,v) => { innerOut_ryzonyqik.setRef(a); });\n\nconst innerOut_0ekitsejo = addedOps[i].outArray(\"innerOut_0ekitsejo\");\ninnerOut_0ekitsejo.setUiAttribs({title:\"Array\"});\nport_0ekitsejo.on(\"change\", (a,v) => { innerOut_0ekitsejo.setRef(a); });\n\nconst innerOut_pmpcafkxc = addedOps[i].outArray(\"innerOut_pmpcafkxc\");\ninnerOut_pmpcafkxc.setUiAttribs({title:\"Array\"});\nport_pmpcafkxc.on(\"change\", (a,v) => { innerOut_pmpcafkxc.setRef(a); });\n\n    }\nif(addedOps[i].innerOutput)\n{\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"oe7yodzio\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"Text\",\"value\":\"\"},{\"name\":\"Id\",\"value\":\"\"},{\"name\":\"Class\",\"value\":\"\"},{\"name\":\"Style\",\"value\":\"position:fixed;\\nz-index:100;\\nheight: 1px;\\nbackground: black;\\n\"},{\"name\":\"Interactive\",\"value\":0},{\"name\":\"Visible\",\"value\":1},{\"name\":\"Convert Line Breaks\",\"value\":0},{\"name\":\"Propagate Click-Events\",\"value\":1}],\"portsOut\":[{\"name\":\"DOM Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"DOM Element\",\"objIn\":\"9oq8kvs49\",\"objOut\":\"oe7yodzio\"}]},{\"name\":\"Hover\",\"value\":0}],\"objName\":\"Ops.Html.Elements.DivElement_v3\"},{\"id\":\"f9x2rca43\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"0wo0fc2bc\",\"objOut\":\"f9x2rca43\"},{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"69h9mdf53\",\"objOut\":\"f9x2rca43\"}]},{\"name\":\"Average Y\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average Y\",\"objIn\":\"1qbtb7kd8\",\"objOut\":\"f9x2rca43\"}]},{\"name\":\"Average Z\",\"value\":0}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"1qbtb7kd8\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":14.83}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"9oq8kvs49\",\"objOut\":\"1qbtb7kd8\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"9oq8kvs49\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"top\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"portsOut\":[{\"name\":\"HTML Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"HTML Element\",\"objIn\":\"kyy7cem59\",\"objOut\":\"9oq8kvs49\"}]}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"m2k4fe4pk\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"ftstfr6y5\",\"objOut\":\"m2k4fe4pk\"}]},{\"name\":\"Average Y\",\"value\":72.75652313232422},{\"name\":\"Average Z\",\"value\":0}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"0wo0fc2bc\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":8}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"0j40co374\",\"objOut\":\"0wo0fc2bc\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"kyy7cem59\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"width\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"portsOut\":[{\"name\":\"HTML Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"HTML Element\",\"objIn\":\"0j40co374\",\"objOut\":\"kyy7cem59\"}]}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"snw7xv8h4\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number2\",\"portOut\":\"Average X\",\"objIn\":\"bgp4ktj6k\",\"objOut\":\"snw7xv8h4\"}]},{\"name\":\"Average Y\",\"value\":16.695653915405273},{\"name\":\"Average Z\",\"value\":1}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"bgp4ktj6k\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"result\",\"objIn\":\"528xswgca\",\"objOut\":\"bgp4ktj6k\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"0j40co374\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"left\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"69h9mdf53\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number2\",\"portOut\":\"result\",\"objIn\":\"528xswgca\",\"objOut\":\"69h9mdf53\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"528xswgca\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"kyy7cem59\",\"objOut\":\"528xswgca\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"ftstfr6y5\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":10}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"result\",\"objIn\":\"bgp4ktj6k\",\"objOut\":\"ftstfr6y5\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"io5hrgcp4\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"portsOut\":[{\"name\":\"innerOut_ryzonyqik\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_ryzonyqik\",\"objIn\":\"f9x2rca43\",\"objOut\":\"io5hrgcp4\"}]},{\"name\":\"innerOut_0ekitsejo\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_0ekitsejo\",\"objIn\":\"m2k4fe4pk\",\"objOut\":\"io5hrgcp4\"}]},{\"name\":\"innerOut_pmpcafkxc\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_pmpcafkxc\",\"objIn\":\"snw7xv8h4\",\"objOut\":\"io5hrgcp4\"}]}],\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"35h804ntp\",\"uiAttribs\":{\"subPatch\":\"12aqfheq7\"},\"storage\":{},\"objName\":\"Ops.Ui.SubPatchOutput\"}]}",};
+const attachments=op.attachments={"inc_gen_ports_js":"const port_ryzonyqik=op.inArray(\"ryzonyqik\");\nport_ryzonyqik.setUiAttribs({title:\"Array\",});\n\nconst port_0ekitsejo=op.inArray(\"0ekitsejo\");\nport_0ekitsejo.setUiAttribs({title:\"Array\",});\n\nconst port_pmpcafkxc=op.inArray(\"pmpcafkxc\");\nport_pmpcafkxc.setUiAttribs({title:\"Array\",});\n\nop.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\nconst innerOut_ryzonyqik = addedOps[i].outArray(\"innerOut_ryzonyqik\");\ninnerOut_ryzonyqik.setUiAttribs({title:\"Array\"});\nport_ryzonyqik.on(\"change\", (a,v) => { innerOut_ryzonyqik.setRef(a); });\n\nconst innerOut_0ekitsejo = addedOps[i].outArray(\"innerOut_0ekitsejo\");\ninnerOut_0ekitsejo.setUiAttribs({title:\"Array\"});\nport_0ekitsejo.on(\"change\", (a,v) => { innerOut_0ekitsejo.setRef(a); });\n\nconst innerOut_pmpcafkxc = addedOps[i].outArray(\"innerOut_pmpcafkxc\");\ninnerOut_pmpcafkxc.setUiAttribs({title:\"Array\"});\nport_pmpcafkxc.on(\"change\", (a,v) => { innerOut_pmpcafkxc.setRef(a); });\n\n    }\nif(addedOps[i].innerOutput)\n{\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"oe7yodzio\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"Text\",\"value\":\"\"},{\"name\":\"Id\",\"value\":\"\"},{\"name\":\"Class\",\"value\":\"\"},{\"name\":\"Style\",\"value\":\"position:fixed;\\nz-index:98;\\nheight: 1px;\\nbackground: black;\\n\"},{\"name\":\"Interactive\",\"value\":0},{\"name\":\"Visible\",\"value\":1},{\"name\":\"Convert Line Breaks\",\"value\":0},{\"name\":\"Propagate Click-Events\",\"value\":1}],\"portsOut\":[{\"name\":\"DOM Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"DOM Element\",\"objIn\":\"9oq8kvs49\",\"objOut\":\"oe7yodzio\"}]},{\"name\":\"Hover\",\"value\":0}],\"objName\":\"Ops.Html.Elements.DivElement_v3\"},{\"id\":\"f9x2rca43\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"0wo0fc2bc\",\"objOut\":\"f9x2rca43\"},{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"69h9mdf53\",\"objOut\":\"f9x2rca43\"}]},{\"name\":\"Average Y\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average Y\",\"objIn\":\"1qbtb7kd8\",\"objOut\":\"f9x2rca43\"}]},{\"name\":\"Average Z\",\"value\":0}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"1qbtb7kd8\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":14.83}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"9oq8kvs49\",\"objOut\":\"1qbtb7kd8\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"9oq8kvs49\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"top\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"portsOut\":[{\"name\":\"HTML Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"HTML Element\",\"objIn\":\"kyy7cem59\",\"objOut\":\"9oq8kvs49\"}]}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"m2k4fe4pk\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"ftstfr6y5\",\"objOut\":\"m2k4fe4pk\"}]},{\"name\":\"Average Y\",\"value\":82.61739349365234},{\"name\":\"Average Z\",\"value\":0}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"0wo0fc2bc\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":8}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"0j40co374\",\"objOut\":\"0wo0fc2bc\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"kyy7cem59\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"width\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"portsOut\":[{\"name\":\"HTML Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"HTML Element\",\"objIn\":\"0j40co374\",\"objOut\":\"kyy7cem59\"}]}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"snw7xv8h4\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number2\",\"portOut\":\"Average X\",\"objIn\":\"bgp4ktj6k\",\"objOut\":\"snw7xv8h4\"}]},{\"name\":\"Average Y\",\"value\":16.695653915405273},{\"name\":\"Average Z\",\"value\":1}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"bgp4ktj6k\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"result\",\"objIn\":\"528xswgca\",\"objOut\":\"bgp4ktj6k\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"0j40co374\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"left\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"69h9mdf53\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number2\",\"portOut\":\"result\",\"objIn\":\"528xswgca\",\"objOut\":\"69h9mdf53\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"528xswgca\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"kyy7cem59\",\"objOut\":\"528xswgca\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"ftstfr6y5\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":10}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"result\",\"objIn\":\"bgp4ktj6k\",\"objOut\":\"ftstfr6y5\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"io5hrgcp4\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"innerOut_ryzonyqik\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_ryzonyqik\",\"objIn\":\"f9x2rca43\",\"objOut\":\"io5hrgcp4\"}]},{\"name\":\"innerOut_0ekitsejo\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_0ekitsejo\",\"objIn\":\"m2k4fe4pk\",\"objOut\":\"io5hrgcp4\"}]},{\"name\":\"innerOut_pmpcafkxc\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_pmpcafkxc\",\"objIn\":\"snw7xv8h4\",\"objOut\":\"io5hrgcp4\"}]}],\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"35h804ntp\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"objName\":\"Ops.Ui.SubPatchOutput\"}]}",};
 const port_ryzonyqik=op.inArray("ryzonyqik");
 port_ryzonyqik.setUiAttribs({title:"Array",});
 
@@ -7673,114 +7673,6 @@ CABLES.OPS["5ba30060-2e42-4441-8b15-49279dc3bb67"]={f:Ops.Array.ReduceArray3_v3,
 
 // **************************************************************
 // 
-// Ops.Trigger.Sequence
-// 
-// **************************************************************
-
-Ops.Trigger.Sequence= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    exe = op.inTrigger("exe"),
-    cleanup = op.inTriggerButton("Clean up connections");
-
-op.setUiAttrib({ "resizable": true, "resizableY": false, "stretchPorts": true });
-const
-    exes = [],
-    triggers = [],
-    num = 16;
-
-let
-    updateTimeout = null,
-    connectedOuts = [];
-
-exe.onTriggered = triggerAll;
-cleanup.onTriggered = clean;
-cleanup.setUiAttribs({ "hideParam": true, "hidePort": true });
-
-for (let i = 0; i < num; i++)
-{
-    const p = op.outTrigger("trigger " + i);
-    triggers.push(p);
-    p.onLinkChanged = updateButton;
-
-    if (i < num - 1)
-    {
-        let newExe = op.inTrigger("exe " + i);
-        newExe.onTriggered = triggerAll;
-        exes.push(newExe);
-    }
-}
-
-updateConnected();
-
-function updateConnected()
-{
-    connectedOuts.length = 0;
-    for (let i = 0; i < triggers.length; i++)
-        if (triggers[i].links.length > 0) connectedOuts.push(triggers[i]);
-}
-
-function updateButton()
-{
-    updateConnected();
-    clearTimeout(updateTimeout);
-    updateTimeout = setTimeout(() =>
-    {
-        let show = false;
-        for (let i = 0; i < triggers.length; i++)
-            if (triggers[i].links.length > 1) show = true;
-
-        cleanup.setUiAttribs({ "hideParam": !show });
-
-        if (op.isCurrentUiOp()) op.refreshParams();
-    }, 60);
-}
-
-function triggerAll()
-{
-    // for (let i = 0; i < triggers.length; i++) triggers[i].trigger();
-    for (let i = 0; i < connectedOuts.length; i++) connectedOuts[i].trigger();
-}
-
-function clean()
-{
-    let count = 0;
-    for (let i = 0; i < triggers.length; i++)
-    {
-        let removeLinks = [];
-
-        if (triggers[i].links.length > 1)
-            for (let j = 1; j < triggers[i].links.length; j++)
-            {
-                while (triggers[count].links.length > 0) count++;
-
-                removeLinks.push(triggers[i].links[j]);
-                const otherPort = triggers[i].links[j].getOtherPort(triggers[i]);
-                op.patch.link(op, "trigger " + count, otherPort.op, otherPort.name);
-                count++;
-            }
-
-        for (let j = 0; j < removeLinks.length; j++) removeLinks[j].remove();
-    }
-    updateButton();
-    updateConnected();
-}
-
-}
-};
-
-CABLES.OPS["a466bc1f-06e9-4595-8849-bffb9fe22f99"]={f:Ops.Trigger.Sequence,objName:"Ops.Trigger.Sequence"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.WebAudio.AudioAnalyzer_v2
 // 
 // **************************************************************
@@ -9655,6 +9547,114 @@ CABLES.OPS["43cf60ec-1a62-4bd0-98ee-2aa85681020f"]={f:Ops.Html.ElementsPositions
 
 // **************************************************************
 // 
+// Ops.Trigger.Sequence
+// 
+// **************************************************************
+
+Ops.Trigger.Sequence= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTrigger("exe"),
+    cleanup = op.inTriggerButton("Clean up connections");
+
+op.setUiAttrib({ "resizable": true, "resizableY": false, "stretchPorts": true });
+const
+    exes = [],
+    triggers = [],
+    num = 16;
+
+let
+    updateTimeout = null,
+    connectedOuts = [];
+
+exe.onTriggered = triggerAll;
+cleanup.onTriggered = clean;
+cleanup.setUiAttribs({ "hideParam": true, "hidePort": true });
+
+for (let i = 0; i < num; i++)
+{
+    const p = op.outTrigger("trigger " + i);
+    triggers.push(p);
+    p.onLinkChanged = updateButton;
+
+    if (i < num - 1)
+    {
+        let newExe = op.inTrigger("exe " + i);
+        newExe.onTriggered = triggerAll;
+        exes.push(newExe);
+    }
+}
+
+updateConnected();
+
+function updateConnected()
+{
+    connectedOuts.length = 0;
+    for (let i = 0; i < triggers.length; i++)
+        if (triggers[i].links.length > 0) connectedOuts.push(triggers[i]);
+}
+
+function updateButton()
+{
+    updateConnected();
+    clearTimeout(updateTimeout);
+    updateTimeout = setTimeout(() =>
+    {
+        let show = false;
+        for (let i = 0; i < triggers.length; i++)
+            if (triggers[i].links.length > 1) show = true;
+
+        cleanup.setUiAttribs({ "hideParam": !show });
+
+        if (op.isCurrentUiOp()) op.refreshParams();
+    }, 60);
+}
+
+function triggerAll()
+{
+    // for (let i = 0; i < triggers.length; i++) triggers[i].trigger();
+    for (let i = 0; i < connectedOuts.length; i++) connectedOuts[i].trigger();
+}
+
+function clean()
+{
+    let count = 0;
+    for (let i = 0; i < triggers.length; i++)
+    {
+        let removeLinks = [];
+
+        if (triggers[i].links.length > 1)
+            for (let j = 1; j < triggers[i].links.length; j++)
+            {
+                while (triggers[count].links.length > 0) count++;
+
+                removeLinks.push(triggers[i].links[j]);
+                const otherPort = triggers[i].links[j].getOtherPort(triggers[i]);
+                op.patch.link(op, "trigger " + count, otherPort.op, otherPort.name);
+                count++;
+            }
+
+        for (let j = 0; j < removeLinks.length; j++) removeLinks[j].remove();
+    }
+    updateButton();
+    updateConnected();
+}
+
+}
+};
+
+CABLES.OPS["a466bc1f-06e9-4595-8849-bffb9fe22f99"]={f:Ops.Trigger.Sequence,objName:"Ops.Trigger.Sequence"};
+
+
+
+
+// **************************************************************
+// 
 // Ops.Trigger.TriggerOnce
 // 
 // **************************************************************
@@ -9695,6 +9695,43 @@ exe.onTriggered = function ()
 };
 
 CABLES.OPS["cf3544e4-e392-432b-89fd-fcfb5c974388"]={f:Ops.Trigger.TriggerOnce,objName:"Ops.Trigger.TriggerOnce"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Trigger.SequenceMultiPort
+// 
+// **************************************************************
+
+Ops.Trigger.SequenceMultiPort= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inTrigs = op.inMultiPort("Input", CABLES.OP_PORT_TYPE_FUNCTION),
+    outTrigs = op.outMultiPort("Output", CABLES.OP_PORT_TYPE_FUNCTION);
+
+// op.setUiAttrib({ "resizable": true, "resizableY": false, "stretchPorts": true });
+
+inTrigs.onTriggered = (index) =>
+{
+    const ports = outTrigs.get();
+
+    for (let i = 0; i < ports.length; i++)
+    {
+        ports[i].trigger();
+    }
+};
+
+}
+};
+
+CABLES.OPS["be066ff6-85e2-408a-9570-59fb7abff7b2"]={f:Ops.Trigger.SequenceMultiPort,objName:"Ops.Trigger.SequenceMultiPort"};
 
 
 
