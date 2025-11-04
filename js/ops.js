@@ -9780,6 +9780,62 @@ CABLES.OPS["65e8b8a2-ba13-485f-883a-2bcf377989da"]={f:Ops.Trigger.GateTrigger,ob
 
 
 
+
+// **************************************************************
+// 
+// Ops.Local.DaniSongIdChooser
+// 
+// **************************************************************
+
+Ops.Local.DaniSongIdChooser= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+// welcome to your new op!
+// have a look at the documentation:
+// https://cables.gl/docs/5_writing_ops/dev_ops/dev_ops
+
+const
+    heartship = op.inFloat("Heartship"),
+    serenade = op.inFloat("Serenade"),
+    antigone = op.inFloat("Antigone"),
+
+    exec = op.inTrigger("Trigger"),
+    result = op.outNumber("Result"),
+    next = op.outTrigger("Next");
+
+exec.onTriggered = () =>
+{
+    const h = heartship.get();
+    const s = serenade.get();
+    const a = antigone.get();
+
+    let output = 0;
+
+    if (h === 1 && s === 0 && a === 0) {
+        output = 2;
+    } else if (s === 1 && h === 0 && a === 0) {
+        output = 3;
+    } else if (a === 1 && h === 0 && s === 0) {
+        output = 1;
+    } else {
+        output = 0;
+    }
+
+    result.set(output);
+    next.trigger();
+};
+
+}
+};
+
+CABLES.OPS["ec10a8fd-12a2-4a22-ae08-9b781ce5d1be"]={f:Ops.Local.DaniSongIdChooser,objName:"Ops.Local.DaniSongIdChooser"};
+
+
+
 window.addEventListener('load', function(event) {
 CABLES.jsLoaded=new Event('CABLES.jsLoaded');
 document.dispatchEvent(CABLES.jsLoaded);
