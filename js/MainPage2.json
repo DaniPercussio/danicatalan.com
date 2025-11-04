@@ -50,7 +50,7 @@
                 },
                 {
                     "name": "width",
-                    "value": 765.4687246084213
+                    "value": 766.6666412353516
                 },
                 {
                     "name": "height",
@@ -8413,11 +8413,11 @@
                 },
                 {
                     "name": "Interactive index",
-                    "value": 0
+                    "value": 2
                 },
                 {
                     "name": "Interactive",
-                    "value": "True"
+                    "value": "No Pointer Events"
                 },
                 {
                     "name": "Set Size",
@@ -8562,8 +8562,8 @@
         }
     ],
     "export": {
-        "time": "2025-11-04 01:08",
+        "time": "2025-11-04 01:10",
         "service": "html",
-        "exportNumber": 62
+        "exportNumber": 63
     }
 }
