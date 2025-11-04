@@ -11,6 +11,7 @@ Ops.Html=Ops.Html || {};
 Ops.Math=Ops.Math || {};
 Ops.Array=Ops.Array || {};
 Ops.Local=Ops.Local || {};
+Ops.Cables=Ops.Cables || {};
 Ops.Number=Ops.Number || {};
 Ops.String=Ops.String || {};
 Ops.Boolean=Ops.Boolean || {};
@@ -9547,11 +9548,11 @@ CABLES.OPS["43cf60ec-1a62-4bd0-98ee-2aa85681020f"]={f:Ops.Html.ElementsPositions
 
 // **************************************************************
 // 
-// Ops.Trigger.Sequence
+// Ops.Trigger.SequenceMultiPort
 // 
 // **************************************************************
 
-Ops.Trigger.Sequence= class extends CABLES.Op 
+Ops.Trigger.SequenceMultiPort= class extends CABLES.Op 
 {
 constructor()
 {
@@ -9559,96 +9560,25 @@ super(...arguments);
 const op=this;
 const attachments=op.attachments={};
 const
-    exe = op.inTrigger("exe"),
-    cleanup = op.inTriggerButton("Clean up connections");
+    inTrigs = op.inMultiPort("Input", CABLES.OP_PORT_TYPE_FUNCTION),
+    outTrigs = op.outMultiPort("Output", CABLES.OP_PORT_TYPE_FUNCTION);
 
-op.setUiAttrib({ "resizable": true, "resizableY": false, "stretchPorts": true });
-const
-    exes = [],
-    triggers = [],
-    num = 16;
+// op.setUiAttrib({ "resizable": true, "resizableY": false, "stretchPorts": true });
 
-let
-    updateTimeout = null,
-    connectedOuts = [];
-
-exe.onTriggered = triggerAll;
-cleanup.onTriggered = clean;
-cleanup.setUiAttribs({ "hideParam": true, "hidePort": true });
-
-for (let i = 0; i < num; i++)
+inTrigs.onTriggered = (index) =>
 {
-    const p = op.outTrigger("trigger " + i);
-    triggers.push(p);
-    p.onLinkChanged = updateButton;
+    const ports = outTrigs.get();
 
-    if (i < num - 1)
+    for (let i = 0; i < ports.length; i++)
     {
-        let newExe = op.inTrigger("exe " + i);
-        newExe.onTriggered = triggerAll;
-        exes.push(newExe);
+        ports[i].trigger();
     }
-}
-
-updateConnected();
-
-function updateConnected()
-{
-    connectedOuts.length = 0;
-    for (let i = 0; i < triggers.length; i++)
-        if (triggers[i].links.length > 0) connectedOuts.push(triggers[i]);
-}
-
-function updateButton()
-{
-    updateConnected();
-    clearTimeout(updateTimeout);
-    updateTimeout = setTimeout(() =>
-    {
-        let show = false;
-        for (let i = 0; i < triggers.length; i++)
-            if (triggers[i].links.length > 1) show = true;
-
-        cleanup.setUiAttribs({ "hideParam": !show });
-
-        if (op.isCurrentUiOp()) op.refreshParams();
-    }, 60);
-}
-
-function triggerAll()
-{
-    // for (let i = 0; i < triggers.length; i++) triggers[i].trigger();
-    for (let i = 0; i < connectedOuts.length; i++) connectedOuts[i].trigger();
-}
-
-function clean()
-{
-    let count = 0;
-    for (let i = 0; i < triggers.length; i++)
-    {
-        let removeLinks = [];
-
-        if (triggers[i].links.length > 1)
-            for (let j = 1; j < triggers[i].links.length; j++)
-            {
-                while (triggers[count].links.length > 0) count++;
-
-                removeLinks.push(triggers[i].links[j]);
-                const otherPort = triggers[i].links[j].getOtherPort(triggers[i]);
-                op.patch.link(op, "trigger " + count, otherPort.op, otherPort.name);
-                count++;
-            }
-
-        for (let j = 0; j < removeLinks.length; j++) removeLinks[j].remove();
-    }
-    updateButton();
-    updateConnected();
-}
+};
 
 }
 };
 
-CABLES.OPS["a466bc1f-06e9-4595-8849-bffb9fe22f99"]={f:Ops.Trigger.Sequence,objName:"Ops.Trigger.Sequence"};
+CABLES.OPS["be066ff6-85e2-408a-9570-59fb7abff7b2"]={f:Ops.Trigger.SequenceMultiPort,objName:"Ops.Trigger.SequenceMultiPort"};
 
 
 
@@ -9701,11 +9631,11 @@ CABLES.OPS["cf3544e4-e392-432b-89fd-fcfb5c974388"]={f:Ops.Trigger.TriggerOnce,ob
 
 // **************************************************************
 // 
-// Ops.Trigger.SequenceMultiPort
+// Ops.Cables.LoadingStatus_v2
 // 
 // **************************************************************
 
-Ops.Trigger.SequenceMultiPort= class extends CABLES.Op 
+Ops.Cables.LoadingStatus_v2= class extends CABLES.Op 
 {
 constructor()
 {
@@ -9713,25 +9643,144 @@ super(...arguments);
 const op=this;
 const attachments=op.attachments={};
 const
-    inTrigs = op.inMultiPort("Input", CABLES.OP_PORT_TYPE_FUNCTION),
-    outTrigs = op.outMultiPort("Output", CABLES.OP_PORT_TYPE_FUNCTION);
+    exe = op.inTrigger("exe"),
+    startTimeLine = op.inBool("Play Timeline", true),
+    next = op.outTrigger("Next"),
+    outInitialFinished = op.outBoolNum("Finished Initial Loading", false),
+    outLoading = op.outBoolNum("Loading"),
+    outProgress = op.outNumber("Progress"),
+    outList = op.outArray("Jobs"),
+    loadingFinished = op.outTrigger("Trigger Loading Finished ");
 
-// op.setUiAttrib({ "resizable": true, "resizableY": false, "stretchPorts": true });
+const cgl = op.patch.cgl;
+const patch = op.patch;
 
-inTrigs.onTriggered = (index) =>
+let finishedOnce = false;
+const preRenderTimes = [];
+let firstTime = true;
+let timeout = 0;
+
+document.body.classList.add("cables-loading");
+
+let loadingId = cgl.patch.loading.start("loadingStatusInit", "loadingStatusInit", op);
+
+op.patch.loading.on("finishedTask", updateStatus.bind(this));
+op.patch.loading.on("startTask", updateStatus.bind(this));
+
+function updateStatus()
 {
-    const ports = outTrigs.get();
+    const jobs = op.patch.loading.getListJobs();
+    outProgress.set(patch.loading.getProgress());
 
-    for (let i = 0; i < ports.length; i++)
+    let hasFinished = jobs.length === 0;
+    const notFinished = !hasFinished;
+
+    if (notFinished)
     {
-        ports[i].trigger();
+        outList.set(op.patch.loading.getListJobs());
+    }
+
+    if (notFinished)
+    {
+        if (firstTime)
+        {
+            // if (preRenderOps.get()) op.patch.preRenderOps();
+
+            op.patch.timer.setTime(0);
+            if (startTimeLine.get())
+            {
+                op.patch.timer.play();
+            }
+            else
+            {
+                op.patch.timer.pause();
+            }
+        }
+        firstTime = false;
+
+        document.body.classList.remove("cables-loading");
+        document.body.classList.add("cables-loaded");
+    }
+    else
+    {
+        finishedOnce = true;
+        outList.set(op.patch.loading.getListJobs());
+        if (patch.loading.getProgress() < 1.0)
+        {
+            op.patch.timer.setTime(0);
+            op.patch.timer.pause();
+        }
+    }
+
+    outInitialFinished.set(finishedOnce);
+
+    if (outLoading.get() && hasFinished) loadingFinished.trigger();
+
+    outLoading.set(notFinished);
+    // clearTimeout(timeout);
+    // if (notFinished) outLoading.set(notFinished);
+    // else
+    //     timeout = setTimeout(() =>
+    //     {
+    //         outLoading.set(notFinished);
+    //     }, 100);
+
+    op.setUiAttribs({ "loading": notFinished });
+}
+
+exe.onTriggered = () =>
+{
+    updateStatus();
+
+    next.trigger();
+
+    if (loadingId)
+    {
+        cgl.patch.loading.finished(loadingId);
+        loadingId = null;
     }
 };
 
 }
 };
 
-CABLES.OPS["be066ff6-85e2-408a-9570-59fb7abff7b2"]={f:Ops.Trigger.SequenceMultiPort,objName:"Ops.Trigger.SequenceMultiPort"};
+CABLES.OPS["e62f7f4c-7436-437e-8451-6bc3c28545f7"]={f:Ops.Cables.LoadingStatus_v2,objName:"Ops.Cables.LoadingStatus_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.SmoothStep_v2
+// 
+// **************************************************************
+
+Ops.Math.SmoothStep_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    result = op.outNumber("result"),
+    number = op.inValueFloat("number", 0),
+    min = op.inValueFloat("min", 0),
+    max = op.inValueFloat("max", 1);
+
+number.onChange = max.onChange = min.onChange = exec;
+exec();
+
+function exec()
+{
+    let x = Math.max(0, Math.min(1, (number.get() - min.get()) / (max.get() - min.get())));
+    result.set(x * x * (3 - 2) * (max.get() - min.get())); // smoothstep
+}
+
+}
+};
+
+CABLES.OPS["b5c41eea-ac30-4ac7-9481-eefe42e8199c"]={f:Ops.Math.SmoothStep_v2,objName:"Ops.Math.SmoothStep_v2"};
 
 
 
