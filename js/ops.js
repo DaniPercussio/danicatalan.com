@@ -9751,11 +9751,11 @@ CABLES.OPS["e62f7f4c-7436-437e-8451-6bc3c28545f7"]={f:Ops.Cables.LoadingStatus_v
 
 // **************************************************************
 // 
-// Ops.Math.SmoothStep_v2
+// Ops.Trigger.GateTrigger
 // 
 // **************************************************************
 
-Ops.Math.SmoothStep_v2= class extends CABLES.Op 
+Ops.Trigger.GateTrigger= class extends CABLES.Op 
 {
 constructor()
 {
@@ -9763,24 +9763,20 @@ super(...arguments);
 const op=this;
 const attachments=op.attachments={};
 const
-    result = op.outNumber("result"),
-    number = op.inValueFloat("number", 0),
-    min = op.inValueFloat("min", 0),
-    max = op.inValueFloat("max", 1);
+    exe = op.inTrigger('Execute'),
+    passThrough = op.inValueBool('Pass Through',true),
+    triggerOut = op.outTrigger('Trigger out');
 
-number.onChange = max.onChange = min.onChange = exec;
-exec();
-
-function exec()
+exe.onTriggered = function()
 {
-    let x = Math.max(0, Math.min(1, (number.get() - min.get()) / (max.get() - min.get())));
-    result.set(x * x * (3 - 2) * (max.get() - min.get())); // smoothstep
+    if(passThrough.get())
+        triggerOut.trigger();
 }
 
 }
 };
 
-CABLES.OPS["b5c41eea-ac30-4ac7-9481-eefe42e8199c"]={f:Ops.Math.SmoothStep_v2,objName:"Ops.Math.SmoothStep_v2"};
+CABLES.OPS["65e8b8a2-ba13-485f-883a-2bcf377989da"]={f:Ops.Trigger.GateTrigger,objName:"Ops.Trigger.GateTrigger"};
 
 
 

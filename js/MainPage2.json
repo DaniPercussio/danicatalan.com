@@ -8366,31 +8366,38 @@
                     "name": "Next",
                     "links": [
                         {
-                            "portIn": "Input_0",
+                            "portIn": "Execute",
                             "portOut": "Next",
-                            "objIn": "gk9syb8d6",
+                            "objIn": "za5g9vplc",
                             "objOut": "c637pnac1"
                         }
                     ]
                 },
                 {
                     "name": "Finished Initial Loading",
-                    "value": 1
-                },
-                {
-                    "name": "Loading",
-                    "value": 0
-                },
-                {
-                    "name": "Progress",
                     "links": [
                         {
-                            "portIn": "value",
-                            "portOut": "Progress",
-                            "objIn": "1w703tjvc",
+                            "portIn": "Pass Through",
+                            "portOut": "Finished Initial Loading",
+                            "objIn": "za5g9vplc",
                             "objOut": "c637pnac1"
                         }
                     ]
+                },
+                {
+                    "name": "Loading",
+                    "links": [
+                        {
+                            "portIn": "Opacity",
+                            "portOut": "Loading",
+                            "objIn": "0yjn5ljej",
+                            "objOut": "c637pnac1"
+                        }
+                    ]
+                },
+                {
+                    "name": "Progress",
+                    "value": 1
                 }
             ],
             "objName": "Ops.Cables.LoadingStatus_v2"
@@ -8485,85 +8492,27 @@
             "objName": "Ops.Html.Elements.Element_v2"
         },
         {
-            "id": "1w703tjvc",
+            "id": "za5g9vplc",
             "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "old min",
-                    "value": 0
-                },
-                {
-                    "name": "old max",
-                    "value": 1
-                },
-                {
-                    "name": "new min",
-                    "value": 2
-                },
-                {
-                    "name": "new max",
-                    "value": 0
-                },
-                {
-                    "name": "Easing index",
-                    "value": 0
-                },
-                {
-                    "name": "Easing",
-                    "value": "Linear"
-                },
-                {
-                    "name": "Clamp",
-                    "value": 1
-                }
-            ],
             "portsOut": [
                 {
-                    "name": "result",
+                    "name": "Trigger out",
                     "links": [
                         {
-                            "portIn": "number",
-                            "portOut": "result",
-                            "objIn": "5dx2t27c5",
-                            "objOut": "1w703tjvc"
+                            "portIn": "Input_0",
+                            "portOut": "Trigger out",
+                            "objIn": "gk9syb8d6",
+                            "objOut": "za5g9vplc"
                         }
                     ]
                 }
             ],
-            "objName": "Ops.Math.MapRange"
-        },
-        {
-            "id": "5dx2t27c5",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "min",
-                    "value": 0
-                },
-                {
-                    "name": "max",
-                    "value": 1
-                }
-            ],
-            "portsOut": [
-                {
-                    "name": "result",
-                    "links": [
-                        {
-                            "portIn": "Opacity",
-                            "portOut": "result",
-                            "objIn": "0yjn5ljej",
-                            "objOut": "5dx2t27c5"
-                        }
-                    ]
-                }
-            ],
-            "objName": "Ops.Math.SmoothStep_v2"
+            "objName": "Ops.Trigger.GateTrigger"
         }
     ],
     "export": {
-        "time": "2025-11-04 01:10",
+        "time": "2025-11-04 01:19",
         "service": "html",
-        "exportNumber": 63
+        "exportNumber": 65
     }
 }
