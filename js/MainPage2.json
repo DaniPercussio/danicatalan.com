@@ -8284,7 +8284,7 @@
                 },
                 {
                     "name": "browser event delta",
-                    "value": -7
+                    "value": 2
                 }
             ],
             "objName": "Ops.Devices.Mouse.MouseWheel_v2"
@@ -8408,7 +8408,7 @@
                 },
                 {
                     "name": "browser event delta",
-                    "value": -7
+                    "value": 2
                 }
             ],
             "objName": "Ops.Devices.Mouse.MouseWheel_v2"
@@ -8540,7 +8540,7 @@
                 },
                 {
                     "name": "Width",
-                    "value": 9
+                    "value": 14
                 },
                 {
                     "name": "Height",
@@ -8564,7 +8564,7 @@
                 },
                 {
                     "name": "Inline Style",
-                    "value": "background-color: white;\nz-index: 999;"
+                    "value": "background-color: white;\nz-index: 999;\nleft:-5px;"
                 },
                 {
                     "name": "CSS Class",
@@ -8728,7 +8728,7 @@
                 },
                 {
                     "name": "browser event delta",
-                    "value": -7
+                    "value": 2
                 }
             ],
             "objName": "Ops.Devices.Mouse.MouseWheel_v2"
@@ -8832,7 +8832,7 @@
                 },
                 {
                     "name": "Width",
-                    "value": 9
+                    "value": 14
                 },
                 {
                     "name": "Height",
@@ -8856,7 +8856,7 @@
                 },
                 {
                     "name": "Inline Style",
-                    "value": "background-color: white;\nposition: absolute;\nz-index: 999;\nright: -1%;"
+                    "value": "background-color: white;\nposition: absolute;\nz-index: 999;\nright: -5px;"
                 },
                 {
                     "name": "CSS Class",
@@ -9213,7 +9213,7 @@
                 },
                 {
                     "name": "Inline Style",
-                    "value": "  position: fixed;\r\n  top: 21%;\r\n  left: 17%;\r\n  right: 17%;\r\n  height: 1px;\r\n  background-color: black;\r\n  display: block;\r\n  z-index: 1000;"
+                    "value": "  position: fixed;\r\n  top: 21%;\r\n  left: 0%;\r\n  right: 0%;\r\n  height: 1px;\r\n  background-color: black;\r\n  display: block;\r\n  z-index: 90;"
                 },
                 {
                     "name": "CSS Class",
@@ -9254,8 +9254,8 @@
         }
     ],
     "export": {
-        "time": "2025-11-12 22:18",
+        "time": "2025-11-12 22:24",
         "service": "html",
-        "exportNumber": 69
+        "exportNumber": 70
     }
 }
