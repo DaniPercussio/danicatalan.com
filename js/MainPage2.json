@@ -204,11 +204,11 @@
                 },
                 {
                     "name": "Rot X",
-                    "value": 85.6953678054175
+                    "value": 90
                 },
                 {
                     "name": "Rot Y",
-                    "value": 179.99999999999997
+                    "value": 90
                 }
             ],
             "objName": "Ops.Graphics.OrbitControls_v3"
@@ -5154,7 +5154,7 @@
                 },
                 {
                     "name": "Style",
-                    "value": "position: fixed;\r\ncursor: default;\r\ntop: 17%;\r\nleft: 50%;\r\ntransform: translateX(-50%);\r\ntext-align: center;\r\nfont-family: Arial, sans-serif;\r\ncolor: black;\r\nfont-weight: 500;\r\nfont-size: 14px;"
+                    "value": "\r\n  position: fixed;\r\n  top: 17%;\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n  text-align: center;\r\n  font-family: Arial, sans-serif;\r\n  color: black;\r\n  font-weight: 500;\r\n  font-size: 14px;\r\n  z-index: 1000; \r\n\r\n"
                 },
                 {
                     "name": "Interactive",
@@ -5287,7 +5287,7 @@
                 },
                 {
                     "name": "Class",
-                    "value": "MUSIC"
+                    "value": "music"
                 },
                 {
                     "name": "Style",
@@ -5424,7 +5424,7 @@
                 },
                 {
                     "name": "Class",
-                    "value": "Contact"
+                    "value": "contact"
                 },
                 {
                     "name": "Style",
@@ -7142,130 +7142,6 @@
             "objName": "Ops.Html.CSS.ElementCssText"
         },
         {
-            "id": "woitingy2",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "Classname",
-                    "value": "MUSIC"
-                }
-            ],
-            "portsOut": [
-                {
-                    "name": "Position",
-                    "links": [
-                        {
-                            "portIn": "ryzonyqik",
-                            "portOut": "Position",
-                            "objIn": "addpmb8oq",
-                            "objOut": "woitingy2"
-                        }
-                    ]
-                },
-                {
-                    "name": "Total Elements",
-                    "value": 1
-                }
-            ],
-            "objName": "Ops.Html.ElementsPositionsByClass"
-        },
-        {
-            "id": "5ymh1a2ha",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "Classname",
-                    "value": "Contact"
-                }
-            ],
-            "portsOut": [
-                {
-                    "name": "Position",
-                    "links": [
-                        {
-                            "portIn": "0ekitsejo",
-                            "portOut": "Position",
-                            "objIn": "addpmb8oq",
-                            "objOut": "5ymh1a2ha"
-                        }
-                    ]
-                },
-                {
-                    "name": "Size",
-                    "links": [
-                        {
-                            "portIn": "pmpcafkxc",
-                            "portOut": "Size",
-                            "objIn": "addpmb8oq",
-                            "objOut": "5ymh1a2ha"
-                        }
-                    ]
-                },
-                {
-                    "name": "Total Elements",
-                    "value": 1
-                }
-            ],
-            "objName": "Ops.Html.ElementsPositionsByClass"
-        },
-        {
-            "id": "addpmb8oq",
-            "uiAttribs": {},
-            "storage": {
-                "blueprintVer": 2,
-                "subPatchVer": 2
-            },
-            "portsIn": [
-                {
-                    "name": "ryzonyqik",
-                    "title": "Array"
-                },
-                {
-                    "name": "0ekitsejo",
-                    "title": "Array"
-                },
-                {
-                    "name": "pmpcafkxc",
-                    "title": "Array"
-                },
-                {
-                    "name": "patchId",
-                    "value": "bp2sub_addpmb8oq"
-                }
-            ],
-            "objName": "Ops.Local.SubPatch1"
-        },
-        {
-            "id": "dj8i5qltn",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "Named Trigger",
-                    "value": "mainLoop"
-                }
-            ],
-            "portsOut": [
-                {
-                    "name": "Triggered",
-                    "links": [
-                        {
-                            "portIn": "Update",
-                            "portOut": "Triggered",
-                            "objIn": "woitingy2",
-                            "objOut": "dj8i5qltn"
-                        },
-                        {
-                            "portIn": "Update",
-                            "portOut": "Triggered",
-                            "objIn": "5ymh1a2ha",
-                            "objOut": "dj8i5qltn"
-                        }
-                    ]
-                }
-            ],
-            "objName": "Ops.Trigger.TriggerReceive"
-        },
-        {
             "id": "w2daoxw4k",
             "uiAttribs": {},
             "portsIn": [
@@ -8408,7 +8284,7 @@
                 },
                 {
                     "name": "browser event delta",
-                    "value": -120
+                    "value": -7
                 }
             ],
             "objName": "Ops.Devices.Mouse.MouseWheel_v2"
@@ -8532,7 +8408,7 @@
                 },
                 {
                     "name": "browser event delta",
-                    "value": -120
+                    "value": -7
                 }
             ],
             "objName": "Ops.Devices.Mouse.MouseWheel_v2"
@@ -8625,11 +8501,11 @@
                 },
                 {
                     "name": "Margin Left",
-                    "value": -588.5021362304688
+                    "value": -607.0043334960938
                 },
                 {
                     "name": "Margin Top",
-                    "value": -331.5065155029297
+                    "value": -341.50433349609375
                 }
             ],
             "objName": "Ops.Gl.ForceCanvasSize"
@@ -8852,7 +8728,7 @@
                 },
                 {
                     "name": "browser event delta",
-                    "value": -120
+                    "value": -7
                 }
             ],
             "objName": "Ops.Devices.Mouse.MouseWheel_v2"
@@ -9282,10 +9158,103 @@
                 }
             ],
             "objName": "Ops.Html.Utils.LoadingIndicator"
+        },
+        {
+            "id": "a6arhlhar",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Text",
+                    "value": ""
+                },
+                {
+                    "name": "Position index",
+                    "value": 0
+                },
+                {
+                    "name": "Position",
+                    "value": "Absolute"
+                },
+                {
+                    "name": "Interactive index",
+                    "value": 2
+                },
+                {
+                    "name": "Interactive",
+                    "value": "No Pointer Events"
+                },
+                {
+                    "name": "Set Size",
+                    "value": 1
+                },
+                {
+                    "name": "Width",
+                    "value": 0
+                },
+                {
+                    "name": "Height",
+                    "value": 0
+                },
+                {
+                    "name": "Size  Units index",
+                    "value": 2
+                },
+                {
+                    "name": "Size  Units",
+                    "value": "vwh"
+                },
+                {
+                    "name": "Overflow index",
+                    "value": 1
+                },
+                {
+                    "name": "Overflow",
+                    "value": "Hidden"
+                },
+                {
+                    "name": "Inline Style",
+                    "value": "  position: fixed;\r\n  top: 21%;\r\n  left: 17%;\r\n  right: 17%;\r\n  height: 1px;\r\n  background-color: black;\r\n  display: block;\r\n  z-index: 1000;"
+                },
+                {
+                    "name": "CSS Class",
+                    "value": ""
+                },
+                {
+                    "name": "Disable CSS Props",
+                    "value": ""
+                },
+                {
+                    "name": "Display index",
+                    "value": 1
+                },
+                {
+                    "name": "Display",
+                    "value": "Block"
+                },
+                {
+                    "name": "Tag Name",
+                    "value": "div"
+                },
+                {
+                    "name": "Opacity",
+                    "value": 1
+                },
+                {
+                    "name": "Propagate Click-Events",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Hovering",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Html.Elements.Element_v2"
         }
     ],
     "export": {
-        "time": "2025-11-12 21:04",
+        "time": "2025-11-12 22:18",
         "service": "html",
         "exportNumber": 69
     }

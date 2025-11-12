@@ -132,96 +132,6 @@ CABLES.OPS["f104d02f-aad0-4f0d-9f12-1505cfb2e979"]={f:Ops.Local.SubPatch0,objNam
 
 // **************************************************************
 // 
-// Ops.Local.SubPatch1
-// 
-// **************************************************************
-
-Ops.Local.SubPatch1= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={"inc_gen_ports_js":"const port_ryzonyqik=op.inArray(\"ryzonyqik\");\nport_ryzonyqik.setUiAttribs({title:\"Array\",});\n\nconst port_0ekitsejo=op.inArray(\"0ekitsejo\");\nport_0ekitsejo.setUiAttribs({title:\"Array\",});\n\nconst port_pmpcafkxc=op.inArray(\"pmpcafkxc\");\nport_pmpcafkxc.setUiAttribs({title:\"Array\",});\n\nop.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\nconst innerOut_ryzonyqik = addedOps[i].outArray(\"innerOut_ryzonyqik\");\ninnerOut_ryzonyqik.setUiAttribs({title:\"Array\"});\nport_ryzonyqik.on(\"change\", (a,v) => { innerOut_ryzonyqik.setRef(a); });\n\nconst innerOut_0ekitsejo = addedOps[i].outArray(\"innerOut_0ekitsejo\");\ninnerOut_0ekitsejo.setUiAttribs({title:\"Array\"});\nport_0ekitsejo.on(\"change\", (a,v) => { innerOut_0ekitsejo.setRef(a); });\n\nconst innerOut_pmpcafkxc = addedOps[i].outArray(\"innerOut_pmpcafkxc\");\ninnerOut_pmpcafkxc.setUiAttribs({title:\"Array\"});\nport_pmpcafkxc.on(\"change\", (a,v) => { innerOut_pmpcafkxc.setRef(a); });\n\n    }\nif(addedOps[i].innerOutput)\n{\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"oe7yodzio\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"Text\",\"value\":\"\"},{\"name\":\"Id\",\"value\":\"\"},{\"name\":\"Class\",\"value\":\"\"},{\"name\":\"Style\",\"value\":\"position:fixed;\\nz-index:98;\\nheight: 1px;\\nbackground: black;\\n\"},{\"name\":\"Interactive\",\"value\":0},{\"name\":\"Visible\",\"value\":1},{\"name\":\"Convert Line Breaks\",\"value\":0},{\"name\":\"Propagate Click-Events\",\"value\":1}],\"portsOut\":[{\"name\":\"DOM Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"DOM Element\",\"objIn\":\"9oq8kvs49\",\"objOut\":\"oe7yodzio\"}]},{\"name\":\"Hover\",\"value\":0}],\"objName\":\"Ops.Html.Elements.DivElement_v3\"},{\"id\":\"f9x2rca43\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"0wo0fc2bc\",\"objOut\":\"f9x2rca43\"},{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"69h9mdf53\",\"objOut\":\"f9x2rca43\"}]},{\"name\":\"Average Y\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average Y\",\"objIn\":\"1qbtb7kd8\",\"objOut\":\"f9x2rca43\"}]},{\"name\":\"Average Z\",\"value\":0}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"1qbtb7kd8\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":14.83}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"9oq8kvs49\",\"objOut\":\"1qbtb7kd8\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"9oq8kvs49\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"top\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"portsOut\":[{\"name\":\"HTML Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"HTML Element\",\"objIn\":\"kyy7cem59\",\"objOut\":\"9oq8kvs49\"}]}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"m2k4fe4pk\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"Average X\",\"objIn\":\"ftstfr6y5\",\"objOut\":\"m2k4fe4pk\"}]},{\"name\":\"Average Y\",\"value\":82.61739349365234},{\"name\":\"Average Z\",\"value\":0}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"0wo0fc2bc\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":8}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"0j40co374\",\"objOut\":\"0wo0fc2bc\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"kyy7cem59\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"width\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"portsOut\":[{\"name\":\"HTML Element\",\"links\":[{\"portIn\":\"Element\",\"portOut\":\"HTML Element\",\"objIn\":\"0j40co374\",\"objOut\":\"kyy7cem59\"}]}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"snw7xv8h4\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"Average X\",\"links\":[{\"portIn\":\"number2\",\"portOut\":\"Average X\",\"objIn\":\"bgp4ktj6k\",\"objOut\":\"snw7xv8h4\"}]},{\"name\":\"Average Y\",\"value\":16.695653915405273},{\"name\":\"Average Z\",\"value\":1}],\"objName\":\"Ops.Array.Array3GetAverage\"},{\"id\":\"bgp4ktj6k\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"result\",\"objIn\":\"528xswgca\",\"objOut\":\"bgp4ktj6k\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"0j40co374\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"Property\",\"value\":\"left\"},{\"name\":\"Value Suffix\",\"value\":\"px\"}],\"objName\":\"Ops.Html.CSS.CSSProperty_v2\"},{\"id\":\"69h9mdf53\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number2\",\"portOut\":\"result\",\"objIn\":\"528xswgca\",\"objOut\":\"69h9mdf53\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"528xswgca\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"Value\",\"portOut\":\"result\",\"objIn\":\"kyy7cem59\",\"objOut\":\"528xswgca\"}]}],\"objName\":\"Ops.Math.Subtract\"},{\"id\":\"ftstfr6y5\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsIn\":[{\"name\":\"number2\",\"value\":10}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"number1\",\"portOut\":\"result\",\"objIn\":\"bgp4ktj6k\",\"objOut\":\"ftstfr6y5\"}]}],\"objName\":\"Ops.Math.Sum\"},{\"id\":\"io5hrgcp4\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"portsOut\":[{\"name\":\"innerOut_ryzonyqik\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_ryzonyqik\",\"objIn\":\"f9x2rca43\",\"objOut\":\"io5hrgcp4\"}]},{\"name\":\"innerOut_0ekitsejo\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_0ekitsejo\",\"objIn\":\"m2k4fe4pk\",\"objOut\":\"io5hrgcp4\"}]},{\"name\":\"innerOut_pmpcafkxc\",\"title\":\"Array\",\"links\":[{\"portIn\":\"Array\",\"portOut\":\"innerOut_pmpcafkxc\",\"objIn\":\"snw7xv8h4\",\"objOut\":\"io5hrgcp4\"}]}],\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"35h804ntp\",\"uiAttribs\":{\"subPatch\":\"nl1sn7dak\"},\"storage\":{},\"objName\":\"Ops.Ui.SubPatchOutput\"}]}",};
-const port_ryzonyqik=op.inArray("ryzonyqik");
-port_ryzonyqik.setUiAttribs({title:"Array",});
-
-const port_0ekitsejo=op.inArray("0ekitsejo");
-port_0ekitsejo.setUiAttribs({title:"Array",});
-
-const port_pmpcafkxc=op.inArray("pmpcafkxc");
-port_pmpcafkxc.setUiAttribs({title:"Array",});
-
-op.initInnerPorts=function(addedOps)
-{
-  for(let i=0;i<addedOps.length;i++)
-  {
-    if(addedOps[i].innerInput)
-    {
-const innerOut_ryzonyqik = addedOps[i].outArray("innerOut_ryzonyqik");
-innerOut_ryzonyqik.setUiAttribs({title:"Array"});
-port_ryzonyqik.on("change", (a,v) => { innerOut_ryzonyqik.setRef(a); });
-
-const innerOut_0ekitsejo = addedOps[i].outArray("innerOut_0ekitsejo");
-innerOut_0ekitsejo.setUiAttribs({title:"Array"});
-port_0ekitsejo.on("change", (a,v) => { innerOut_0ekitsejo.setRef(a); });
-
-const innerOut_pmpcafkxc = addedOps[i].outArray("innerOut_pmpcafkxc");
-innerOut_pmpcafkxc.setUiAttribs({title:"Array"});
-port_pmpcafkxc.on("change", (a,v) => { innerOut_pmpcafkxc.setRef(a); });
-
-    }
-if(addedOps[i].innerOutput)
-{
-}
-}
-};
-
-const patchId = "bp2sub_" + op.id;
-
-new CABLES.SubPatchOp(op, { "subId": patchId });
-
-initializeSubpatch();
-
-function initializeSubpatch()
-{
-    if(!attachments || !attachments.subpatch_json) return;
-
-    const p = JSON.parse(attachments.subpatch_json);
-
-    CABLES.Patch.replaceOpIds(p,
-        {
-            "parentSubPatchId": patchId,
-            "prefixHash": patchId,
-            "oldIdAsRef": true,
-            "doNotUnlinkLostLinks": true
-        });
-
-    for (let i = 0; i < p.ops.length; i++)
-    {
-        p.ops[i].uiAttribs.blueprintSubpatch2 = true;
-    }
-
-    op.loadDependencies(p, () =>
-    {
-        op.patch.deSerialize(p, { "opsCreated": op.initInnerPorts });
-        if (CABLES.UI)gui.savedState.setSaved("blueprintloaded", patchId);
-        op.patch.emitEvent("subpatchExpose", patchId);
-        op.setStorage({ "blueprintVer": 2 });
-        op.patch.emitEvent("subpatchExpose", patchId);
-    });
-}
-
-}
-};
-
-CABLES.OPS["a8ff4535-2e9c-4dc3-bdb3-098ba09c7355"]={f:Ops.Local.SubPatch1,objName:"Ops.Local.SubPatch1"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.WebAudio.ClockSequencerPattern
 // 
 // **************************************************************
@@ -760,482 +670,6 @@ function exec()
 };
 
 CABLES.OPS["8fb2bb5d-665a-4d0a-8079-12710ae453be"]={f:Ops.Number.Number,objName:"Ops.Number.Number"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Html.Elements.DivElement_v3
-// 
-// **************************************************************
-
-Ops.Html.Elements.DivElement_v3= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inText = op.inString("Text", "Hello Div"),
-    inId = op.inString("Id"),
-    inClass = op.inString("Class"),
-    inStyle = op.inStringEditor("Style", "position:absolute;\nz-index:100;", "inline-css"),
-    inInteractive = op.inValueBool("Interactive", false),
-    inVisible = op.inValueBool("Visible", true),
-    inBreaks = op.inValueBool("Convert Line Breaks", false),
-    inPropagation = op.inValueBool("Propagate Click-Events", true),
-    outElement = op.outObject("DOM Element", null, "element"),
-    outHover = op.outBoolNum("Hover"),
-    outClicked = op.outTrigger("Clicked");
-
-let listenerElement = null;
-let oldStr = null;
-let prevDisplay = "block";
-let div = null;
-
-const canvas = op.patch.cgl.canvas.parentElement;
-
-createElement();
-
-inClass.onChange = updateClass;
-inBreaks.onChange = inText.onChange = updateText;
-inStyle.onChange = updateStyle;
-inInteractive.onChange = updateInteractive;
-inVisible.onChange = updateVisibility;
-
-updateText();
-updateStyle();
-warning();
-updateInteractive();
-
-op.onDelete = removeElement;
-
-outElement.onLinkChanged = updateStyle;
-
-inInteractive.onLinkChanged =
-outClicked.onLinkChanged = () =>
-{
-    op.setUiError("interactiveProblem", null);
-    if (outClicked.isLinked() && !inInteractive.get() && !inInteractive.isLinked())
-        op.setUiError("interactiveProblem", "Interactive should be activated when linking clicked port");
-};
-
-function createElement()
-{
-    div = op.patch.getDocument().createElement("div");
-    div.dataset.op = op.id;
-    div.classList.add("cablesEle");
-
-    if (inId.get()) div.id = inId.get();
-
-    canvas.appendChild(div);
-    outElement.setRef(div);
-}
-
-function removeElement()
-{
-    if (div) removeClasses();
-    if (div && div.parentNode) div.parentNode.removeChild(div);
-    oldStr = null;
-    div = null;
-}
-
-function setCSSVisible(visible)
-{
-    if (!visible)
-    {
-        div.style.visibility = "hidden";
-        prevDisplay = div.style.display || "inherit";
-        div.style.display = "none";
-    }
-    else
-    {
-        // prevDisplay=div.style.display||'inherit';
-        if (prevDisplay == "none") prevDisplay = "inherit";
-        div.style.visibility = "visible";
-        div.style.display = prevDisplay;
-    }
-}
-
-function updateVisibility()
-{
-    setCSSVisible(inVisible.get());
-}
-
-function updateText()
-{
-    let str = inText.get();
-
-    if (oldStr === str) return;
-    oldStr = str;
-
-    if (str && inBreaks.get()) str = str.replace(/(?:\r\n|\r|\n)/g, "<br>");
-
-    if (div.innerHTML != str) div.innerHTML = str;
-
-    outElement.setRef(div);
-}
-
-// inline css inisde div
-function updateStyle()
-{
-    if (!div) return;
-    // if (inStyle.get() != div.style)
-    // {
-    div.setAttribute("style", inStyle.get());
-    updateVisibility();
-    outElement.setRef(div);
-    // }
-
-    if (!div.parentElement) canvas.appendChild(div);
-
-    warning();
-}
-
-let oldClassesStr = "";
-
-function removeClasses()
-{
-    if (!div) return;
-
-    const classes = (inClass.get() || "").split(" ");
-    for (let i = 0; i < classes.length; i++)
-    {
-        if (classes[i]) div.classList.remove(classes[i]);
-    }
-    oldClassesStr = "";
-}
-
-function updateClass()
-{
-    const classes = (inClass.get() || "").split(" ");
-    const oldClasses = (oldClassesStr || "").split(" ");
-
-    let found = false;
-
-    for (let i = 0; i < oldClasses.length; i++)
-    {
-        if (
-            oldClasses[i] &&
-            classes.indexOf(oldClasses[i].trim()) == -1)
-        {
-            found = true;
-            div.classList.remove(oldClasses[i]);
-        }
-    }
-
-    for (let i = 0; i < classes.length; i++)
-    {
-        if (classes[i])
-        {
-            div.classList.add(classes[i].trim());
-        }
-    }
-
-    oldClassesStr = inClass.get();
-    warning();
-}
-
-function onMouseEnter(e)
-{
-    outHover.set(true);
-}
-
-function onMouseLeave(e)
-{
-    outHover.set(false);
-}
-
-function onMouseClick(e)
-{
-    if (!inPropagation.get())
-    {
-        e.stopPropagation();
-    }
-    outClicked.trigger();
-}
-
-function updateInteractive()
-{
-    op.setUiError("interactiveProblem", null);
-
-    removeListeners();
-    if (inInteractive.get()) addListeners();
-}
-
-inId.onChange = function ()
-{
-    div.id = inId.get();
-};
-
-function removeListeners()
-{
-    if (listenerElement)
-    {
-        listenerElement.removeEventListener("pointerdown", onMouseClick);
-        listenerElement.removeEventListener("pointerleave", onMouseLeave);
-        listenerElement.removeEventListener("pointerenter", onMouseEnter);
-        listenerElement = null;
-    }
-}
-
-function addListeners()
-{
-    if (listenerElement)removeListeners();
-
-    listenerElement = div;
-
-    if (listenerElement)
-    {
-        listenerElement.addEventListener("pointerdown", onMouseClick);
-        listenerElement.addEventListener("pointerleave", onMouseLeave);
-        listenerElement.addEventListener("pointerenter", onMouseEnter);
-    }
-}
-
-op.addEventListener("onEnabledChange", function (enabled)
-{
-    removeElement();
-    if (enabled)
-    {
-        createElement();
-        updateStyle();
-        updateClass();
-        updateText();
-        updateInteractive();
-    }
-    // if(enabled) updateVisibility();
-    // else setCSSVisible(false);
-});
-
-function warning()
-{
-    if (inClass.get() && inStyle.get())
-    {
-        op.setUiError("error", "Element uses external and inline CSS", 1);
-    }
-    else
-    {
-        op.setUiError("error", null);
-    }
-}
-
-}
-};
-
-CABLES.OPS["d55d398c-e68e-486b-b0ce-d9c4bdf7df05"]={f:Ops.Html.Elements.DivElement_v3,objName:"Ops.Html.Elements.DivElement_v3"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Array.Array3GetAverage
-// 
-// **************************************************************
-
-Ops.Array.Array3GetAverage= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inArr = op.inArray("Array", 3),
-    avgX = op.outNumber("Average X"),
-    avgY = op.outNumber("Average Y"),
-    avgZ = op.outNumber("Average Z");
-op.toWorkPortsNeedToBeLinked(inArr);
-
-inArr.onChange = function ()
-{
-    let arr = inArr.get();
-    if (!arr)
-    {
-        avgX.set(0);
-        avgY.set(0);
-        avgZ.set(0);
-        return;
-    }
-    let x = 0;
-    let y = 0;
-    let z = 0;
-
-    for (let i = 0; i < arr.length; i += 3)
-    {
-        x += arr[i + 0];
-        y += arr[i + 1];
-        z += arr[i + 2];
-    }
-
-    x /= arr.length / 3;
-    y /= arr.length / 3;
-    z /= arr.length / 3;
-
-    avgX.set(x);
-    avgY.set(y);
-    avgZ.set(z);
-};
-
-}
-};
-
-CABLES.OPS["9643edc7-e479-4b26-9f7a-343cdcdc81f4"]={f:Ops.Array.Array3GetAverage,objName:"Ops.Array.Array3GetAverage"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Math.Sum
-// 
-// **************************************************************
-
-Ops.Math.Sum= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    number1 = op.inValueFloat("number1", 0),
-    number2 = op.inValueFloat("number2", 0),
-    result = op.outNumber("result");
-
-op.setUiAttribs({ "mathTitle": true });
-
-number1.onChange =
-number2.onChange = exec;
-exec();
-
-function exec()
-{
-    const v = number1.get() + number2.get();
-    if (!isNaN(v))
-        result.set(v);
-}
-
-}
-};
-
-CABLES.OPS["c8fb181e-0b03-4b41-9e55-06b6267bc634"]={f:Ops.Math.Sum,objName:"Ops.Math.Sum"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Html.CSS.CSSProperty_v2
-// 
-// **************************************************************
-
-Ops.Html.CSS.CSSProperty_v2= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inEle = op.inObject("Element"),
-    inProperty = op.inString("Property"),
-    inValue = op.inFloat("Value"),
-    inValueSuffix = op.inString("Value Suffix", "px"),
-    outEle = op.outObject("HTML Element", null, "element");
-
-op.setPortGroup("Element", [inEle]);
-op.setPortGroup("Attributes", [inProperty, inValue, inValueSuffix]);
-
-inProperty.onChange = updateProperty;
-inValue.onChange = update;
-inValueSuffix.onChange = update;
-let ele = null;
-
-inEle.onChange = inEle.onLinkChanged = function ()
-{
-    if (ele && ele.style)
-    {
-        ele.style[inProperty.get()] = "initial";
-    }
-    update();
-};
-
-function updateProperty()
-{
-    update();
-    op.setUiAttrib({ "extendTitle": inProperty.get() + "" });
-}
-
-function update()
-{
-    ele = inEle.get();
-    if (ele && ele.style)
-    {
-        const str = inValue.get() + inValueSuffix.get();
-        try
-        {
-            if (ele.style[inProperty.get()] != str)
-                ele.style[inProperty.get()] = str;
-        }
-        catch (e)
-        {
-            op.logError(e);
-        }
-    }
-    else
-    {
-        setTimeout(update, 50);
-    }
-
-    outEle.setRef(inEle.get());
-}
-
-}
-};
-
-CABLES.OPS["c179aa0e-b558-4130-8c2d-2deab2919a07"]={f:Ops.Html.CSS.CSSProperty_v2,objName:"Ops.Html.CSS.CSSProperty_v2"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Math.Subtract
-// 
-// **************************************************************
-
-Ops.Math.Subtract= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    number1 = op.inValue("number1", 1),
-    number2 = op.inValue("number2", 1),
-    result = op.outNumber("result");
-
-op.setUiAttribs({ "mathTitle": true });
-
-number1.onChange =
-    number2.onChange = exec;
-exec();
-
-function exec()
-{
-    let v = number1.get() - number2.get();
-    if (!isNaN(v)) result.set(v);
-}
-
-}
-};
-
-CABLES.OPS["a4ffe852-d200-4b96-9347-68feb01122ca"]={f:Ops.Math.Subtract,objName:"Ops.Math.Subtract"};
 
 
 
@@ -5925,6 +5359,272 @@ CABLES.OPS["09296117-7312-4f80-982b-7b4a81d22cf8"]={f:Ops.Array.InterpolateArray
 
 // **************************************************************
 // 
+// Ops.Html.Elements.DivElement_v3
+// 
+// **************************************************************
+
+Ops.Html.Elements.DivElement_v3= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inText = op.inString("Text", "Hello Div"),
+    inId = op.inString("Id"),
+    inClass = op.inString("Class"),
+    inStyle = op.inStringEditor("Style", "position:absolute;\nz-index:100;", "inline-css"),
+    inInteractive = op.inValueBool("Interactive", false),
+    inVisible = op.inValueBool("Visible", true),
+    inBreaks = op.inValueBool("Convert Line Breaks", false),
+    inPropagation = op.inValueBool("Propagate Click-Events", true),
+    outElement = op.outObject("DOM Element", null, "element"),
+    outHover = op.outBoolNum("Hover"),
+    outClicked = op.outTrigger("Clicked");
+
+let listenerElement = null;
+let oldStr = null;
+let prevDisplay = "block";
+let div = null;
+
+const canvas = op.patch.cgl.canvas.parentElement;
+
+createElement();
+
+inClass.onChange = updateClass;
+inBreaks.onChange = inText.onChange = updateText;
+inStyle.onChange = updateStyle;
+inInteractive.onChange = updateInteractive;
+inVisible.onChange = updateVisibility;
+
+updateText();
+updateStyle();
+warning();
+updateInteractive();
+
+op.onDelete = removeElement;
+
+outElement.onLinkChanged = updateStyle;
+
+inInteractive.onLinkChanged =
+outClicked.onLinkChanged = () =>
+{
+    op.setUiError("interactiveProblem", null);
+    if (outClicked.isLinked() && !inInteractive.get() && !inInteractive.isLinked())
+        op.setUiError("interactiveProblem", "Interactive should be activated when linking clicked port");
+};
+
+function createElement()
+{
+    div = op.patch.getDocument().createElement("div");
+    div.dataset.op = op.id;
+    div.classList.add("cablesEle");
+
+    if (inId.get()) div.id = inId.get();
+
+    canvas.appendChild(div);
+    outElement.setRef(div);
+}
+
+function removeElement()
+{
+    if (div) removeClasses();
+    if (div && div.parentNode) div.parentNode.removeChild(div);
+    oldStr = null;
+    div = null;
+}
+
+function setCSSVisible(visible)
+{
+    if (!visible)
+    {
+        div.style.visibility = "hidden";
+        prevDisplay = div.style.display || "inherit";
+        div.style.display = "none";
+    }
+    else
+    {
+        // prevDisplay=div.style.display||'inherit';
+        if (prevDisplay == "none") prevDisplay = "inherit";
+        div.style.visibility = "visible";
+        div.style.display = prevDisplay;
+    }
+}
+
+function updateVisibility()
+{
+    setCSSVisible(inVisible.get());
+}
+
+function updateText()
+{
+    let str = inText.get();
+
+    if (oldStr === str) return;
+    oldStr = str;
+
+    if (str && inBreaks.get()) str = str.replace(/(?:\r\n|\r|\n)/g, "<br>");
+
+    if (div.innerHTML != str) div.innerHTML = str;
+
+    outElement.setRef(div);
+}
+
+// inline css inisde div
+function updateStyle()
+{
+    if (!div) return;
+    // if (inStyle.get() != div.style)
+    // {
+    div.setAttribute("style", inStyle.get());
+    updateVisibility();
+    outElement.setRef(div);
+    // }
+
+    if (!div.parentElement) canvas.appendChild(div);
+
+    warning();
+}
+
+let oldClassesStr = "";
+
+function removeClasses()
+{
+    if (!div) return;
+
+    const classes = (inClass.get() || "").split(" ");
+    for (let i = 0; i < classes.length; i++)
+    {
+        if (classes[i]) div.classList.remove(classes[i]);
+    }
+    oldClassesStr = "";
+}
+
+function updateClass()
+{
+    const classes = (inClass.get() || "").split(" ");
+    const oldClasses = (oldClassesStr || "").split(" ");
+
+    let found = false;
+
+    for (let i = 0; i < oldClasses.length; i++)
+    {
+        if (
+            oldClasses[i] &&
+            classes.indexOf(oldClasses[i].trim()) == -1)
+        {
+            found = true;
+            div.classList.remove(oldClasses[i]);
+        }
+    }
+
+    for (let i = 0; i < classes.length; i++)
+    {
+        if (classes[i])
+        {
+            div.classList.add(classes[i].trim());
+        }
+    }
+
+    oldClassesStr = inClass.get();
+    warning();
+}
+
+function onMouseEnter(e)
+{
+    outHover.set(true);
+}
+
+function onMouseLeave(e)
+{
+    outHover.set(false);
+}
+
+function onMouseClick(e)
+{
+    if (!inPropagation.get())
+    {
+        e.stopPropagation();
+    }
+    outClicked.trigger();
+}
+
+function updateInteractive()
+{
+    op.setUiError("interactiveProblem", null);
+
+    removeListeners();
+    if (inInteractive.get()) addListeners();
+}
+
+inId.onChange = function ()
+{
+    div.id = inId.get();
+};
+
+function removeListeners()
+{
+    if (listenerElement)
+    {
+        listenerElement.removeEventListener("pointerdown", onMouseClick);
+        listenerElement.removeEventListener("pointerleave", onMouseLeave);
+        listenerElement.removeEventListener("pointerenter", onMouseEnter);
+        listenerElement = null;
+    }
+}
+
+function addListeners()
+{
+    if (listenerElement)removeListeners();
+
+    listenerElement = div;
+
+    if (listenerElement)
+    {
+        listenerElement.addEventListener("pointerdown", onMouseClick);
+        listenerElement.addEventListener("pointerleave", onMouseLeave);
+        listenerElement.addEventListener("pointerenter", onMouseEnter);
+    }
+}
+
+op.addEventListener("onEnabledChange", function (enabled)
+{
+    removeElement();
+    if (enabled)
+    {
+        createElement();
+        updateStyle();
+        updateClass();
+        updateText();
+        updateInteractive();
+    }
+    // if(enabled) updateVisibility();
+    // else setCSSVisible(false);
+});
+
+function warning()
+{
+    if (inClass.get() && inStyle.get())
+    {
+        op.setUiError("error", "Element uses external and inline CSS", 1);
+    }
+    else
+    {
+        op.setUiError("error", null);
+    }
+}
+
+}
+};
+
+CABLES.OPS["d55d398c-e68e-486b-b0ce-d9c4bdf7df05"]={f:Ops.Html.Elements.DivElement_v3,objName:"Ops.Html.Elements.DivElement_v3"};
+
+
+
+
+// **************************************************************
+// 
 // Ops.Math.MapRange
 // 
 // **************************************************************
@@ -7388,6 +7088,45 @@ CABLES.OPS["fbb89f72-f2e3-4d34-ad01-7d884a1bcdc0"]={f:Ops.Number.SwitchNumber,ob
 
 // **************************************************************
 // 
+// Ops.Math.Sum
+// 
+// **************************************************************
+
+Ops.Math.Sum= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    number1 = op.inValueFloat("number1", 0),
+    number2 = op.inValueFloat("number2", 0),
+    result = op.outNumber("result");
+
+op.setUiAttribs({ "mathTitle": true });
+
+number1.onChange =
+number2.onChange = exec;
+exec();
+
+function exec()
+{
+    const v = number1.get() + number2.get();
+    if (!isNaN(v))
+        result.set(v);
+}
+
+}
+};
+
+CABLES.OPS["c8fb181e-0b03-4b41-9e55-06b6267bc634"]={f:Ops.Math.Sum,objName:"Ops.Math.Sum"};
+
+
+
+
+// **************************************************************
+// 
 // Ops.Ui.Area
 // 
 // **************************************************************
@@ -8665,6 +8404,81 @@ CABLES.OPS["6468b7c1-f63e-4db4-b809-4b203d27ead3"]={f:Ops.String.StringEditor,ob
 
 // **************************************************************
 // 
+// Ops.Html.CSS.CSSProperty_v2
+// 
+// **************************************************************
+
+Ops.Html.CSS.CSSProperty_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inEle = op.inObject("Element"),
+    inProperty = op.inString("Property"),
+    inValue = op.inFloat("Value"),
+    inValueSuffix = op.inString("Value Suffix", "px"),
+    outEle = op.outObject("HTML Element", null, "element");
+
+op.setPortGroup("Element", [inEle]);
+op.setPortGroup("Attributes", [inProperty, inValue, inValueSuffix]);
+
+inProperty.onChange = updateProperty;
+inValue.onChange = update;
+inValueSuffix.onChange = update;
+let ele = null;
+
+inEle.onChange = inEle.onLinkChanged = function ()
+{
+    if (ele && ele.style)
+    {
+        ele.style[inProperty.get()] = "initial";
+    }
+    update();
+};
+
+function updateProperty()
+{
+    update();
+    op.setUiAttrib({ "extendTitle": inProperty.get() + "" });
+}
+
+function update()
+{
+    ele = inEle.get();
+    if (ele && ele.style)
+    {
+        const str = inValue.get() + inValueSuffix.get();
+        try
+        {
+            if (ele.style[inProperty.get()] != str)
+                ele.style[inProperty.get()] = str;
+        }
+        catch (e)
+        {
+            op.logError(e);
+        }
+    }
+    else
+    {
+        setTimeout(update, 50);
+    }
+
+    outEle.setRef(inEle.get());
+}
+
+}
+};
+
+CABLES.OPS["c179aa0e-b558-4130-8c2d-2deab2919a07"]={f:Ops.Html.CSS.CSSProperty_v2,objName:"Ops.Html.CSS.CSSProperty_v2"};
+
+
+
+
+// **************************************************************
+// 
 // Ops.Html.Elements.InputElement
 // 
 // **************************************************************
@@ -9495,56 +9309,6 @@ function update()
 };
 
 CABLES.OPS["8413b842-6b92-487e-b74b-da3c0259bd08"]={f:Ops.Html.CSS.ElementCssText,objName:"Ops.Html.CSS.ElementCssText"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Html.ElementsPositionsByClass
-// 
-// **************************************************************
-
-Ops.Html.ElementsPositionsByClass= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inUpd = op.inTriggerButton("Update"),
-    inClassName = op.inString("Classname", ""),
-    outPosArr = op.outArray("Position", 3),
-    outSizeArr = op.outArray("Size", 3),
-    outNumEle = op.outNumber("Total Elements");
-
-inUpd.onTriggered = () =>
-{
-    const arrPos = [];
-    const arrSize = [];
-
-    const els = document.getElementsByClassName(inClassName.get());
-    const rCanv = op.patch.cgl.canvas.getBoundingClientRect();
-
-    for (let i = 0; i < els.length; i++)
-    {
-        // inClassName.get();
-        let ele = els[i];
-        const r = ele.getBoundingClientRect();
-
-        arrPos.push(r.left - rCanv.left, r.top - rCanv.top, 0);
-        arrSize.push(r.width, r.height, 1);
-    }
-    outPosArr.setRef(arrPos);
-    outSizeArr.setRef(arrSize);
-    outNumEle.set(els.length);
-};
-
-}
-};
-
-CABLES.OPS["43cf60ec-1a62-4bd0-98ee-2aa85681020f"]={f:Ops.Html.ElementsPositionsByClass,objName:"Ops.Html.ElementsPositionsByClass"};
 
 
 
