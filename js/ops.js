@@ -15,6 +15,7 @@ Ops.Cables=Ops.Cables || {};
 Ops.Number=Ops.Number || {};
 Ops.String=Ops.String || {};
 Ops.Boolean=Ops.Boolean || {};
+Ops.Devices=Ops.Devices || {};
 Ops.Gl.GLTF=Ops.Gl.GLTF || {};
 Ops.Trigger=Ops.Trigger || {};
 Ops.Graphics=Ops.Graphics || {};
@@ -22,8 +23,10 @@ Ops.Html.CSS=Ops.Html.CSS || {};
 Ops.WebAudio=Ops.WebAudio || {};
 Ops.Gl.Meshes=Ops.Gl.Meshes || {};
 Ops.Gl.Shader=Ops.Gl.Shader || {};
+Ops.Html.Utils=Ops.Html.Utils || {};
 Ops.Gl.Textures=Ops.Gl.Textures || {};
 Ops.Math.Compare=Ops.Math.Compare || {};
+Ops.Devices.Mouse=Ops.Devices.Mouse || {};
 Ops.Html.Elements=Ops.Html.Elements || {};
 Ops.Array.PointArray=Ops.Array.PointArray || {};
 Ops.Graphics.Geometry=Ops.Graphics.Geometry || {};
@@ -9833,6 +9836,737 @@ exec.onTriggered = () =>
 };
 
 CABLES.OPS["ec10a8fd-12a2-4a22-ae08-9b781ce5d1be"]={f:Ops.Local.DaniSongIdChooser,objName:"Ops.Local.DaniSongIdChooser"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.DeltaSum
+// 
+// **************************************************************
+
+Ops.Math.DeltaSum= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inVal = op.inValue("Delta Value"),
+    defVal = op.inValue("Default Value", 0),
+    inMul = op.inValue("Multiply", 1),
+    inReset = op.inTriggerButton("Reset"),
+    inLimit = op.inValueBool("Limit", false),
+    inMin = op.inValue("Min", 0),
+    inMax = op.inValue("Max", 100),
+    inRubber = op.inValue("Rubberband", 0),
+    outVal = op.outNumber("Absolute Value");
+
+inVal.changeAlways = true;
+
+op.setPortGroup("Limit", [inLimit, inMin, inMax, inRubber]);
+
+let value = 0;
+let lastEvent = CABLES.now();
+let rubTimeout = null;
+
+inLimit.onChange = updateLimit;
+defVal.onChange =
+    inReset.onTriggered = resetValue;
+
+inMax.onChange =
+    inMin.onChange = updateValue;
+
+updateLimit();
+
+function resetValue()
+{
+    let v = defVal.get();
+
+    if (inLimit.get())
+    {
+        v = Math.max(inMin.get(), v);
+        v = Math.min(inMax.get(), v);
+    }
+
+    value = v;
+    outVal.set(value);
+}
+
+function updateLimit()
+{
+    inMin.setUiAttribs({ "greyout": !inLimit.get() });
+    inMax.setUiAttribs({ "greyout": !inLimit.get() });
+    inRubber.setUiAttribs({ "greyout": !inLimit.get() });
+
+    updateValue();
+}
+
+function releaseRubberband()
+{
+    const min = inMin.get();
+    const max = inMax.get();
+
+    if (value < min) value = min;
+    if (value > max) value = max;
+
+    outVal.set(value);
+}
+
+function updateValue()
+{
+    if (inLimit.get())
+    {
+        const min = inMin.get();
+        const max = inMax.get();
+        const rubber = inRubber.get();
+        const minr = inMin.get() - rubber;
+        const maxr = inMax.get() + rubber;
+
+        if (value < minr) value = minr;
+        if (value > maxr) value = maxr;
+
+        if (rubber !== 0.0)
+        {
+            clearTimeout(rubTimeout);
+            rubTimeout = setTimeout(releaseRubberband.bind(this), 300);
+        }
+    }
+
+    outVal.set(value);
+}
+
+inVal.onChange = function ()
+{
+    let v = inVal.get();
+
+    const rubber = inRubber.get();
+
+    if (rubber !== 0.0)
+    {
+        const min = inMin.get();
+        const max = inMax.get();
+        const minr = inMin.get() - rubber;
+        const maxr = inMax.get() + rubber;
+
+        if (value < min)
+        {
+            const aa = Math.abs(value - minr) / rubber;
+            v *= (aa * aa);
+        }
+        if (value > max)
+        {
+            const aa = Math.abs(maxr - value) / rubber;
+            v *= (aa * aa);
+        }
+    }
+
+    lastEvent = CABLES.now();
+    value += v * inMul.get();
+    updateValue();
+};
+
+}
+};
+
+CABLES.OPS["d9d4b3db-c24b-48da-b798-9e6230d861f7"]={f:Ops.Math.DeltaSum,objName:"Ops.Math.DeltaSum"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Devices.Mouse.MouseWheel_v2
+// 
+// **************************************************************
+
+Ops.Devices.Mouse.MouseWheel_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    speed = op.inValue("Speed", 1),
+    preventScroll = op.inValueBool("prevent scroll", true),
+    flip = op.inValueBool("Flip Direction"),
+    inSimpleIncrement = op.inBool("Simple Delta", true),
+    area = op.inSwitch("Area", ["Canvas", "Document", "Parent"], "Document"),
+    active = op.inValueBool("active", true),
+    delta = op.outNumber("delta", 0),
+    deltaX = op.outNumber("delta X", 0),
+    deltaOrig = op.outNumber("browser event delta", 0),
+    trigger = op.outTrigger("Wheel Action");
+
+const cgl = op.patch.cgl;
+const value = 0;
+
+const startTime = CABLES.now() / 1000.0;
+const v = 0;
+
+let dir = 1;
+
+let listenerElement = null;
+
+area.onChange = updateArea;
+const vOut = 0;
+
+addListener();
+
+flip.onChange = function ()
+{
+    if (flip.get())dir = -1;
+    else dir = 1;
+};
+
+function normalizeWheel(event)
+{
+    let sY = 0;
+
+    if ("detail" in event) { sY = event.detail; }
+
+    if ("deltaY" in event)
+    {
+        sY = event.deltaY;
+        // if (deltaY < 1.0)deltaY *= 16;
+        if (event.deltaY > 20)sY = 20;
+        else if (event.deltaY < -20)sY = -20;
+    }
+    return sY * dir;
+}
+
+function normalizeWheelX(event)
+{
+    let sX = 0;
+
+    if ("deltaX" in event)
+    {
+        sX = event.deltaX;
+        if (event.deltaX > 20)sX = 20;
+        else if (event.deltaX < -20)sX = -20;
+    }
+    return sX;
+}
+
+let lastEvent = 0;
+
+function onMouseWheel(e)
+{
+    if (Date.now() - lastEvent < 10) return;
+    lastEvent = Date.now();
+
+    deltaOrig.set(e.wheelDelta || e.deltaY);
+
+    if (e.deltaY)
+    {
+        let d = normalizeWheel(e);
+        if (inSimpleIncrement.get())
+        {
+            if (d > 0)d = speed.get();
+            else d = -speed.get();
+        }
+        else d *= 0.01 * speed.get();
+
+        delta.set(0);
+        delta.set(d);
+    }
+
+    if (e.deltaX)
+    {
+        let dX = normalizeWheelX(e);
+        dX *= 0.01 * speed.get();
+
+        deltaX.set(0);
+        deltaX.set(dX);
+    }
+
+    if (preventScroll.get()) e.preventDefault();
+    trigger.trigger();
+}
+
+function updateArea()
+{
+    removeListener();
+
+    if (area.get() == "Document") listenerElement = document;
+    if (area.get() == "Parent") listenerElement = cgl.canvas.parentElement;
+    else listenerElement = cgl.canvas;
+
+    if (active.get())addListener();
+}
+
+function addListener()
+{
+    if (!listenerElement)updateArea();
+    listenerElement.addEventListener("wheel", onMouseWheel, { "passive": false });
+}
+
+function removeListener()
+{
+    if (listenerElement) listenerElement.removeEventListener("wheel", onMouseWheel);
+}
+
+active.onChange = function ()
+{
+    updateArea();
+};
+
+}
+};
+
+CABLES.OPS["7b9626db-536b-4bb4-85c3-95401bc60d1b"]={f:Ops.Devices.Mouse.MouseWheel_v2,objName:"Ops.Devices.Mouse.MouseWheel_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Gl.ForceCanvasSize
+// 
+// **************************************************************
+
+Ops.Gl.ForceCanvasSize= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inTrigger = op.inTrigger("Trigger"),
+    inActive = op.inBool("Active", true),
+    inWhat = op.inSwitch("Force", ["Resolution", "Aspect Ratio"], "Resolution"),
+    inCenter = op.inBool("Center In Parent", true),
+    inScaleFit = op.inBool("Scale to fit Parent", true),
+    inWidth = op.inInt("Set Width", 300),
+    inHeight = op.inInt("Set Height", 200),
+    inPresets = op.inDropDown("Aspect Ratio", ["Custom", "21:9", "2:1", "16:9", "16:10", "4:3", "1:1", "9:16", "1:2", "iPhoneXr Vert"], "16:9"),
+    inRatio = op.inFloat("Ratio", 0),
+    inStretch = op.inDropDown("Fill Parent", ["Auto", "Width", "Height", "Both"], "Auto"),
+    next = op.outTrigger("Next"),
+    outWidth = op.outNumber("Width"),
+    outHeight = op.outNumber("Height"),
+    outMarginLeft = op.outNumber("Margin Left"),
+    outMarginTop = op.outNumber("Margin Top");
+
+op.setPortGroup("Size", [inWidth, inHeight]);
+op.setPortGroup("Proportions", [inRatio, inStretch, inPresets]);
+
+let align = 0;
+const ALIGN_NONE = 0;
+const ALIGN_WIDTH = 1;
+const ALIGN_HEIGHT = 2;
+const ALIGN_BOTH = 3;
+const ALIGN_AUTO = 4;
+
+inStretch.onChange = updateUi;
+inWhat.onChange = updateMethod;
+inCenter.onChange =
+    inTrigger.onLinkChanged = removeStyles;
+
+inPresets.onChange = updateRatioPreset;
+
+const cgl = op.patch.cgl;
+
+// if (window.getComputedStyle(cgl.canvas).position === "absolute")
+// {
+//     cgl.canvas.style.position = "initial";
+//     op.warn("[cables forceCanvasSize] - canvas was positioned absolute, not compatible with Ops.Gl.ForceCanvasSize");
+// }
+
+updateUi();
+
+function updateMethod()
+{
+    if (inWhat.get() == "Aspect Ratio")
+    {
+        inRatio.set(100);
+        updateRatioPreset();
+    }
+    updateUi();
+}
+
+function updateRatioPreset()
+{
+    const pr = inPresets.get();
+    if (pr == "Custom") return;
+    else if (pr == "16:9")inRatio.set(16 / 9);
+    else if (pr == "4:3")inRatio.set(4 / 3);
+    else if (pr == "16:10")inRatio.set(16 / 10);
+    else if (pr == "21:9")inRatio.set(21 / 9);
+    else if (pr == "2:1")inRatio.set(2);
+    else if (pr == "1:1")inRatio.set(1);
+    else if (pr == "9:16")inRatio.set(9 / 16);
+    else if (pr == "1:2")inRatio.set(0.5);
+    else if (pr == "iPhoneXr Vert")inRatio.set(9 / 19.5);
+}
+
+op.on("delete", () =>
+{
+    removeStyles();
+});
+
+inRatio.onChange = () =>
+{
+    removeStyles();
+};
+
+inActive.onChange = function ()
+{
+    if (!inActive.get())removeStyles();
+};
+
+function updateUi()
+{
+    const forceRes = inWhat.get() == "Resolution";
+    inWidth.setUiAttribs({ "greyout": !forceRes });
+    inHeight.setUiAttribs({ "greyout": !forceRes });
+
+    inPresets.setUiAttribs({ "greyout": forceRes });
+    inStretch.setUiAttribs({ "greyout": forceRes });
+    inRatio.setUiAttribs({ "greyout": forceRes });
+
+    align = 0;
+
+    if (!forceRes)
+    {
+        const strAlign = inStretch.get();
+        if (strAlign == "Width")align = ALIGN_WIDTH;
+        else if (strAlign == "Height")align = ALIGN_HEIGHT;
+        else if (strAlign == "Both")align = ALIGN_BOTH;
+        else if (strAlign == "Auto")align = ALIGN_AUTO;
+    }
+}
+
+function removeStyles()
+{
+    cgl.canvas.style["margin-top"] = "";
+    cgl.canvas.style["margin-left"] = "";
+    cgl.canvas.styleMarginLeft = 0;
+    cgl.canvas.styleMarginTop = 0;
+
+    outMarginLeft.set(0);
+    outMarginTop.set(0);
+
+    const rect = cgl.canvas.parentNode.getBoundingClientRect();
+
+    cgl.setSize(rect.width, rect.height);
+
+    cgl.canvas.style.transform = "scale(1)";
+
+    cgl.canvas.style.position = "absolute";
+
+    cgl.updateSize();
+}
+
+inTrigger.onTriggered = function ()
+{
+    if (!inActive.get()) return next.trigger();
+
+    let w = inWidth.get();
+    let h = inHeight.get();
+
+    let clientRect = cgl.canvas.parentNode.getBoundingClientRect();
+
+    // console.log("clientrect",clientRect);
+
+    if (clientRect.height == 0)
+    {
+        cgl.canvas.parentNode.style.height = "100%";
+        clientRect = cgl.canvas.parentNode.getBoundingClientRect();
+    }
+    if (clientRect.width == 0)
+    {
+        cgl.canvas.parentNode.style.width = "100%";
+        clientRect = cgl.canvas.parentNode.getBoundingClientRect();
+    }
+
+    if (align == ALIGN_WIDTH)
+    {
+        w = clientRect.width;
+        h = w * 1 / inRatio.get();
+    }
+    else if (align == ALIGN_HEIGHT)
+    {
+        h = clientRect.height;
+        w = h * inRatio.get();
+    }
+    else if (align == ALIGN_AUTO)
+    {
+        const rect = clientRect;
+
+        h = rect.height;
+        w = h * inRatio.get();
+
+        if (w > rect.width)
+        {
+            w = rect.width;
+            h = w * 1 / inRatio.get();
+        }
+    }
+    else if (align == ALIGN_BOTH)
+    {
+        const rect = clientRect;
+        h = rect.height;
+        w = h * inRatio.get();
+
+        if (w < rect.width)
+        {
+            w = rect.width;
+            h = w * 1 / inRatio.get();
+        }
+    }
+
+    w = Math.ceil(w);
+    h = Math.ceil(h);
+
+    if (inCenter.get())
+    {
+        const rect = clientRect;
+
+        const t = (rect.height - h) / 2;
+        const l = (rect.width - w) / 2;
+
+        outMarginLeft.set(l);
+        outMarginTop.set(t);
+
+        cgl.canvas.style["margin-top"] = t + "px";
+        cgl.canvas.style["margin-left"] = l + "px";
+        cgl.canvas.styleMarginTop = t;
+        cgl.canvas.styleMarginLeft = l;
+    }
+    else
+    {
+        cgl.canvas.style["margin-top"] = "0";
+        cgl.canvas.style["margin-left"] = "0";
+        cgl.canvas.styleMarginTop = 0;
+        cgl.canvas.styleMarginLeft = 0;
+
+        outMarginLeft.set(0);
+        outMarginTop.set(0);
+    }
+
+    if (inScaleFit.get())
+    {
+        const rect = clientRect;
+        const scX = rect.width / inWidth.get();
+        const scY = rect.height / inHeight.get();
+        cgl.canvas.style.transform = "scale(" + Math.min(scX, scY) + ")";
+    }
+    else
+    {
+        cgl.canvas.style.transform = "scale(1)";
+    }
+
+    if (cgl.canvasWidth != w || cgl.canvasHeight != h)
+    {
+        outWidth.set(w);
+        outHeight.set(h);
+        cgl.setSize(w, h);
+    }
+    // else
+    next.trigger();
+};
+
+}
+};
+
+CABLES.OPS["a8b3380e-cd4a-4000-9ee9-1c65a11027dd"]={f:Ops.Gl.ForceCanvasSize,objName:"Ops.Gl.ForceCanvasSize"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Local.MyAwesomeOpName
+// 
+// **************************************************************
+
+Ops.Local.MyAwesomeOpName= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+// welcome to your new op!
+// have a look at the documentation:
+// https://cables.gl/docs/5_writing_ops/dev_ops/dev_ops
+
+const
+    exec = op.inTrigger("Trigger"),
+    myNumber = op.inFloat("Number"),
+    next = op.outTrigger("Next"),
+    result = op.outNumber("Result");
+
+exec.onTriggered = () =>
+{
+    result.set(myNumber.get() * 100);
+};
+
+}
+};
+
+CABLES.OPS["24d216f6-e644-4657-a95b-f925336fc53d"]={f:Ops.Local.MyAwesomeOpName,objName:"Ops.Local.MyAwesomeOpName"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Local.InfiniteMenu
+// 
+// **************************************************************
+
+Ops.Local.InfiniteMenu= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const exec = op.inTrigger("Trigger");
+const valueIn = op.inFloat("Value");      // current target value
+const limitIn = op.inFloat("Limit", 150); // wrap limit
+const speedIn = op.inFloat("Speed", 0.1); // interpolation speed (0-1)
+
+const next = op.outTrigger("Next");
+const result = op.outNumber("Wrapped");
+
+let current = 0; // internal smoothed value
+
+exec.onTriggered = () => {
+    const target = valueIn.get();
+    const limit = limitIn.get();
+    const speed = speedIn.get();
+
+    // Smooth interpolation (lerp)
+    current += (target - current) * speed;
+
+    // Wrap-around logic
+    let wrapped = ((current + limit) % (limit * 2));
+    if (wrapped < 0) wrapped += (limit * 2);
+    wrapped -= limit;
+
+    result.set(wrapped);
+    next.trigger();
+};
+
+}
+};
+
+CABLES.OPS["c648ab8f-0170-475b-b12c-4692f8cca816"]={f:Ops.Local.InfiniteMenu,objName:"Ops.Local.InfiniteMenu"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Html.Utils.LoadingIndicator
+// 
+// **************************************************************
+
+Ops.Html.Utils.LoadingIndicator= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={"css_ellipsis_css":".lds-ellipsis {\r\n\r\n}\r\n.lds-ellipsis div {\r\n  position: absolute;\r\n  /*top: 33px;*/\r\n  margin-top:-12px;\r\n  margin-left:-13px;\r\n  width: 13px;\r\n  height: 13px;\r\n  border-radius: 50%;\r\n  background: #fff;\r\n  animation-timing-function: cubic-bezier(0, 1, 1, 0);\r\n}\r\n.lds-ellipsis div:nth-child(1) {\r\n  left: 8px;\r\n  animation: lds-ellipsis1 0.6s infinite;\r\n}\r\n.lds-ellipsis div:nth-child(2) {\r\n  left: 8px;\r\n  animation: lds-ellipsis2 0.6s infinite;\r\n}\r\n.lds-ellipsis div:nth-child(3) {\r\n  left: 32px;\r\n  animation: lds-ellipsis2 0.6s infinite;\r\n}\r\n.lds-ellipsis div:nth-child(4) {\r\n  left: 56px;\r\n  animation: lds-ellipsis3 0.6s infinite;\r\n}\r\n@keyframes lds-ellipsis1 {\r\n  0% {\r\n    transform: scale(0);\r\n  }\r\n  100% {\r\n    transform: scale(1);\r\n  }\r\n}\r\n@keyframes lds-ellipsis3 {\r\n  0% {\r\n    transform: scale(1);\r\n  }\r\n  100% {\r\n    transform: scale(0);\r\n  }\r\n}\r\n@keyframes lds-ellipsis2 {\r\n  0% {\r\n    transform: translate(0, 0);\r\n  }\r\n  100% {\r\n    transform: translate(24px, 0);\r\n  }\r\n}\r\n","css_ring_css":".lds-ring {\r\n}\r\n.lds-ring div {\r\n  box-sizing: border-box;\r\n  display: block;\r\n  position: absolute;\r\n  width: 100%;\r\n  height: 100%;\r\n  margin: 0;\r\n  border: 3px solid #fff;\r\n  border-radius: 50%;\r\n  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\r\n  border-color: #fff transparent transparent transparent;\r\n}\r\n.lds-ring div:nth-child(1) {\r\n  animation-delay: -0.45s;\r\n}\r\n.lds-ring div:nth-child(2) {\r\n  animation-delay: -0.3s;\r\n}\r\n.lds-ring div:nth-child(3) {\r\n  animation-delay: -0.15s;\r\n}\r\n@keyframes lds-ring {\r\n  0% {\r\n    transform: rotate(0deg);\r\n  }\r\n  100% {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n","css_spinner_css":"._cables_spinner {\r\n  /*width: 40px;*/\r\n  /*height: 40px;*/\r\n  /*margin: 100px auto;*/\r\n  background-color: #777;\r\n\r\n  border-radius: 100%;\r\n  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;\r\n  animation: sk-scaleout 1.0s infinite ease-in-out;\r\n}\r\n\r\n@-webkit-keyframes sk-scaleout {\r\n  0% { -webkit-transform: scale(0) }\r\n  100% {\r\n    -webkit-transform: scale(1.0);\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n@keyframes sk-scaleout {\r\n  0% {\r\n    -webkit-transform: scale(0);\r\n    transform: scale(0);\r\n  } 100% {\r\n    -webkit-transform: scale(1.0);\r\n    transform: scale(1.0);\r\n    opacity: 0;\r\n  }\r\n}",};
+const
+    inVisible = op.inBool("Visible", true),
+    inStyle = op.inSwitch("Style", ["Spinner", "Ring", "Ellipsis"], "Ring");
+
+const div = document.createElement("div");
+div.dataset.op = op.id;
+const canvas = op.patch.cgl.canvas.parentElement;
+
+inStyle.onChange = updateStyle;
+
+div.appendChild(document.createElement("div"));
+div.appendChild(document.createElement("div"));
+div.appendChild(document.createElement("div"));
+
+const size = 50;
+
+div.style.width = size + "px";
+div.style.height = size + "px";
+div.style.top = "50%";
+div.style.left = "50%";
+div.style["pointer-events"] = "none";
+
+div.style["margin-left"] = "-" + size / 2 + "px";
+div.style["margin-top"] = "-" + size / 2 + "px";
+
+div.style.position = "absolute";
+div.style["z-index"] = "9999999";
+
+inVisible.onChange = updateVisible;
+
+let eleId = "css_loadingicon_" + CABLES.uuid();
+
+const styleEle = document.createElement("style");
+styleEle.type = "text/css";
+styleEle.id = eleId;
+
+let head = document.getElementsByTagName("body")[0];
+head.appendChild(styleEle);
+
+op.onDelete = () =>
+{
+    remove();
+    if (styleEle)styleEle.remove();
+};
+
+canvas.appendChild(div);
+updateStyle();
+
+function updateStyle()
+{
+    const st = inStyle.get();
+    if (st == "Spinner")
+    {
+        div.classList.add("_cables_spinner");
+        styleEle.textContent = attachments.css_spinner_css;
+    }
+    else div.classList.remove("_cables_spinner");
+
+    if (st == "Ring")
+    {
+        div.classList.add("lds-ring");
+        styleEle.textContent = attachments.css_ring_css;
+    }
+    else div.classList.remove("lds-ring");
+
+    if (st == "Ellipsis")
+    {
+        div.classList.add("lds-ellipsis");
+        styleEle.textContent = attachments.css_ellipsis_css;
+    }
+    else div.classList.remove("lds-ellipsis");
+}
+
+function remove()
+{
+    div.remove();
+}
+
+function updateVisible()
+{
+    // remove();
+    // if (inVisible.get()) canvas.appendChild(div);
+
+    // div.style.display = inVisible.get() ? "block" : "none";
+    div.style.opacity = inVisible.get() ? 1 : 0;
+}
+
+}
+};
+
+CABLES.OPS["e102834c-6dcf-459c-9e22-44ebccfc0d3b"]={f:Ops.Html.Utils.LoadingIndicator,objName:"Ops.Html.Utils.LoadingIndicator"};
 
 
 
