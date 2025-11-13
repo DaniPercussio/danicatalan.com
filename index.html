@@ -122,12 +122,33 @@
                 onFinishedLoading: patchFinishedLoading,
                 canvas: { alpha: true, premultipliedAlpha: true }
             });
+            
+            // Force canvas resize for iframe compatibility
+            setTimeout(() => {
+                const canvas = document.getElementById('glcanvas');
+                if (canvas && canvas.offsetParent) {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    if (CABLES.patch && CABLES.patch.cgl) {
+                        CABLES.patch.cgl.updateSize();
+                    }
+                }
+            }, 500);
         }
 
         // Prevent rubberband effect on mobile
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('glcanvas');
             canvas.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+            
+            // Handle window resize (important for iframe)
+            window.addEventListener('resize', () => {
+                if (CABLES.patch && CABLES.patch.cgl) {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    CABLES.patch.cgl.updateSize();
+                }
+            });
         });
 
         document.addEventListener('CABLES.jsLoaded', initializePatch);
