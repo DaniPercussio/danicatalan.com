@@ -42,7 +42,8 @@
         canvas {
             display: block;
             width: 100%;
-            height: 100%;
+                height: auto;
+                max-height: 80vh; /* avoid oversized height when embedded */
             outline: 0;
         }
 
@@ -122,51 +123,12 @@
                 onFinishedLoading: patchFinishedLoading,
                 canvas: { alpha: true, premultipliedAlpha: true }
             });
-            
-            // Force canvas resize for iframe compatibility
-            setTimeout(() => {
-                const canvas = document.getElementById('glcanvas');
-                if (canvas && canvas.offsetParent) {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                    if (CABLES.patch && CABLES.patch.cgl) {
-                        CABLES.patch.cgl.updateSize();
-                    }
-                }
-            }, 500);
         }
 
-        // Mobile redirect - works normally but won't break iframe
-        (function() {
-            var mobileUrl = "/mobile";
-            var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-            var isInIframe = window.self !== window.top;
-            
-            if (isMobile) {
-                if (window.location.href.indexOf(mobileUrl) === -1) {
-                    // If in iframe, redirect only the iframe content
-                    if (isInIframe) {
-                        window.location.replace(mobileUrl);
-                    } 
-                    // If standalone page, redirect normally
-                    else {
-                        window.location.replace(mobileUrl);
-                    }
-                }
-            }
-        })();
+        // Prevent rubberband effect on mobile
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('glcanvas');
             canvas.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
-            
-            // Handle window resize (important for iframe)
-            window.addEventListener('resize', () => {
-                if (CABLES.patch && CABLES.patch.cgl) {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                    CABLES.patch.cgl.updateSize();
-                }
-            });
         });
 
         document.addEventListener('CABLES.jsLoaded', initializePatch);
