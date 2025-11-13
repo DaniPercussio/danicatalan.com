@@ -166,55 +166,7 @@ If you want to identify *exactly* which operations are slow:
 
 ---
 
-### 6. **Browser Compatibility & Low-End Device Support**
-
-**What it does:** Detects WebGL support, warns about low-end devices, and shows helpful error messages.
-
-#### A. WebGL Detection
-```javascript
-// Automatically checks if browser supports WebGL
-// If not: Shows friendly error message instead of blank page
-```
-
-**Supported browsers:**
-- ✅ Chrome 8+
-- ✅ Firefox 4+
-- ✅ Safari 5.1+
-- ✅ Edge (all versions)
-- ❌ Internet Explorer 10 and older
-- ✅ Mobile browsers (iOS Safari, Android Chrome)
-
-#### B. Low-End Device Detection
-Automatically detects and logs warnings for:
-- **Low memory** (<512 MB available)
-- **Slow internet** (2G/3G connections)
-- **Low CPU** (≤2 cores)
-
-Check browser console (F12) for warnings like:
-```
-⚠️ Performance warnings: Low memory available, Slow internet connection detected
-```
-
-#### C. Error Handling
-- Shows helpful message if WebGL fails to load
-- Shows friendly error if patch loading times out
-- Global error handler prevents blank screen
-
-#### D. Browser Requirements
-
-| Feature | Chrome | Firefox | Safari | Edge | IE 11 |
-|---------|--------|---------|--------|------|-------|
-| WebGL   | ✅     | ✅      | ✅     | ✅   | ❌    |
-| ES6     | ✅     | ✅      | ✅     | ✅   | ⚠️    |
-| Canvas  | ✅     | ✅      | ✅     | ✅   | ✅    |
-
-**Minimum Requirements:**
-- WebGL support (GPU acceleration)
-- Modern browser (2015+)
-- JavaScript ES6 or higher
-- 512MB+ available memory recommended
-
----
+### 5. **Advanced: Console Profiling Script**
 
 Paste this in Chrome DevTools Console to get timing data:
 

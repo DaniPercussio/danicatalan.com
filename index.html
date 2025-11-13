@@ -81,118 +81,13 @@
     <script src="js/subpatchop.js"></script>
 
     <script>
-        // Detect WebGL support before loading Cables
-        function checkWebGLSupport() {
-            try {
-                const canvas = document.createElement('canvas');
-                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl') || canvas.getContext('webgl2');
-                return !!gl;
-            } catch (e) {
-                console.log('WebGL check error:', e);
-                return false;
-            }
-        }
-
-        const hasWebGL = checkWebGLSupport();
-        
-        // Show error only if WebGL is definitively not supported
-        if (!hasWebGL) {
-            console.warn('WebGL not supported on this browser');
-            document.body.innerHTML = `
-                <div style="
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100vh;
-                    background-color: #000;
-                    color: #fff;
-                    font-family: Helvetica, Arial, sans-serif;
-                    text-align: center;
-                    padding: 20px;
-                ">
-                    <h1>WebGL Not Supported</h1>
-                    <p>Your browser or device does not support WebGL, which is required for this experience.</p>
-                    <p style="color: #999; font-size: 14px; margin-top: 20px;">
-                        Please try:<br>
-                        • Update your browser to the latest version<br>
-                        • Use Chrome, Firefox, Safari, or Edge<br>
-                        • Try a different device with GPU support<br>
-                        • Enable hardware acceleration in your browser settings
-                    </p>
-                </div>
-            `;
-        }
-
-        // Detect performance warnings on low-end devices
-        function detectPerformanceWarnings() {
-            const warnings = [];
-            
-            // Check memory
-            if (performance.memory && performance.memory.jsHeapSizeLimit < 536870912) {
-                warnings.push('Low memory available');
-            }
-            
-            // Check connection speed (if available)
-            const connection = navigator.connection;
-            if (connection && (connection.effectiveType === '3g' || connection.effectiveType === '2g')) {
-                warnings.push('Slow internet connection detected');
-            }
-            
-            // Check CPU cores
-            const cores = navigator.hardwareConcurrency || 1;
-            if (cores <= 2) {
-                warnings.push('Low CPU performance');
-            }
-            
-            if (warnings.length > 0) {
-                console.warn('⚠️ Performance warnings:', warnings.join(', '));
-            }
-            
-            return warnings;
-        }
-
-        if (hasWebGL) {
-            detectPerformanceWarnings();
-        }
-
         function showError(errId, errMsg) {
             console.error(`Cables Error [${errId}]:`, errMsg);
-            
-            // Show user-friendly error message for critical failures
-            if (errId === 'patchLoadError' || errId === 'critical') {
-                const loadingScreen = document.getElementById('loadingScreen');
-                if (loadingScreen) {
-                    loadingScreen.innerHTML = `
-                        <div style="text-align: center;">
-                            <h2>Something went wrong</h2>
-                            <p style="color: #666; font-size: 14px; margin-top: 20px;">
-                                The page failed to load properly.<br>
-                                Try refreshing the page or checking your browser console for details.
-                            </p>
-                        </div>
-                    `;
-                    loadingScreen.classList.remove('hidden');
-                }
-            }
         }
 
-        // Global error handler for uncaught exceptions
-        window.addEventListener('error', (event) => {
-            console.error('Uncaught error:', event.error);
-            const loadingScreen = document.getElementById('loadingScreen');
-            if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
-                loadingScreen.innerHTML = `
-                    <div style="text-align: center;">
-                        <h2>Error Loading Page</h2>
-                        <p style="color: #666; font-size: 12px; margin-top: 20px;">
-                            ${event.message || 'An unexpected error occurred'}<br>
-                            Please refresh the page.
-                        </p>
-                    </div>
-                `;
-            }
-        });
+        function patchInitialized(patch) {
+            console.log('Patch initialized');
+        }
 
         function patchFinishedLoading(patch) {
             console.log('Patch finished loading');
