@@ -114,6 +114,130 @@ See `OPTIMIZATION_REPORT.md` for detailed performance improvements:
 
 ---
 
+### 4. **Performance Profiling Guide**
+
+**How to measure if optimizations actually work:**
+
+#### Step 1: Open Chrome DevTools
+- Press `F12` or `Ctrl+Shift+J` (Windows)
+- Go to the **Performance** tab
+
+#### Step 2: Record a baseline
+1. Click the red **Record** button
+2. Let the animation run for 5-10 seconds (capture multiple frames)
+3. Click **Record** again to stop
+4. Look at the **Frame Rate** (goal: 60 FPS = 16.67ms per frame max)
+5. Note the average frame time and any jank (frame drops)
+
+#### Step 3: Make optimizations
+Apply the tweaks in `OPTIMIZATION_REPORT.md`:
+- TransformArray3 radian pre-computation
+- PointCloudFromArray_v2 typed-array enforcement
+- ClockSequencer BPM change detection
+
+#### Step 4: Record after optimization
+Repeat Step 2 with the same test duration and conditions.
+
+#### Step 5: Compare
+- **Better FPS?** Optimization is working
+- **Lower peak times?** Less garbage collection
+- **Smoother line?** More consistent performance
+
+**Expected improvements:**
+- TransformArray3: 5-15% faster per transform (bigger gains on large point clouds)
+- PointCloudFromArray_v2: 3-8% faster GPU memory transfers
+- ClockSequencer: 2-5% faster + reduced garbage collection pauses
+
+#### Step 6: Deep Profiling - Find Bottlenecks
+
+If you want to identify *exactly* which operations are slow:
+
+1. **In Performance tab → Bottom section, click "Bottom-Up" tab**
+2. Look for functions taking the most time (usually ops.js functions)
+3. Click on a function to see where it's called from
+4. Compare % time before/after optimization
+
+**Common hotspots to check:**
+- `TransformArray3` (should be 5-15% faster after optimization)
+- `PointCloudFromArray_v2` (should be 3-8% faster after optimization)
+- `scheduleNote` in ClockSequencer (should have fewer GC pauses)
+- `vec3.rotateX/Y/Z` calls (if doing lots of rotations)
+- Shader uniform lookups (if rendering many objects)
+
+---
+
+### 6. **Browser Compatibility & Low-End Device Support**
+
+**What it does:** Detects WebGL support, warns about low-end devices, and shows helpful error messages.
+
+#### A. WebGL Detection
+```javascript
+// Automatically checks if browser supports WebGL
+// If not: Shows friendly error message instead of blank page
+```
+
+**Supported browsers:**
+- ✅ Chrome 8+
+- ✅ Firefox 4+
+- ✅ Safari 5.1+
+- ✅ Edge (all versions)
+- ❌ Internet Explorer 10 and older
+- ✅ Mobile browsers (iOS Safari, Android Chrome)
+
+#### B. Low-End Device Detection
+Automatically detects and logs warnings for:
+- **Low memory** (<512 MB available)
+- **Slow internet** (2G/3G connections)
+- **Low CPU** (≤2 cores)
+
+Check browser console (F12) for warnings like:
+```
+⚠️ Performance warnings: Low memory available, Slow internet connection detected
+```
+
+#### C. Error Handling
+- Shows helpful message if WebGL fails to load
+- Shows friendly error if patch loading times out
+- Global error handler prevents blank screen
+
+#### D. Browser Requirements
+
+| Feature | Chrome | Firefox | Safari | Edge | IE 11 |
+|---------|--------|---------|--------|------|-------|
+| WebGL   | ✅     | ✅      | ✅     | ✅   | ❌    |
+| ES6     | ✅     | ✅      | ✅     | ✅   | ⚠️    |
+| Canvas  | ✅     | ✅      | ✅     | ✅   | ✅    |
+
+**Minimum Requirements:**
+- WebGL support (GPU acceleration)
+- Modern browser (2015+)
+- JavaScript ES6 or higher
+- 512MB+ available memory recommended
+
+---
+
+Paste this in Chrome DevTools Console to get timing data:
+
+```javascript
+// Profile TransformArray3 operations
+console.time('TransformArray3_test');
+// Trigger your transform operation here (click button or let it run)
+console.timeEnd('TransformArray3_test');
+
+// Profile memory usage
+console.memory; // Shows: jsHeapSizeLimit, totalJSHeapSize, usedJSHeapSize
+
+// Watch for garbage collection (look for sudden drops in frame rate)
+// In Performance tab, enable "Memory" row to see GC events
+```
+
+**What to look for:**
+- **Consistent timings?** Good (predictable performance)
+- **Spikes?** Garbage collection or sudden computation
+- **Memory growing unbounded?** Memory leak (arrays not being freed)
+
+---
+
 ## 📋 How to Apply to Next Project
 
 ### Step 1: Copy index.html changes
