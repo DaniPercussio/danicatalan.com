@@ -10,6 +10,10 @@
     
     <title>MainPage2</title>
     
+    <!-- Preload critical scripts for faster loading -->
+    <link rel="preload" as="script" href="js/cables.js">
+    <link rel="prefetch" as="script" href="js/ops.js">
+    
     <style>
         * {
             margin: 0;
@@ -70,13 +74,13 @@
     <div id="loadingScreen"></div>
     <canvas id="glcanvas" tabindex="1"></canvas>
 
-    <script type="text/javascript" src="js/cables.js"></script>
-    <script type="text/javascript" src="js/ops.js"></script>
-    <script type="text/javascript" src="js/cgl_shadermodifier.js"></script>
-    <script type="text/javascript" src="js/interactionneededbutton.js"></script>
-    <script type="text/javascript" src="js/subpatchop.js"></script>
+    <script src="js/cables.js"></script>
+    <script src="js/ops.js"></script>
+    <script src="js/cgl_shadermodifier.js"></script>
+    <script src="js/interactionneededbutton.js"></script>
+    <script src="js/subpatchop.js"></script>
 
-    <script type="text/javascript">
+    <script>
         function showError(errId, errMsg) {
             console.error(`Cables Error [${errId}]:`, errMsg);
         }
@@ -95,6 +99,15 @@
                 }, 1000);
             }
         }
+
+        // Fallback: hide loading screen after 10 seconds if loading fails
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+                console.warn('Loading timeout - hiding screen');
+                loadingScreen.classList.add('hidden');
+            }
+        }, 10000);
 
         function initializePatch() {
             CABLES.patch = new CABLES.Patch({
