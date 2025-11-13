@@ -298,6 +298,7 @@ outBPM.set(inBPM.get());
 
 let resetTickCount = false;
 let changeWhileRunning = false;
+let lastBPM = inBPM.get();
 inBPM.onChange = updateBpm;
 
 let worker = null;
@@ -311,14 +312,19 @@ updateBpm();
 
 function updateBpm()
 {
-    outBPM.set(inBPM.get());
+    const bpmValue = inBPM.get();
+    outBPM.set(bpmValue);
+
+    // Only recalculate if BPM actually changed
+    if (lastBPM === bpmValue) return;
+    lastBPM = bpmValue;
 
     if (workerRunning)
     {
         changeWhileRunning = true;
         return;
     }
-    QUARTER_NOTE_S = 60 / inBPM.get();
+    QUARTER_NOTE_S = 60 / bpmValue;
     NOTES_IN_S = MULTIPLIERS.map((multiplier) => multiplier * QUARTER_NOTE_S);
     TICK_S = NOTES_IN_S[TICK_INDEX];
 }
@@ -352,7 +358,8 @@ function scheduleNote()
         tickCount = 0;
         resetTickCount = false;
     }
-    for (let i = 0, len = MODULO_PER_NOTE.length; i < len; i += 1)
+    const moduloLength = MODULO_PER_NOTE.length;
+    for (let i = 0; i < moduloLength; i += 1)
     {
         if (tickCount % MODULO_PER_NOTE[i] === 0) outTriggers[i].trigger();
     }
@@ -1668,14 +1675,15 @@ function rebuild()
 
     if (num == 0) return;
 
-    if (!texCoords || texCoords.length != num * 2) texCoords = new Float32Array(num * 2); // num*2;//=
+    if (!texCoords || texCoords.length != num * 2) texCoords = new Float32Array(num * 2);
 
     let rndTc = pTexCoordRand.get();
+    const texCoordsLength = num * 2;
 
     if (!inCoords.isLinked())
     {
         Math.randomSeed = seed.get();
-        texCoords = []; // needed otherwise its using the reference to input incoords port
+        texCoords = new Float32Array(texCoordsLength); // Pre-allocate typed array
 
         for (let i = 0; i < num; i++)
         {
@@ -1947,6 +1955,11 @@ function doTransform()
         const transz = transZ.get();
         const doRot = nrotx || nroty || nrotz;
 
+        // Pre-compute radian conversions to avoid repeated conversions in the loop
+        const rotXRad = nrotx * CGL.DEG2RAD;
+        const rotYRad = nroty * CGL.DEG2RAD;
+        const rotZRad = nrotz * CGL.DEG2RAD;
+
         for (let i = 0; i < arr.length; i += 3)
         {
             resultArr[i + 0] = arr[i + 0] * scx;
@@ -1964,9 +1977,9 @@ function doTransform()
                     resultArr[i + 1],
                     resultArr[i + 2]);
 
-                if (nrotx != 0) vec3.rotateX(rotVec, rotVec, transVec, nrotx * CGL.DEG2RAD);
-                if (nroty != 0) vec3.rotateY(rotVec, rotVec, transVec, nroty * CGL.DEG2RAD);
-                if (nrotz != 0) vec3.rotateZ(rotVec, rotVec, transVec, nrotz * CGL.DEG2RAD);
+                if (nrotx != 0) vec3.rotateX(rotVec, rotVec, transVec, rotXRad);
+                if (nroty != 0) vec3.rotateY(rotVec, rotVec, transVec, rotYRad);
+                if (nrotz != 0) vec3.rotateZ(rotVec, rotVec, transVec, rotZRad);
 
                 resultArr[i + 0] = rotVec[0];
                 resultArr[i + 1] = rotVec[1];
