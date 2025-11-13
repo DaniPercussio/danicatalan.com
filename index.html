@@ -136,7 +136,25 @@
             }, 500);
         }
 
-        // Prevent rubberband effect on mobile
+        // Mobile redirect - works normally but won't break iframe
+        (function() {
+            var mobileUrl = "/mobile";
+            var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            var isInIframe = window.self !== window.top;
+            
+            if (isMobile) {
+                if (window.location.href.indexOf(mobileUrl) === -1) {
+                    // If in iframe, redirect only the iframe content
+                    if (isInIframe) {
+                        window.location.replace(mobileUrl);
+                    } 
+                    // If standalone page, redirect normally
+                    else {
+                        window.location.replace(mobileUrl);
+                    }
+                }
+            }
+        })();
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('glcanvas');
             canvas.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
