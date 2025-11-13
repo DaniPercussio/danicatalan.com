@@ -41,9 +41,30 @@
             height: 100%;
             outline: 0;
         }
+
+        /* Loading screen - hides when patch is ready */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Helvetica, Arial, sans-serif;
+            color: #000;
+        }
+
+        #loadingScreen.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <div id="loadingScreen"></div>
     <canvas id="glcanvas" tabindex="1"></canvas>
 
     <script type="text/javascript" src="js/cables.js"></script>
@@ -63,6 +84,11 @@
 
         function patchFinishedLoading(patch) {
             console.log('Patch finished loading');
+            // Hide loading screen
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+            }
         }
 
         function initializePatch() {
