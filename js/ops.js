@@ -1947,6 +1947,18 @@ function doTransform()
         const transz = transZ.get();
         const doRot = nrotx || nroty || nrotz;
 
+        // If rotation is needed, build a single rotation matrix and reuse it for all vertices.
+        // This avoids calling vec3.rotateX/Y/Z for every vertex which is costly for large arrays.
+        let rotMat = null;
+        if (doRot)
+        {
+            rotMat = mat4.create();
+            mat4.identity(rotMat);
+            if (nrotx) mat4.rotateX(rotMat, rotMat, nrotx * CGL.DEG2RAD);
+            if (nroty) mat4.rotateY(rotMat, rotMat, nroty * CGL.DEG2RAD);
+            if (nrotz) mat4.rotateZ(rotMat, rotMat, nrotz * CGL.DEG2RAD);
+        }
+
         for (let i = 0; i < arr.length; i += 3)
         {
             resultArr[i + 0] = arr[i + 0] * scx;
@@ -1964,9 +1976,8 @@ function doTransform()
                     resultArr[i + 1],
                     resultArr[i + 2]);
 
-                if (nrotx != 0) vec3.rotateX(rotVec, rotVec, transVec, nrotx * CGL.DEG2RAD);
-                if (nroty != 0) vec3.rotateY(rotVec, rotVec, transVec, nroty * CGL.DEG2RAD);
-                if (nrotz != 0) vec3.rotateZ(rotVec, rotVec, transVec, nrotz * CGL.DEG2RAD);
+                // Transform the vector by the precomputed rotation matrix (faster for many points)
+                vec3.transformMat4(rotVec, rotVec, rotMat);
 
                 resultArr[i + 0] = rotVec[0];
                 resultArr[i + 1] = rotVec[1];
