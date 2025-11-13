@@ -1947,18 +1947,6 @@ function doTransform()
         const transz = transZ.get();
         const doRot = nrotx || nroty || nrotz;
 
-        // If rotation is needed, build a single rotation matrix and reuse it for all vertices.
-        // This avoids calling vec3.rotateX/Y/Z for every vertex which is costly for large arrays.
-        let rotMat = null;
-        if (doRot)
-        {
-            rotMat = mat4.create();
-            mat4.identity(rotMat);
-            if (nrotx) mat4.rotateX(rotMat, rotMat, nrotx * CGL.DEG2RAD);
-            if (nroty) mat4.rotateY(rotMat, rotMat, nroty * CGL.DEG2RAD);
-            if (nrotz) mat4.rotateZ(rotMat, rotMat, nrotz * CGL.DEG2RAD);
-        }
-
         for (let i = 0; i < arr.length; i += 3)
         {
             resultArr[i + 0] = arr[i + 0] * scx;
@@ -1976,8 +1964,9 @@ function doTransform()
                     resultArr[i + 1],
                     resultArr[i + 2]);
 
-                // Transform the vector by the precomputed rotation matrix (faster for many points)
-                vec3.transformMat4(rotVec, rotVec, rotMat);
+                if (nrotx != 0) vec3.rotateX(rotVec, rotVec, transVec, nrotx * CGL.DEG2RAD);
+                if (nroty != 0) vec3.rotateY(rotVec, rotVec, transVec, nroty * CGL.DEG2RAD);
+                if (nrotz != 0) vec3.rotateZ(rotVec, rotVec, transVec, nrotz * CGL.DEG2RAD);
 
                 resultArr[i + 0] = rotVec[0];
                 resultArr[i + 1] = rotVec[1];
@@ -9753,409 +9742,6 @@ CABLES.OPS["d9d4b3db-c24b-48da-b798-9e6230d861f7"]={f:Ops.Math.DeltaSum,objName:
 
 // **************************************************************
 // 
-// Ops.Devices.Mouse.MouseWheel_v2
-// 
-// **************************************************************
-
-Ops.Devices.Mouse.MouseWheel_v2= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    speed = op.inValue("Speed", 1),
-    preventScroll = op.inValueBool("prevent scroll", true),
-    flip = op.inValueBool("Flip Direction"),
-    inSimpleIncrement = op.inBool("Simple Delta", true),
-    area = op.inSwitch("Area", ["Canvas", "Document", "Parent"], "Document"),
-    active = op.inValueBool("active", true),
-    delta = op.outNumber("delta", 0),
-    deltaX = op.outNumber("delta X", 0),
-    deltaOrig = op.outNumber("browser event delta", 0),
-    trigger = op.outTrigger("Wheel Action");
-
-const cgl = op.patch.cgl;
-const value = 0;
-
-const startTime = CABLES.now() / 1000.0;
-const v = 0;
-
-let dir = 1;
-
-let listenerElement = null;
-
-area.onChange = updateArea;
-const vOut = 0;
-
-addListener();
-
-flip.onChange = function ()
-{
-    if (flip.get())dir = -1;
-    else dir = 1;
-};
-
-function normalizeWheel(event)
-{
-    let sY = 0;
-
-    if ("detail" in event) { sY = event.detail; }
-
-    if ("deltaY" in event)
-    {
-        sY = event.deltaY;
-        // if (deltaY < 1.0)deltaY *= 16;
-        if (event.deltaY > 20)sY = 20;
-        else if (event.deltaY < -20)sY = -20;
-    }
-    return sY * dir;
-}
-
-function normalizeWheelX(event)
-{
-    let sX = 0;
-
-    if ("deltaX" in event)
-    {
-        sX = event.deltaX;
-        if (event.deltaX > 20)sX = 20;
-        else if (event.deltaX < -20)sX = -20;
-    }
-    return sX;
-}
-
-let lastEvent = 0;
-
-function onMouseWheel(e)
-{
-    if (Date.now() - lastEvent < 10) return;
-    lastEvent = Date.now();
-
-    deltaOrig.set(e.wheelDelta || e.deltaY);
-
-    if (e.deltaY)
-    {
-        let d = normalizeWheel(e);
-        if (inSimpleIncrement.get())
-        {
-            if (d > 0)d = speed.get();
-            else d = -speed.get();
-        }
-        else d *= 0.01 * speed.get();
-
-        delta.set(0);
-        delta.set(d);
-    }
-
-    if (e.deltaX)
-    {
-        let dX = normalizeWheelX(e);
-        dX *= 0.01 * speed.get();
-
-        deltaX.set(0);
-        deltaX.set(dX);
-    }
-
-    if (preventScroll.get()) e.preventDefault();
-    trigger.trigger();
-}
-
-function updateArea()
-{
-    removeListener();
-
-    if (area.get() == "Document") listenerElement = document;
-    if (area.get() == "Parent") listenerElement = cgl.canvas.parentElement;
-    else listenerElement = cgl.canvas;
-
-    if (active.get())addListener();
-}
-
-function addListener()
-{
-    if (!listenerElement)updateArea();
-    listenerElement.addEventListener("wheel", onMouseWheel, { "passive": false });
-}
-
-function removeListener()
-{
-    if (listenerElement) listenerElement.removeEventListener("wheel", onMouseWheel);
-}
-
-active.onChange = function ()
-{
-    updateArea();
-};
-
-}
-};
-
-CABLES.OPS["7b9626db-536b-4bb4-85c3-95401bc60d1b"]={f:Ops.Devices.Mouse.MouseWheel_v2,objName:"Ops.Devices.Mouse.MouseWheel_v2"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Gl.ForceCanvasSize
-// 
-// **************************************************************
-
-Ops.Gl.ForceCanvasSize= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inTrigger = op.inTrigger("Trigger"),
-    inActive = op.inBool("Active", true),
-    inWhat = op.inSwitch("Force", ["Resolution", "Aspect Ratio"], "Resolution"),
-    inCenter = op.inBool("Center In Parent", true),
-    inScaleFit = op.inBool("Scale to fit Parent", true),
-    inWidth = op.inInt("Set Width", 300),
-    inHeight = op.inInt("Set Height", 200),
-    inPresets = op.inDropDown("Aspect Ratio", ["Custom", "21:9", "2:1", "16:9", "16:10", "4:3", "1:1", "9:16", "1:2", "iPhoneXr Vert"], "16:9"),
-    inRatio = op.inFloat("Ratio", 0),
-    inStretch = op.inDropDown("Fill Parent", ["Auto", "Width", "Height", "Both"], "Auto"),
-    next = op.outTrigger("Next"),
-    outWidth = op.outNumber("Width"),
-    outHeight = op.outNumber("Height"),
-    outMarginLeft = op.outNumber("Margin Left"),
-    outMarginTop = op.outNumber("Margin Top");
-
-op.setPortGroup("Size", [inWidth, inHeight]);
-op.setPortGroup("Proportions", [inRatio, inStretch, inPresets]);
-
-let align = 0;
-const ALIGN_NONE = 0;
-const ALIGN_WIDTH = 1;
-const ALIGN_HEIGHT = 2;
-const ALIGN_BOTH = 3;
-const ALIGN_AUTO = 4;
-
-inStretch.onChange = updateUi;
-inWhat.onChange = updateMethod;
-inCenter.onChange =
-    inTrigger.onLinkChanged = removeStyles;
-
-inPresets.onChange = updateRatioPreset;
-
-const cgl = op.patch.cgl;
-
-// if (window.getComputedStyle(cgl.canvas).position === "absolute")
-// {
-//     cgl.canvas.style.position = "initial";
-//     op.warn("[cables forceCanvasSize] - canvas was positioned absolute, not compatible with Ops.Gl.ForceCanvasSize");
-// }
-
-updateUi();
-
-function updateMethod()
-{
-    if (inWhat.get() == "Aspect Ratio")
-    {
-        inRatio.set(100);
-        updateRatioPreset();
-    }
-    updateUi();
-}
-
-function updateRatioPreset()
-{
-    const pr = inPresets.get();
-    if (pr == "Custom") return;
-    else if (pr == "16:9")inRatio.set(16 / 9);
-    else if (pr == "4:3")inRatio.set(4 / 3);
-    else if (pr == "16:10")inRatio.set(16 / 10);
-    else if (pr == "21:9")inRatio.set(21 / 9);
-    else if (pr == "2:1")inRatio.set(2);
-    else if (pr == "1:1")inRatio.set(1);
-    else if (pr == "9:16")inRatio.set(9 / 16);
-    else if (pr == "1:2")inRatio.set(0.5);
-    else if (pr == "iPhoneXr Vert")inRatio.set(9 / 19.5);
-}
-
-op.on("delete", () =>
-{
-    removeStyles();
-});
-
-inRatio.onChange = () =>
-{
-    removeStyles();
-};
-
-inActive.onChange = function ()
-{
-    if (!inActive.get())removeStyles();
-};
-
-function updateUi()
-{
-    const forceRes = inWhat.get() == "Resolution";
-    inWidth.setUiAttribs({ "greyout": !forceRes });
-    inHeight.setUiAttribs({ "greyout": !forceRes });
-
-    inPresets.setUiAttribs({ "greyout": forceRes });
-    inStretch.setUiAttribs({ "greyout": forceRes });
-    inRatio.setUiAttribs({ "greyout": forceRes });
-
-    align = 0;
-
-    if (!forceRes)
-    {
-        const strAlign = inStretch.get();
-        if (strAlign == "Width")align = ALIGN_WIDTH;
-        else if (strAlign == "Height")align = ALIGN_HEIGHT;
-        else if (strAlign == "Both")align = ALIGN_BOTH;
-        else if (strAlign == "Auto")align = ALIGN_AUTO;
-    }
-}
-
-function removeStyles()
-{
-    cgl.canvas.style["margin-top"] = "";
-    cgl.canvas.style["margin-left"] = "";
-    cgl.canvas.styleMarginLeft = 0;
-    cgl.canvas.styleMarginTop = 0;
-
-    outMarginLeft.set(0);
-    outMarginTop.set(0);
-
-    const rect = cgl.canvas.parentNode.getBoundingClientRect();
-
-    cgl.setSize(rect.width, rect.height);
-
-    cgl.canvas.style.transform = "scale(1)";
-
-    cgl.canvas.style.position = "absolute";
-
-    cgl.updateSize();
-}
-
-inTrigger.onTriggered = function ()
-{
-    if (!inActive.get()) return next.trigger();
-
-    let w = inWidth.get();
-    let h = inHeight.get();
-
-    let clientRect = cgl.canvas.parentNode.getBoundingClientRect();
-
-    // console.log("clientrect",clientRect);
-
-    if (clientRect.height == 0)
-    {
-        cgl.canvas.parentNode.style.height = "100%";
-        clientRect = cgl.canvas.parentNode.getBoundingClientRect();
-    }
-    if (clientRect.width == 0)
-    {
-        cgl.canvas.parentNode.style.width = "100%";
-        clientRect = cgl.canvas.parentNode.getBoundingClientRect();
-    }
-
-    if (align == ALIGN_WIDTH)
-    {
-        w = clientRect.width;
-        h = w * 1 / inRatio.get();
-    }
-    else if (align == ALIGN_HEIGHT)
-    {
-        h = clientRect.height;
-        w = h * inRatio.get();
-    }
-    else if (align == ALIGN_AUTO)
-    {
-        const rect = clientRect;
-
-        h = rect.height;
-        w = h * inRatio.get();
-
-        if (w > rect.width)
-        {
-            w = rect.width;
-            h = w * 1 / inRatio.get();
-        }
-    }
-    else if (align == ALIGN_BOTH)
-    {
-        const rect = clientRect;
-        h = rect.height;
-        w = h * inRatio.get();
-
-        if (w < rect.width)
-        {
-            w = rect.width;
-            h = w * 1 / inRatio.get();
-        }
-    }
-
-    w = Math.ceil(w);
-    h = Math.ceil(h);
-
-    if (inCenter.get())
-    {
-        const rect = clientRect;
-
-        const t = (rect.height - h) / 2;
-        const l = (rect.width - w) / 2;
-
-        outMarginLeft.set(l);
-        outMarginTop.set(t);
-
-        cgl.canvas.style["margin-top"] = t + "px";
-        cgl.canvas.style["margin-left"] = l + "px";
-        cgl.canvas.styleMarginTop = t;
-        cgl.canvas.styleMarginLeft = l;
-    }
-    else
-    {
-        cgl.canvas.style["margin-top"] = "0";
-        cgl.canvas.style["margin-left"] = "0";
-        cgl.canvas.styleMarginTop = 0;
-        cgl.canvas.styleMarginLeft = 0;
-
-        outMarginLeft.set(0);
-        outMarginTop.set(0);
-    }
-
-    if (inScaleFit.get())
-    {
-        const rect = clientRect;
-        const scX = rect.width / inWidth.get();
-        const scY = rect.height / inHeight.get();
-        cgl.canvas.style.transform = "scale(" + Math.min(scX, scY) + ")";
-    }
-    else
-    {
-        cgl.canvas.style.transform = "scale(1)";
-    }
-
-    if (cgl.canvasWidth != w || cgl.canvasHeight != h)
-    {
-        outWidth.set(w);
-        outHeight.set(h);
-        cgl.setSize(w, h);
-    }
-    // else
-    next.trigger();
-};
-
-}
-};
-
-CABLES.OPS["a8b3380e-cd4a-4000-9ee9-1c65a11027dd"]={f:Ops.Gl.ForceCanvasSize,objName:"Ops.Gl.ForceCanvasSize"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.Local.MyAwesomeOpName
 // 
 // **************************************************************
@@ -10342,6 +9928,766 @@ function updateVisible()
 };
 
 CABLES.OPS["e102834c-6dcf-459c-9e22-44ebccfc0d3b"]={f:Ops.Html.Utils.LoadingIndicator,objName:"Ops.Html.Utils.LoadingIndicator"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Html.Cursor_v2
+// 
+// **************************************************************
+
+Ops.Html.Cursor_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exec = op.inTriggerButton("Update"),
+    cursorPort = op.inDropDown("CSS Cursors", ["auto", "crosshair", "pointer", "hand", "move", "n-resize", "ne-resize", "e-resize", "se-resize", "s-resize", "sw-resize", "w-resize", "nw-resize", "ew-resize", "text", "wait", "help", "none"], "pointer"),
+    parentEle = op.inBool("Set Parent Element", true),
+    next = op.outTrigger("Next");
+
+const cursorStr = "";
+exec.onTriggered = update;
+
+let lastParentCursor = "";
+
+exec.onLinkChanged =
+next.onLinkChanged = () =>
+{
+    op.patch.cgl.setCursor("auto");
+};
+
+parentEle.onChange = () =>
+{
+    if (!parentEle.get())
+    {
+        lastParentCursor = "auto";
+        op.patch.cgl.canvas.parentElement.style.cursor = "auto";
+    }
+};
+
+function update()
+{
+    let arg2 = null;
+
+    op.patch.cgl.setCursor(cursorPort.get(), arg2);
+
+    if (parentEle.get() && lastParentCursor != cursorPort.get())
+        op.patch.cgl.canvas.parentElement.style.cursor = cursorPort.get();
+
+    next.trigger();
+}
+
+}
+};
+
+CABLES.OPS["39486799-bdad-42d3-a300-4642c23578a8"]={f:Ops.Html.Cursor_v2,objName:"Ops.Html.Cursor_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Boolean.Boolean
+// 
+// **************************************************************
+
+Ops.Boolean.Boolean= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    v = op.inBool("value", false),
+    result = op.outBoolNum("result");
+
+result.set(false);
+v.onChange = exec;
+
+function exec()
+{
+    if (result.get() != v.get()) result.set(v.get());
+}
+
+}
+};
+
+CABLES.OPS["83e2d74c-9741-41aa-a4d7-1bda4ef55fb3"]={f:Ops.Boolean.Boolean,objName:"Ops.Boolean.Boolean"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Trigger.NumberByTrigger
+// 
+// **************************************************************
+
+Ops.Trigger.NumberByTrigger= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe0 = op.inTriggerButton("0"),
+    exe1 = op.inTriggerButton("1"),
+    exe2 = op.inTriggerButton("2"),
+    exe3 = op.inTriggerButton("3"),
+    exe4 = op.inTriggerButton("4"),
+    exe5 = op.inTriggerButton("5"),
+    exe6 = op.inTriggerButton("6"),
+    exe7 = op.inTriggerButton("7"),
+    number = op.outNumber("number");
+
+number.changeAlways = true;
+const outTrig = op.outTrigger("Triggered");
+
+exe0.onTriggered = function () { number.set(0); outTrig.trigger(); };
+exe1.onTriggered = function () { number.set(1); outTrig.trigger(); };
+exe2.onTriggered = function () { number.set(2); outTrig.trigger(); };
+exe3.onTriggered = function () { number.set(3); outTrig.trigger(); };
+exe4.onTriggered = function () { number.set(4); outTrig.trigger(); };
+exe5.onTriggered = function () { number.set(5); outTrig.trigger(); };
+exe6.onTriggered = function () { number.set(6); outTrig.trigger(); };
+exe7.onTriggered = function () { number.set(7); outTrig.trigger(); };
+
+}
+};
+
+CABLES.OPS["43ed1123-1312-4383-b843-27b8ec540c09"]={f:Ops.Trigger.NumberByTrigger,objName:"Ops.Trigger.NumberByTrigger"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Ui.VizBool
+// 
+// **************************************************************
+
+Ops.Ui.VizBool= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inNum = op.inBool("Boolean", 0),
+    outBool = op.outBoolNum("Bool");
+
+op.setUiAttrib({ "height": 100, "width": 100, "resizable": true });
+
+inNum.onChange = () =>
+{
+    outBool.set(inNum.get());
+};
+
+op.renderVizLayer = (ctx, layer) =>
+{
+    if (layer.width <= 0 || layer.height <= 0) return;
+
+    ctx.fillStyle = "#222";
+    ctx.fillRect(layer.x, layer.y, layer.width, layer.height);
+
+    let isTrue = !!inNum.get();
+
+    let circle = new Path2D();
+    let radius = Math.min(layer.height, layer.width) / 2.4 * 0.8;
+    if (radius < 0)radius = 0;
+    circle.arc(layer.x + layer.width / 2, layer.y + layer.height / 2, radius, 0, 2 * Math.PI, false);
+
+    ctx.strokeStyle = "#555";
+    ctx.lineWidth = 7 * layer.scale;
+    ctx.stroke(circle);
+
+    if (isTrue)
+    {
+        if (op.uiAttribs.color)ctx.fillStyle = op.uiAttribs.color;
+        else ctx.fillStyle = "#ccc";
+
+        let circle = new Path2D();
+        circle.arc(layer.x + layer.width / 2, layer.y + layer.height / 2, radius - (ctx.lineWidth / 2), 0, 2 * Math.PI, false);
+        ctx.fill(circle);
+    }
+};
+
+}
+};
+
+CABLES.OPS["cf194306-175b-416a-b90e-31ff2192a190"]={f:Ops.Ui.VizBool,objName:"Ops.Ui.VizBool"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Trigger.IsTriggered
+// 
+// **************************************************************
+
+Ops.Trigger.IsTriggered= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exec = op.inTrigger("Trigger"),
+    next = op.outTrigger("Next"),
+    result = op.outBoolNum("Was Triggered", false);
+
+let frameCount = 0;
+
+op.onAnimFrame = function (tt)
+{
+    frameCount++;
+    if (frameCount > 1) result.set(false);
+};
+
+exec.onTriggered = function ()
+{
+    frameCount = 0;
+    result.set(true);
+    next.trigger();
+};
+
+}
+};
+
+CABLES.OPS["7c96fee9-4c2f-45e1-a41b-096b06d286b8"]={f:Ops.Trigger.IsTriggered,objName:"Ops.Trigger.IsTriggered"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Devices.Mouse.MouseWheel_v2
+// 
+// **************************************************************
+
+Ops.Devices.Mouse.MouseWheel_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    speed = op.inValue("Speed", 1),
+    preventScroll = op.inValueBool("prevent scroll", true),
+    flip = op.inValueBool("Flip Direction"),
+    inSimpleIncrement = op.inBool("Simple Delta", true),
+    area = op.inSwitch("Area", ["Canvas", "Document", "Parent"], "Document"),
+    active = op.inValueBool("active", true),
+    delta = op.outNumber("delta", 0),
+    deltaX = op.outNumber("delta X", 0),
+    deltaOrig = op.outNumber("browser event delta", 0),
+    trigger = op.outTrigger("Wheel Action");
+
+const cgl = op.patch.cgl;
+const value = 0;
+
+const startTime = CABLES.now() / 1000.0;
+const v = 0;
+
+let dir = 1;
+
+let listenerElement = null;
+
+area.onChange = updateArea;
+const vOut = 0;
+
+addListener();
+
+flip.onChange = function ()
+{
+    if (flip.get())dir = -1;
+    else dir = 1;
+};
+
+function normalizeWheel(event)
+{
+    let sY = 0;
+
+    if ("detail" in event) { sY = event.detail; }
+
+    if ("deltaY" in event)
+    {
+        sY = event.deltaY;
+        // if (deltaY < 1.0)deltaY *= 16;
+        if (event.deltaY > 20)sY = 20;
+        else if (event.deltaY < -20)sY = -20;
+    }
+    return sY * dir;
+}
+
+function normalizeWheelX(event)
+{
+    let sX = 0;
+
+    if ("deltaX" in event)
+    {
+        sX = event.deltaX;
+        if (event.deltaX > 20)sX = 20;
+        else if (event.deltaX < -20)sX = -20;
+    }
+    return sX;
+}
+
+let lastEvent = 0;
+
+function onMouseWheel(e)
+{
+    if (Date.now() - lastEvent < 10) return;
+    lastEvent = Date.now();
+
+    deltaOrig.set(e.wheelDelta || e.deltaY);
+
+    if (e.deltaY)
+    {
+        let d = normalizeWheel(e);
+        if (inSimpleIncrement.get())
+        {
+            if (d > 0)d = speed.get();
+            else d = -speed.get();
+        }
+        else d *= 0.01 * speed.get();
+
+        delta.set(0);
+        delta.set(d);
+    }
+
+    if (e.deltaX)
+    {
+        let dX = normalizeWheelX(e);
+        dX *= 0.01 * speed.get();
+
+        deltaX.set(0);
+        deltaX.set(dX);
+    }
+
+    if (preventScroll.get()) e.preventDefault();
+    trigger.trigger();
+}
+
+function updateArea()
+{
+    removeListener();
+
+    if (area.get() == "Document") listenerElement = document;
+    if (area.get() == "Parent") listenerElement = cgl.canvas.parentElement;
+    else listenerElement = cgl.canvas;
+
+    if (active.get())addListener();
+}
+
+function addListener()
+{
+    if (!listenerElement)updateArea();
+    listenerElement.addEventListener("wheel", onMouseWheel, { "passive": false });
+}
+
+function removeListener()
+{
+    if (listenerElement) listenerElement.removeEventListener("wheel", onMouseWheel);
+}
+
+active.onChange = function ()
+{
+    updateArea();
+};
+
+}
+};
+
+CABLES.OPS["7b9626db-536b-4bb4-85c3-95401bc60d1b"]={f:Ops.Devices.Mouse.MouseWheel_v2,objName:"Ops.Devices.Mouse.MouseWheel_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Devices.Mouse.Mouse_v4
+// 
+// **************************************************************
+
+Ops.Devices.Mouse.Mouse_v4= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inCoords = op.inSwitch("Coordinates", ["-1 to 1", "Pixel Display", "Pixel", "0 to 1"], "-1 to 1"),
+    area = op.inValueSelect("Area", ["Canvas Area", "Canvas", "Document", "Parent Element"], "Canvas Area"),
+    flipY = op.inValueBool("flip y", true),
+    rightClickPrevDef = op.inBool("right click prevent default", true),
+    inEventType = op.inSwitch("Events", ["Pointer", "Touch", "Mouse"]),
+    inPassive = op.inValueBool("Passive Events", false),
+    inEle = op.inObject("Element", "element"),
+    active = op.inValueBool("Active", true),
+    outMouseX = op.outNumber("x", 0),
+    outMouseY = op.outNumber("y", 0),
+    mouseClick = op.outTrigger("click"),
+    mouseClickRight = op.outTrigger("click right"),
+    mouseDown = op.outBoolNum("Button is down"),
+    mouseOver = op.outBoolNum("Mouse is hovering"),
+    outMovementX = op.outNumber("Movement X", 0),
+    outMovementY = op.outNumber("Movement Y", 0),
+    outEvent = op.outObject("Event");
+
+const cgl = op.patch.cgl;
+let normalize = 1;
+let listenerElement = null;
+let areaElement = null;
+
+inPassive.onChange =
+    area.onChange = addListeners;
+inCoords.onChange = updateCoordNormalizing;
+op.onDelete = removeListeners;
+
+addListeners();
+
+op.on("loadedValueSet", onStart);
+
+function onStart()
+{
+    if (normalize == 0)
+    {
+        if (areaElement.clientWidth === 0) setTimeout(onStart, 50);
+
+        outMouseX.set(areaElement.clientWidth / 2);
+        outMouseY.set(areaElement.clientHeight / 2);
+    }
+    else if (normalize == 1)
+    {
+        outMouseX.set(0);
+        outMouseY.set(0);
+    }
+    else if (normalize == 2)
+    {
+        outMouseX.set(0.5);
+        outMouseY.set(0.5);
+    }
+    else if (normalize == 3)
+    {
+        if (areaElement.clientWidth === 0)
+        {
+            setTimeout(onStart, 50);
+        }
+
+        outMouseX.set(areaElement.clientWidth / 2 / cgl.pixelDensity);
+        outMouseY.set(areaElement.clientHeight / 2 / cgl.pixelDensity);
+    }
+    else console.error("unknown normalize mouse", normalize);
+}
+
+function setValue(x, y)
+{
+    x = x || 0;
+    y = y || 0;
+
+    if (normalize == 0) // pixel
+    {
+        outMouseX.set(x);
+        outMouseY.set(y);
+    }
+    else
+    if (normalize == 3) // pixel css
+    {
+        outMouseX.set(x * cgl.pixelDensity);
+        outMouseY.set(y * cgl.pixelDensity);
+    }
+    else
+    {
+        let w = areaElement.clientWidth / cgl.pixelDensity;
+        let h = areaElement.clientHeight / cgl.pixelDensity;
+
+        w = w || 1;
+        h = h || 1;
+
+        if (normalize == 1) // -1 to 1
+        {
+            let xx = (x / w * 2.0 - 1.0);
+            let yy = (y / h * 2.0 - 1.0);
+            xx = CABLES.clamp(xx, -1, 1);
+            yy = CABLES.clamp(yy, -1, 1);
+
+            outMouseX.set(xx);
+            outMouseY.set(yy);
+        }
+        else if (normalize == 2) // 0 to 1
+        {
+            let xx = x / w;
+            let yy = y / h;
+
+            xx = CABLES.clamp(xx, 0, 1);
+            yy = CABLES.clamp(yy, 0, 1);
+
+            outMouseX.set(xx);
+            outMouseY.set(yy);
+        }
+    }
+}
+
+function checkHovering(e)
+{
+    if (!areaElement) return;
+    const r = areaElement.getBoundingClientRect();
+
+    return (
+        e.clientX > r.left &&
+        e.clientX < r.left + r.width &&
+        e.clientY > r.top &&
+        e.clientY < r.top + r.height
+    );
+}
+
+inEle.onChange =
+inEventType.onChange = function ()
+{
+    area.setUiAttribs({ "greyout": inEle.isLinked() });
+    removeListeners();
+    addListeners();
+};
+
+active.onChange = function ()
+{
+    if (listenerElement)removeListeners();
+    if (active.get())addListeners();
+};
+
+function updateCoordNormalizing()
+{
+    if (inCoords.get() == "Pixel") normalize = 0;
+    else if (inCoords.get() == "-1 to 1") normalize = 1;
+    else if (inCoords.get() == "0 to 1") normalize = 2;
+    else if (inCoords.get() == "Pixel Display") normalize = 3;
+}
+
+/// ///
+
+function onMouseEnter(e)
+{
+    outEvent.setRef(e);
+    mouseDown.set(false);
+    mouseOver.set(checkHovering(e));
+}
+
+function onMouseDown(e)
+{
+    if (!checkHovering(e)) return;
+    outEvent.setRef(e);
+    mouseDown.set(true);
+}
+
+function onMouseUp(e)
+{
+    outEvent.setRef(e);
+    mouseDown.set(false);
+}
+
+function onClickRight(e)
+{
+    if (!checkHovering(e)) return;
+    outEvent.setRef(e);
+    mouseClickRight.trigger();
+    if (rightClickPrevDef.get()) e.preventDefault();
+}
+
+function onmouseclick(e)
+{
+    if (!checkHovering(e)) return;
+    outEvent.setRef(e);
+    mouseClick.trigger();
+}
+
+function onMouseLeave(e)
+{
+    outEvent.setRef(e);
+    mouseDown.set(false);
+    mouseOver.set(checkHovering(e));
+}
+
+function onmousemove(e)
+{
+    mouseOver.set(checkHovering(e));
+    if (area.get() === "Canvas Area")
+    {
+        const r = areaElement.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+
+        if (x < 0 || x > r.width || y > r.height || y < 0) return;
+    }
+
+    outEvent.setRef(e);
+    setCoords(e);
+
+    outMovementX.set(e.movementX / cgl.pixelDensity);
+    outMovementY.set(e.movementY / cgl.pixelDensity);
+}
+
+function ontouchmove(e)
+{
+    if (event.touches && event.touches.length > 0) setCoords(e.touches[0]);
+    outEvent.setRef(e);
+}
+
+function ontouchstart(event)
+{
+    mouseDown.set(true);
+
+    if (event.touches && event.touches.length > 0) onMouseDown(event.touches[0]);
+    outEvent.setRef(e);
+}
+
+function ontouchend(event)
+{
+    mouseDown.set(false);
+    onMouseUp();
+    outEvent.setRef(e);
+}
+
+/// ////
+
+function setCoords(e)
+{
+    let x = e.clientX;
+    let y = e.clientY;
+
+    if (inEle.isLinked())
+    {
+        x = e.offsetX;
+        y = e.offsetY;
+    }
+    else
+    {
+        if (area.get() != "Document")
+        {
+            x = e.offsetX;
+            y = e.offsetY;
+        }
+        if (area.get() === "Canvas Area")
+        {
+            const r = areaElement.getBoundingClientRect();
+            x = e.clientX - r.left;
+            y = e.clientY - r.top;
+
+            if (x < 0 || x > r.width || y > r.height || y < 0) return;
+            x = CABLES.clamp(x, 0, r.width);
+            y = CABLES.clamp(y, 0, r.height);
+        }
+    }
+
+    if (flipY.get()) y = areaElement.clientHeight - y;
+
+    setValue(x / cgl.pixelDensity, y / cgl.pixelDensity);
+}
+
+function removeListeners()
+{
+    if (!listenerElement) return;
+    listenerElement.removeEventListener("touchend", ontouchend);
+    listenerElement.removeEventListener("touchstart", ontouchstart);
+    listenerElement.removeEventListener("touchmove", ontouchmove);
+
+    listenerElement.removeEventListener("mousemove", onmousemove);
+    listenerElement.removeEventListener("mouseleave", onMouseLeave);
+    listenerElement.removeEventListener("mousedown", onMouseDown);
+    listenerElement.removeEventListener("mouseup", onMouseUp);
+    listenerElement.removeEventListener("mouseenter", onMouseEnter);
+
+    listenerElement.removeEventListener("pointermove", onmousemove);
+    listenerElement.removeEventListener("pointerleave", onMouseLeave);
+    listenerElement.removeEventListener("pointerdown", onMouseDown);
+    listenerElement.removeEventListener("pointerup", onMouseUp);
+    listenerElement.removeEventListener("pointerenter", onMouseEnter);
+
+    listenerElement.removeEventListener("click", onmouseclick);
+    listenerElement.removeEventListener("contextmenu", onClickRight);
+    listenerElement = null;
+}
+
+function addListeners()
+{
+    if (listenerElement || !active.get())removeListeners();
+    if (!active.get()) return;
+
+    listenerElement = areaElement = cgl.canvas;
+
+    if (inEle.isLinked())
+    {
+        listenerElement = areaElement = inEle.get();
+    }
+    else
+    {
+        if (area.get() == "Canvas Area")
+        {
+            areaElement = cgl.canvas.parentElement;
+            listenerElement = document.body;
+        }
+        if (area.get() == "Document") areaElement = listenerElement = document.body;
+        if (area.get() == "Parent Element") listenerElement = areaElement = cgl.canvas.parentElement;
+    }
+
+    if (!areaElement)
+    {
+        op.setUiError("noarea", "could not find area element for mouse", 2);
+        return;
+    }
+    op.setUiError("noarea", null);
+
+    let passive = false;
+    if (inPassive.get())passive = { "passive": true };
+
+    if (inEventType.get() == "touch")
+    {
+        listenerElement.addEventListener("touchend", ontouchend, passive);
+        listenerElement.addEventListener("touchstart", ontouchstart, passive);
+        listenerElement.addEventListener("touchmove", ontouchmove, passive);
+    }
+
+    if (inEventType.get() == "Mouse")
+    {
+        listenerElement.addEventListener("mousemove", onmousemove, passive);
+        listenerElement.addEventListener("mouseleave", onMouseLeave, passive);
+        listenerElement.addEventListener("mousedown", onMouseDown, passive);
+        listenerElement.addEventListener("mouseup", onMouseUp, passive);
+        listenerElement.addEventListener("mouseenter", onMouseEnter, passive);
+    }
+
+    if (inEventType.get() == "Pointer")
+    {
+        listenerElement.addEventListener("pointermove", onmousemove, passive);
+        listenerElement.addEventListener("pointerleave", onMouseLeave, passive);
+        listenerElement.addEventListener("pointerdown", onMouseDown, passive);
+        listenerElement.addEventListener("pointerup", onMouseUp, passive);
+        listenerElement.addEventListener("pointerenter", onMouseEnter, passive);
+    }
+
+    listenerElement.addEventListener("contextmenu", onClickRight, passive);
+    listenerElement.addEventListener("click", onmouseclick, passive);
+}
+
+//
+
+}
+};
+
+CABLES.OPS["c86eb411-a996-47cd-a149-264903dc408c"]={f:Ops.Devices.Mouse.Mouse_v4,objName:"Ops.Devices.Mouse.Mouse_v4"};
 
 
 
