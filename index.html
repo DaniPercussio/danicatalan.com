@@ -85,15 +85,19 @@
         function checkWebGLSupport() {
             try {
                 const canvas = document.createElement('canvas');
-                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl') || canvas.getContext('webgl2');
                 return !!gl;
             } catch (e) {
+                console.log('WebGL check error:', e);
                 return false;
             }
         }
 
-        // Show error if WebGL is not supported
-        if (!checkWebGLSupport()) {
+        const hasWebGL = checkWebGLSupport();
+        
+        // Show error only if WebGL is definitively not supported
+        if (!hasWebGL) {
+            console.warn('WebGL not supported on this browser');
             document.body.innerHTML = `
                 <div style="
                     display: flex;
@@ -118,7 +122,6 @@
                     </p>
                 </div>
             `;
-            throw new Error('WebGL not supported');
         }
 
         // Detect performance warnings on low-end devices
@@ -149,7 +152,9 @@
             return warnings;
         }
 
-        detectPerformanceWarnings();
+        if (hasWebGL) {
+            detectPerformanceWarnings();
+        }
 
         function showError(errId, errMsg) {
             console.error(`Cables Error [${errId}]:`, errMsg);
