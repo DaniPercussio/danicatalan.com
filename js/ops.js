@@ -9,6 +9,7 @@ Ops.Ui=Ops.Ui || {};
 Ops.Anim=Ops.Anim || {};
 Ops.Html=Ops.Html || {};
 Ops.Math=Ops.Math || {};
+Ops.Vars=Ops.Vars || {};
 Ops.Array=Ops.Array || {};
 Ops.Local=Ops.Local || {};
 Ops.Cables=Ops.Cables || {};
@@ -45,7 +46,7 @@ constructor()
 {
 super(...arguments);
 const op=this;
-const attachments=op.attachments={"inc_gen_ports_js":"const port_59tlafryu=op.inArray(\"59tlafryu\");\nport_59tlafryu.setUiAttribs({title:\"Sequence Array\",});\n\nconst port_721cku440=op.inTrigger(\"721cku440\");\nport_721cku440.setUiAttribs({title:\"Stop\",display:\"button\",});\n\nconst port_ycqzyx3mg=op.inTrigger(\"ycqzyx3mg\");\nport_ycqzyx3mg.setUiAttribs({title:\"exe\",});\n\nconst port_hhjmki6s5=op.outObject(\"hhjmki6s5\");\nport_hhjmki6s5.setUiAttribs({title:\"texture_out\",display:\"texture\",objType:\"texture\",objType:\"texture\"});\n\nop.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\nconst innerOut_59tlafryu = addedOps[i].outArray(\"innerOut_59tlafryu\");\ninnerOut_59tlafryu.setUiAttribs({title:\"Sequence Array\"});\nport_59tlafryu.on(\"change\", (a,v) => { innerOut_59tlafryu.setRef(a); });\n\nconst innerOut_721cku440 = addedOps[i].outTrigger(\"innerOut_721cku440\");\ninnerOut_721cku440.setUiAttribs({title:\"Stop\"});\nport_721cku440.onTriggered = () => { innerOut_721cku440.trigger(); };\n\nconst innerOut_ycqzyx3mg = addedOps[i].outTrigger(\"innerOut_ycqzyx3mg\");\ninnerOut_ycqzyx3mg.setUiAttribs({title:\"exe\"});\nport_ycqzyx3mg.onTriggered = () => { innerOut_ycqzyx3mg.trigger(); };\n\n    }\nif(addedOps[i].innerOutput)\n{\nconst innerIn_hhjmki6s5 = addedOps[i].inObject(\"innerIn_hhjmki6s5\");\ninnerIn_hhjmki6s5.setUiAttribs({title:\"texture_out\"});\ninnerIn_hhjmki6s5.on(\"change\", (a,v) => { port_hhjmki6s5.setRef(a); });\n\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"899nceo6w\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"Steps index\",\"value\":31},{\"name\":\"Steps\",\"value\":\"32\"}],\"portsOut\":[{\"name\":\"Sequence Trigger Output\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"r3yyqc239\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"lili4hv6g\",\"objOut\":\"899nceo6w\"}]},{\"name\":\"Sequenced Value\",\"value\":1},{\"name\":\"Current Step\",\"value\":27}],\"objName\":\"Ops.WebAudio.ClockSequencerPattern\"},{\"id\":\"inz1z4uby\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"BPM\",\"value\":130}],\"portsOut\":[{\"name\":\"1/2 Note Trigger\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"r3yyqc239\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"lili4hv6g\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"1/16 Note Trigger\",\"links\":[{\"portIn\":\"Clock Trigger Input\",\"portOut\":\"1/16 Note Trigger\",\"objIn\":\"899nceo6w\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"Sequencer Running\",\"value\":true},{\"name\":\"BPM Out\",\"value\":130}],\"objName\":\"Ops.WebAudio.ClockSequencer\"},{\"id\":\"pjr0f0sfh\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"r\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"pjr0f0sfh\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"lili4hv6g\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"b\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"lili4hv6g\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"r3yyqc239\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"g\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"r3yyqc239\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"gdhde7qeq\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"a\",\"value\":1}],\"portsOut\":[{\"name\":\"texture_out\",\"links\":[{\"portIn\":\"innerIn_hhjmki6s5\",\"portOut\":\"texture_out\",\"objIn\":\"pyktvp87m\",\"objOut\":\"gdhde7qeq\"}]}],\"objName\":\"Ops.Gl.Textures.ColorTexture\"},{\"id\":\"rho87gl00\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsOut\":[{\"name\":\"innerOut_59tlafryu\",\"title\":\"Sequence Array\",\"links\":[{\"portIn\":\"Sequence Array\",\"portOut\":\"innerOut_59tlafryu\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_721cku440\",\"title\":\"Stop\",\"links\":[{\"portIn\":\"Start\",\"portOut\":\"innerOut_721cku440\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_ycqzyx3mg\",\"title\":\"exe\",\"links\":[{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Stop\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]}],\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"pyktvp87m\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"innerIn_hhjmki6s5\",\"title\":\"texture_out\"}],\"objName\":\"Ops.Ui.SubPatchOutput\"},{\"id\":\"yejvqgrtk\",\"uiAttribs\":{\"subPatch\":\"nvd4lebje\"},\"storage\":{},\"portsIn\":[{\"name\":\"value\",\"value\":0}],\"portsOut\":[{\"name\":\"result\",\"value\":0}],\"objName\":\"Ops.Number.Number\"}]}",};
+const attachments=op.attachments={"inc_gen_ports_js":"const port_59tlafryu=op.inArray(\"59tlafryu\");\nport_59tlafryu.setUiAttribs({title:\"Sequence Array\",});\n\nconst port_721cku440=op.inTrigger(\"721cku440\");\nport_721cku440.setUiAttribs({title:\"Stop\",display:\"button\",});\n\nconst port_ycqzyx3mg=op.inTrigger(\"ycqzyx3mg\");\nport_ycqzyx3mg.setUiAttribs({title:\"exe\",});\n\nconst port_hhjmki6s5=op.outObject(\"hhjmki6s5\");\nport_hhjmki6s5.setUiAttribs({title:\"texture_out\",display:\"texture\",objType:\"texture\",objType:\"texture\"});\n\nop.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\nconst innerOut_59tlafryu = addedOps[i].outArray(\"innerOut_59tlafryu\");\ninnerOut_59tlafryu.setUiAttribs({title:\"Sequence Array\"});\nport_59tlafryu.on(\"change\", (a,v) => { innerOut_59tlafryu.setRef(a); });\n\nconst innerOut_721cku440 = addedOps[i].outTrigger(\"innerOut_721cku440\");\ninnerOut_721cku440.setUiAttribs({title:\"Stop\"});\nport_721cku440.onTriggered = () => { innerOut_721cku440.trigger(); };\n\nconst innerOut_ycqzyx3mg = addedOps[i].outTrigger(\"innerOut_ycqzyx3mg\");\ninnerOut_ycqzyx3mg.setUiAttribs({title:\"exe\"});\nport_ycqzyx3mg.onTriggered = () => { innerOut_ycqzyx3mg.trigger(); };\n\n    }\nif(addedOps[i].innerOutput)\n{\nconst innerIn_hhjmki6s5 = addedOps[i].inObject(\"innerIn_hhjmki6s5\");\ninnerIn_hhjmki6s5.setUiAttribs({title:\"texture_out\"});\ninnerIn_hhjmki6s5.on(\"change\", (a,v) => { port_hhjmki6s5.setRef(a); });\n\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"899nceo6w\",\"uiAttribs\":{\"subPatch\":\"3xsey5wbc\"},\"storage\":{},\"portsIn\":[{\"name\":\"Steps index\",\"value\":31},{\"name\":\"Steps\",\"value\":\"32\"}],\"portsOut\":[{\"name\":\"Sequence Trigger Output\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"r3yyqc239\",\"objOut\":\"899nceo6w\"},{\"portIn\":\"Generate\",\"portOut\":\"Sequence Trigger Output\",\"objIn\":\"lili4hv6g\",\"objOut\":\"899nceo6w\"}]},{\"name\":\"Sequenced Value\",\"value\":0},{\"name\":\"Current Step\",\"value\":21}],\"objName\":\"Ops.WebAudio.ClockSequencerPattern\"},{\"id\":\"inz1z4uby\",\"uiAttribs\":{\"subPatch\":\"3xsey5wbc\"},\"storage\":{},\"portsIn\":[{\"name\":\"BPM\",\"value\":130}],\"portsOut\":[{\"name\":\"1/2 Note Trigger\",\"links\":[{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"pjr0f0sfh\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"r3yyqc239\",\"objOut\":\"inz1z4uby\"},{\"portIn\":\"Generate\",\"portOut\":\"1/2 Note Trigger\",\"objIn\":\"lili4hv6g\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"1/16 Note Trigger\",\"links\":[{\"portIn\":\"Clock Trigger Input\",\"portOut\":\"1/16 Note Trigger\",\"objIn\":\"899nceo6w\",\"objOut\":\"inz1z4uby\"}]},{\"name\":\"Sequencer Running\",\"value\":false},{\"name\":\"BPM Out\",\"value\":130}],\"objName\":\"Ops.WebAudio.ClockSequencer\"},{\"id\":\"pjr0f0sfh\",\"uiAttribs\":{\"subPatch\":\"3xsey5wbc\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"r\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"pjr0f0sfh\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"lili4hv6g\",\"uiAttribs\":{\"subPatch\":\"3xsey5wbc\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"b\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"lili4hv6g\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"r3yyqc239\",\"uiAttribs\":{\"subPatch\":\"3xsey5wbc\"},\"storage\":{},\"portsIn\":[{\"name\":\"min\",\"value\":0.3},{\"name\":\"max\",\"value\":0.8},{\"name\":\"Integer\",\"value\":0},{\"name\":\"No consecutive duplicates\",\"value\":1}],\"portsOut\":[{\"name\":\"result\",\"links\":[{\"portIn\":\"g\",\"portOut\":\"result\",\"objIn\":\"gdhde7qeq\",\"objOut\":\"r3yyqc239\"}]}],\"objName\":\"Ops.Math.TriggerRandomNumber_v3\"},{\"id\":\"gdhde7qeq\",\"uiAttribs\":{\"subPatch\":\"3xsey5wbc\"},\"storage\":{},\"portsIn\":[{\"name\":\"a\",\"value\":1}],\"portsOut\":[{\"name\":\"texture_out\",\"links\":[{\"portIn\":\"innerIn_hhjmki6s5\",\"portOut\":\"texture_out\",\"objIn\":\"pyktvp87m\",\"objOut\":\"gdhde7qeq\"}]}],\"objName\":\"Ops.Gl.Textures.ColorTexture\"},{\"id\":\"rho87gl00\",\"uiAttribs\":{\"subPatch\":\"3xsey5wbc\"},\"storage\":{},\"portsOut\":[{\"name\":\"innerOut_59tlafryu\",\"title\":\"Sequence Array\",\"links\":[{\"portIn\":\"Sequence Array\",\"portOut\":\"innerOut_59tlafryu\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_721cku440\",\"title\":\"Stop\",\"links\":[{\"portIn\":\"Start\",\"portOut\":\"innerOut_721cku440\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"}]},{\"name\":\"innerOut_ycqzyx3mg\",\"title\":\"exe\",\"links\":[{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Stop\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"inz1z4uby\",\"objOut\":\"rho87gl00\"},{\"portIn\":\"Reset\",\"portOut\":\"innerOut_ycqzyx3mg\",\"objIn\":\"899nceo6w\",\"objOut\":\"rho87gl00\"}]}],\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"pyktvp87m\",\"uiAttribs\":{\"subPatch\":\"3xsey5wbc\"},\"storage\":{},\"portsIn\":[{\"name\":\"innerIn_hhjmki6s5\",\"title\":\"texture_out\"}],\"objName\":\"Ops.Ui.SubPatchOutput\"}]}",};
 const port_59tlafryu=op.inArray("59tlafryu");
 port_59tlafryu.setUiAttribs({title:"Sequence Array",});
 
@@ -298,7 +299,6 @@ outBPM.set(inBPM.get());
 
 let resetTickCount = false;
 let changeWhileRunning = false;
-let lastBPM = inBPM.get();
 inBPM.onChange = updateBpm;
 
 let worker = null;
@@ -312,19 +312,14 @@ updateBpm();
 
 function updateBpm()
 {
-    const bpmValue = inBPM.get();
-    outBPM.set(bpmValue);
-
-    // Only recalculate if BPM actually changed
-    if (lastBPM === bpmValue) return;
-    lastBPM = bpmValue;
+    outBPM.set(inBPM.get());
 
     if (workerRunning)
     {
         changeWhileRunning = true;
         return;
     }
-    QUARTER_NOTE_S = 60 / bpmValue;
+    QUARTER_NOTE_S = 60 / inBPM.get();
     NOTES_IN_S = MULTIPLIERS.map((multiplier) => multiplier * QUARTER_NOTE_S);
     TICK_S = NOTES_IN_S[TICK_INDEX];
 }
@@ -358,8 +353,7 @@ function scheduleNote()
         tickCount = 0;
         resetTickCount = false;
     }
-    const moduloLength = MODULO_PER_NOTE.length;
-    for (let i = 0; i < moduloLength; i += 1)
+    for (let i = 0, len = MODULO_PER_NOTE.length; i < len; i += 1)
     {
         if (tickCount % MODULO_PER_NOTE[i] === 0) outTriggers[i].trigger();
     }
@@ -636,47 +630,6 @@ op.innerOutput = true;
 };
 
 CABLES.OPS["02d45073-7936-4830-81ad-59a162febf1f"]={f:Ops.Ui.SubPatchOutput,objName:"Ops.Ui.SubPatchOutput"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Number.Number
-// 
-// **************************************************************
-
-Ops.Number.Number= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    v = op.inValueFloat("value"),
-    result = op.outNumber("result");
-
-v.onChange = exec;
-
-let isLinked = false;
-v.onLinkChanged = () =>
-{
-    if (!isLinked && v.isLinked())op.setUiAttribs({ "extendTitle": null });
-    isLinked = v.isLinked();
-};
-
-function exec()
-{
-    if (CABLES.UI && !isLinked) op.setUiAttribs({ "extendTitle": v.get() });
-
-    result.set(Number(v.get()));
-}
-
-}
-};
-
-CABLES.OPS["8fb2bb5d-665a-4d0a-8079-12710ae453be"]={f:Ops.Number.Number,objName:"Ops.Number.Number"};
 
 
 
@@ -1675,15 +1628,14 @@ function rebuild()
 
     if (num == 0) return;
 
-    if (!texCoords || texCoords.length != num * 2) texCoords = new Float32Array(num * 2);
+    if (!texCoords || texCoords.length != num * 2) texCoords = new Float32Array(num * 2); // num*2;//=
 
     let rndTc = pTexCoordRand.get();
-    const texCoordsLength = num * 2;
 
     if (!inCoords.isLinked())
     {
         Math.randomSeed = seed.get();
-        texCoords = new Float32Array(texCoordsLength); // Pre-allocate typed array
+        texCoords = []; // needed otherwise its using the reference to input incoords port
 
         for (let i = 0; i < num; i++)
         {
@@ -1955,11 +1907,6 @@ function doTransform()
         const transz = transZ.get();
         const doRot = nrotx || nroty || nrotz;
 
-        // Pre-compute radian conversions to avoid repeated conversions in the loop
-        const rotXRad = nrotx * CGL.DEG2RAD;
-        const rotYRad = nroty * CGL.DEG2RAD;
-        const rotZRad = nrotz * CGL.DEG2RAD;
-
         for (let i = 0; i < arr.length; i += 3)
         {
             resultArr[i + 0] = arr[i + 0] * scx;
@@ -1977,9 +1924,9 @@ function doTransform()
                     resultArr[i + 1],
                     resultArr[i + 2]);
 
-                if (nrotx != 0) vec3.rotateX(rotVec, rotVec, transVec, rotXRad);
-                if (nroty != 0) vec3.rotateY(rotVec, rotVec, transVec, rotYRad);
-                if (nrotz != 0) vec3.rotateZ(rotVec, rotVec, transVec, rotZRad);
+                if (nrotx != 0) vec3.rotateX(rotVec, rotVec, transVec, nrotx * CGL.DEG2RAD);
+                if (nroty != 0) vec3.rotateY(rotVec, rotVec, transVec, nroty * CGL.DEG2RAD);
+                if (nrotz != 0) vec3.rotateZ(rotVec, rotVec, transVec, nrotz * CGL.DEG2RAD);
 
                 resultArr[i + 0] = rotVec[0];
                 resultArr[i + 1] = rotVec[1];
@@ -5366,6 +5313,47 @@ inArr1.onLinkChanged = inArr2.onLinkChanged = function ()
 };
 
 CABLES.OPS["09296117-7312-4f80-982b-7b4a81d22cf8"]={f:Ops.Array.InterpolateArrays,objName:"Ops.Array.InterpolateArrays"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Number.Number
+// 
+// **************************************************************
+
+Ops.Number.Number= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    v = op.inValueFloat("value"),
+    result = op.outNumber("result");
+
+v.onChange = exec;
+
+let isLinked = false;
+v.onLinkChanged = () =>
+{
+    if (!isLinked && v.isLinked())op.setUiAttribs({ "extendTitle": null });
+    isLinked = v.isLinked();
+};
+
+function exec()
+{
+    if (CABLES.UI && !isLinked) op.setUiAttribs({ "extendTitle": v.get() });
+
+    result.set(Number(v.get()));
+}
+
+}
+};
+
+CABLES.OPS["8fb2bb5d-665a-4d0a-8079-12710ae453be"]={f:Ops.Number.Number,objName:"Ops.Number.Number"};
 
 
 
@@ -9563,62 +9551,6 @@ CABLES.OPS["65e8b8a2-ba13-485f-883a-2bcf377989da"]={f:Ops.Trigger.GateTrigger,ob
 
 // **************************************************************
 // 
-// Ops.Local.DaniSongIdChooser
-// 
-// **************************************************************
-
-Ops.Local.DaniSongIdChooser= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-// welcome to your new op!
-// have a look at the documentation:
-// https://cables.gl/docs/5_writing_ops/dev_ops/dev_ops
-
-const
-    heartship = op.inFloat("Heartship"),
-    serenade = op.inFloat("Serenade"),
-    antigone = op.inFloat("Antigone"),
-
-    exec = op.inTrigger("Trigger"),
-    result = op.outNumber("Result"),
-    next = op.outTrigger("Next");
-
-exec.onTriggered = () =>
-{
-    const h = heartship.get();
-    const s = serenade.get();
-    const a = antigone.get();
-
-    let output = 0;
-
-    if (h === 1 && s === 0 && a === 0) {
-        output = 2;
-    } else if (s === 1 && h === 0 && a === 0) {
-        output = 3;
-    } else if (a === 1 && h === 0 && s === 0) {
-        output = 1;
-    } else {
-        output = 0;
-    }
-
-    result.set(output);
-    next.trigger();
-};
-
-}
-};
-
-CABLES.OPS["ec10a8fd-12a2-4a22-ae08-9b781ce5d1be"]={f:Ops.Local.DaniSongIdChooser,objName:"Ops.Local.DaniSongIdChooser"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.Math.DeltaSum
 // 
 // **************************************************************
@@ -9785,54 +9717,6 @@ exec.onTriggered = () =>
 };
 
 CABLES.OPS["24d216f6-e644-4657-a95b-f925336fc53d"]={f:Ops.Local.MyAwesomeOpName,objName:"Ops.Local.MyAwesomeOpName"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Local.InfiniteMenu
-// 
-// **************************************************************
-
-Ops.Local.InfiniteMenu= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const exec = op.inTrigger("Trigger");
-const valueIn = op.inFloat("Value");      // current target value
-const limitIn = op.inFloat("Limit", 150); // wrap limit
-const speedIn = op.inFloat("Speed", 0.1); // interpolation speed (0-1)
-
-const next = op.outTrigger("Next");
-const result = op.outNumber("Wrapped");
-
-let current = 0; // internal smoothed value
-
-exec.onTriggered = () => {
-    const target = valueIn.get();
-    const limit = limitIn.get();
-    const speed = speedIn.get();
-
-    // Smooth interpolation (lerp)
-    current += (target - current) * speed;
-
-    // Wrap-around logic
-    let wrapped = ((current + limit) % (limit * 2));
-    if (wrapped < 0) wrapped += (limit * 2);
-    wrapped -= limit;
-
-    result.set(wrapped);
-    next.trigger();
-};
-
-}
-};
-
-CABLES.OPS["c648ab8f-0170-475b-b12c-4692f8cca816"]={f:Ops.Local.InfiniteMenu,objName:"Ops.Local.InfiniteMenu"};
 
 
 
@@ -10701,6 +10585,867 @@ function addListeners()
 };
 
 CABLES.OPS["c86eb411-a996-47cd-a149-264903dc408c"]={f:Ops.Devices.Mouse.Mouse_v4,objName:"Ops.Devices.Mouse.Mouse_v4"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Local.InfiniteMenu
+// 
+// **************************************************************
+
+Ops.Local.InfiniteMenu= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const exec = op.inTrigger("Trigger");
+const valueIn = op.inFloat("Value");       // target value
+const limitLeft = op.inFloat("LimitLeft", -150);
+const limitRight = op.inFloat("LimitRight", 150);
+const speedIn = op.inFloat("Speed", 0.1);  // interpolation speed 0-1
+
+const next = op.outTrigger("Next");
+const result = op.outNumber("Wrapped");
+
+let current = 0;
+
+exec.onTriggered = () => {
+    const target = valueIn.get();
+    const speed = speedIn.get();
+    const left = limitLeft.get();
+    const right = limitRight.get();
+
+    // --- Smooth step toward target ---
+    current += (target - current) * speed;
+
+    // --- Wrap-around logic ---
+    const range = right - left;
+    let wrapped = ((current - left) % range + range) % range + left;
+
+    result.set(wrapped);
+    next.trigger();
+};
+
+
+}
+};
+
+CABLES.OPS["c648ab8f-0170-475b-b12c-4692f8cca816"]={f:Ops.Local.InfiniteMenu,objName:"Ops.Local.InfiniteMenu"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Gl.Performance
+// 
+// **************************************************************
+
+Ops.Gl.Performance= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTrigger("exe"),
+    inActive = op.inValueBool("Active", true),
+    inShow = op.inValueBool("Visible", true),
+    inDoGpu = op.inValueBool("Measure GPU", true),
+    next = op.outTrigger("childs"),
+    position = op.inSwitch("Position", ["top", "bottom"], "top"),
+    openDefault = op.inBool("Open", false),
+    smoothGraph = op.inBool("Smooth Graph", true),
+    inScaleGraph = op.inFloat("Scale", 3),
+    inSizeGraph = op.inFloat("Size", 128),
+    outCanv = op.outObject("Canvas"),
+    outFPS = op.outNumber("FPS");
+
+const cgl = op.patch.cgl;
+const element = document.createElement("div");
+
+let elementMeasures = null;
+let ctx = null;
+let opened = false;
+let frameCount = 0;
+let fps = 0;
+let fpsStartTime = 0;
+let childsTime = 0;
+let avgMsChilds = 0;
+const queue = [];
+const timesMainloop = [];
+const timesOnFrame = [];
+const timesGPU = [];
+let avgMs = 0;
+let selfTime = 0;
+let canvas = null;
+let lastTime = 0;
+let loadingCounter = 0;
+const loadingChars = ["|", "/", "-", "\\"];
+let initMeasures = true;
+
+const colorRAFSlow = "#007f9c";
+const colorRAFVeruSlow = "#aaaaaa";
+
+const colorBg = "#222222";
+const colorRAF = "#003f5c"; // color: https://learnui.design/tools/data-color-picker.html
+const colorMainloop = "#7a5195";
+const colorOnFrame = "#ef5675";
+const colorGPU = "#ffa600";
+
+let startedQuery = false;
+
+let currentTimeGPU = 0;
+let currentTimeMainloop = 0;
+let currentTimeOnFrame = 0;
+
+op.toWorkPortsNeedToBeLinked(exe, next);
+
+const gl = op.patch.cgl.gl;
+const glQueryExt = gl.getExtension("EXT_disjoint_timer_query_webgl2");
+
+inActive.onChange =
+exe.onLinkChanged =
+    inShow.onChange = () =>
+    {
+        updateOpened();
+        updateVisibility();
+    };
+
+position.onChange = updatePos;
+inSizeGraph.onChange = updateSize;
+
+element.id = "performance";
+element.style.position = "absolute";
+element.style.left = "0px";
+element.style.opacity = "0.8";
+element.style.padding = "10px";
+element.style.cursor = "pointer";
+element.style.background = "#222";
+element.style.color = "white";
+element.style["font-family"] = "monospace";
+element.style["font-size"] = "12px";
+element.style["z-index"] = "99999";
+
+element.innerHTML = "&nbsp;";
+element.addEventListener("click", toggleOpened);
+
+const container = op.patch.cgl.canvas.parentElement;
+container.appendChild(element);
+
+updateSize();
+updateOpened();
+updatePos();
+updateVisibility();
+
+op.onDelete = function ()
+{
+    if (canvas)canvas.remove();
+    if (element)element.remove();
+};
+
+function updatePos()
+{
+    canvas.style["pointer-events"] = "none";
+    if (position.get() == "top")
+    {
+        canvas.style.top = element.style.top = "0px";
+        canvas.style.bottom = element.style.bottom = "initial";
+    }
+    else
+    {
+        canvas.style.bottom = element.style.bottom = "0px";
+        canvas.style.top = element.style.top = "initial";
+    }
+}
+
+function updateVisibility()
+{
+    if (!inShow.get() || !exe.isLinked() || !inActive.get())
+    {
+        element.style.display = "none";
+        element.style.opacity = 0;
+        canvas.style.display = "none";
+    }
+    else
+    {
+        element.style.display = "block";
+        element.style.opacity = 1;
+        canvas.style.display = "block";
+    }
+}
+
+function updateSize()
+{
+    if (!canvas) return;
+
+    const num = Math.max(0, parseInt(inSizeGraph.get()));
+
+    canvas.width = num;
+    canvas.height = num;
+    element.style.left = num + "px";
+
+    queue.length = 0;
+    timesMainloop.length = 0;
+    timesOnFrame.length = 0;
+    timesGPU.length = 0;
+
+    for (let i = 0; i < num; i++)
+    {
+        queue[i] = -1;
+        timesMainloop[i] = -1;
+        timesOnFrame[i] = -1;
+        timesGPU[i] = -1;
+    }
+}
+
+openDefault.onChange = function ()
+{
+    opened = openDefault.get();
+    updateOpened();
+};
+
+function toggleOpened()
+{
+    if (!inShow.get()) return;
+    element.style.opacity = 1;
+    opened = !opened;
+    updateOpened();
+}
+
+function updateOpened()
+{
+    updateText();
+    if (!canvas)createCanvas();
+    if (opened)
+    {
+        canvas.style.display = "block";
+        element.style.left = inSizeGraph.get() + "px";
+        element.style["min-height"] = "56px";
+    }
+    else
+    {
+        canvas.style.display = "none";
+        element.style.left = "0px";
+        element.style["min-height"] = "auto";
+    }
+}
+
+function updateCanvas()
+{
+    const height = canvas.height;
+    const hmul = inScaleGraph.get();
+
+    ctx.fillStyle = colorBg;
+    ctx.fillRect(0, 0, canvas.width, height);
+
+    ctx.fillStyle = colorRAF;
+
+    let k = 0;
+    const numBars = Math.max(0, parseInt(inSizeGraph.get()));
+
+    for (k = numBars; k >= 0; k--)
+    {
+        if (queue[k] > 30) ctx.fillStyle = colorRAFSlow;
+        if (queue[k] > 60) ctx.fillStyle = colorRAFVeruSlow;
+
+        ctx.fillRect(numBars - k, height - queue[k] * hmul, 1, queue[k] * hmul);
+        if (queue[k] > 30)ctx.fillStyle = colorRAF;
+    }
+
+    for (k = numBars; k >= 0; k--)
+    {
+        let sum = 0;
+        ctx.fillStyle = colorMainloop;
+        sum = timesMainloop[k];
+        ctx.fillRect(numBars - k, height - sum * hmul, 1, timesMainloop[k] * hmul);
+
+        ctx.fillStyle = colorOnFrame;
+        sum += timesOnFrame[k];
+        ctx.fillRect(numBars - k, height - sum * hmul, 1, timesOnFrame[k] * hmul);
+
+        ctx.fillStyle = colorGPU;
+        sum += timesGPU[k];
+        ctx.fillRect(numBars - k, height - sum * hmul, 1, timesGPU[k] * hmul);
+    }
+
+    for (let i = 10; i < height; i += 10)
+    {
+        ctx.fillStyle = "#888";
+        const y = height - (i * hmul);
+        ctx.fillRect(canvas.width - 5, y, 5, 1);
+        ctx.font = "8px arial";
+
+        ctx.fillText(i + "ms", canvas.width - 27, y + 3);
+    }
+
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(canvas.width - 5, height - (1000 / fps * hmul), 5, 1);
+    ctx.fillText(Math.round(1000 / fps) + "ms", canvas.width - 27, height - (1000 / fps * hmul));
+}
+
+function createCanvas()
+{
+    canvas = document.createElement("canvas");
+    canvas.id = "performance_" + op.patch.config.glCanvasId;
+    canvas.width = inSizeGraph.get();
+    canvas.height = inSizeGraph.get();
+    canvas.style.display = "block";
+    canvas.style.opacity = 0.9;
+    canvas.style.position = "absolute";
+    canvas.style.left = "0px";
+    canvas.style.cursor = "pointer";
+    canvas.style.top = "-64px";
+    canvas.style["z-index"] = "99998";
+    container.appendChild(canvas);
+    ctx = canvas.getContext("2d");
+
+    canvas.addEventListener("click", toggleOpened);
+
+    updateSize();
+}
+
+function updateText()
+{
+    if (!inShow.get()) return;
+    let warn = "";
+
+    if (op.patch.cgl.profileData.profileShaderCompiles > 0)warn += "Shader compile (" + op.patch.cgl.profileData.profileShaderCompileName + ") ";
+    if (op.patch.cgl.profileData.profileShaderGetUniform > 0)warn += "Shader get uni loc! (" + op.patch.cgl.profileData.profileShaderGetUniformName + ")";
+    if (op.patch.cgl.profileData.profileTextureResize > 0)warn += "Texture resize! ";
+    if (op.patch.cgl.profileData.profileFrameBuffercreate > 0)warn += "Framebuffer create! ";
+    if (op.patch.cgl.profileData.profileEffectBuffercreate > 0)warn += "Effectbuffer create! ";
+    if (op.patch.cgl.profileData.profileTextureDelete > 0)warn += "Texture delete! ";
+    if (op.patch.cgl.profileData.profileNonTypedAttrib > 0)warn += "Not-Typed Buffer Attrib! " + op.patch.cgl.profileData.profileNonTypedAttribNames;
+    if (op.patch.cgl.profileData.profileTextureNew > 0)warn += "new texture created! ";
+    if (op.patch.cgl.profileData.profileGenMipMap > 0)warn += "generating mip maps!";
+
+    if (warn.length > 0)
+    {
+        warn = "| <span style=\"color:#f80;\">WARNING: " + warn + "<span>";
+    }
+
+    let html = "";
+
+    if (opened)
+    {
+        html += "<span style=\"color:" + colorRAF + "\">■</span> " + fps + " fps ";
+        html += "<span style=\"color:" + colorMainloop + "\">■</span> " + Math.round(currentTimeMainloop * 100) / 100 + "ms mainloop ";
+        html += "<span style=\"color:" + colorOnFrame + "\">■</span> " + Math.round((currentTimeOnFrame) * 100) / 100 + "ms onframe ";
+        if (currentTimeGPU) html += "<span style=\"color:" + colorGPU + "\">■</span> " + Math.round(currentTimeGPU * 100) / 100 + "ms GPU";
+        html += warn;
+        element.innerHTML = html;
+    }
+    else
+    {
+        html += fps + " fps / ";
+        html += "CPU: " + Math.round((op.patch.cgl.profileData.profileOnAnimFrameOps) * 100) / 100 + "ms / ";
+        if (currentTimeGPU)html += "GPU: " + Math.round(currentTimeGPU * 100) / 100 + "ms  ";
+        element.innerHTML = html;
+    }
+
+    if (op.patch.loading.getProgress() != 1.0)
+    {
+        element.innerHTML += "<br/>loading " + Math.round(op.patch.loading.getProgress() * 100) + "% " + loadingChars[(++loadingCounter) % loadingChars.length];
+    }
+
+    if (opened)
+    {
+        let count = 0;
+        avgMs = 0;
+        avgMsChilds = 0;
+        for (let i = queue.length; i > queue.length - queue.length / 3; i--)
+        {
+            if (queue[i] > -1)
+            {
+                avgMs += queue[i];
+                count++;
+            }
+
+            if (timesMainloop[i] > -1) avgMsChilds += timesMainloop[i];
+        }
+
+        avgMs /= count;
+        avgMsChilds /= count;
+
+        element.innerHTML += "<br/> " + cgl.canvasWidth + " x " + cgl.canvasHeight + " (x" + cgl.pixelDensity + ") ";
+        element.innerHTML += "<br/>frame avg: " + Math.round(avgMsChilds * 100) / 100 + " ms (" + Math.round(avgMsChilds / avgMs * 100) + "%) / " + Math.round(avgMs * 100) / 100 + " ms";
+        element.innerHTML += " (self: " + Math.round((selfTime) * 100) / 100 + " ms) ";
+
+        element.innerHTML += "<br/>shader binds: " + Math.ceil(op.patch.cgl.profileData.profileShaderBinds / fps) +
+            " uniforms: " + Math.ceil(op.patch.cgl.profileData.profileUniformCount / fps) +
+            " mvp_uni_mat4: " + Math.ceil(op.patch.cgl.profileData.profileMVPMatrixCount / fps) +
+            " num glPrimitives: " + Math.ceil(op.patch.cgl.profileData.profileMeshNumElements / (fps)) +
+
+            " fenced pixelread: " + Math.ceil(op.patch.cgl.profileData.profileFencedPixelRead) +
+
+            " mesh.setGeom: " + op.patch.cgl.profileData.profileMeshSetGeom +
+            " videos: " + op.patch.cgl.profileData.profileVideosPlaying +
+            " tex preview: " + op.patch.cgl.profileData.profileTexPreviews;
+
+        element.innerHTML +=
+        " draw meshes: " + Math.ceil(op.patch.cgl.profileData.profileMeshDraw / fps) +
+        " framebuffer blit: " + Math.ceil(op.patch.cgl.profileData.profileFramebuffer / fps) +
+        " texeffect blit: " + Math.ceil(op.patch.cgl.profileData.profileTextureEffect / fps);
+
+        element.innerHTML += " all shader compiletime: " + Math.round(op.patch.cgl.profileData.shaderCompileTime * 100) / 100;
+    }
+
+    op.patch.cgl.profileData.clear();
+}
+
+function styleMeasureEle(ele)
+{
+    ele.style.padding = "0px";
+    ele.style.margin = "0px";
+}
+
+function addMeasureChild(m, parentEle, timeSum, level)
+{
+    const height = 20;
+    m.usedAvg = (m.usedAvg || m.used);
+
+    if (!m.ele || initMeasures)
+    {
+        const newEle = document.createElement("div");
+        m.ele = newEle;
+
+        if (m.childs && m.childs.length > 0) newEle.style.height = "500px";
+        else newEle.style.height = height + "px";
+
+        newEle.style.overflow = "hidden";
+        newEle.style.display = "inline-block";
+
+        if (!m.isRoot)
+        {
+            newEle.innerHTML = "<div style=\"min-height:" + height + "px;width:100%;overflow:hidden;color:black;position:relative\">&nbsp;" + m.name + "</div>";
+            newEle.style["background-color"] = "rgb(" + m.colR + "," + m.colG + "," + m.colB + ")";
+            newEle.style["border-left"] = "1px solid black";
+        }
+
+        parentEle.appendChild(newEle);
+    }
+
+    if (!m.isRoot)
+    {
+        if (performance.now() - m.lastTime > 200)
+        {
+            m.ele.style.display = "none";
+            m.hidden = true;
+        }
+        else
+        {
+            if (m.hidden)
+            {
+                m.ele.style.display = "inline-block";
+                m.hidden = false;
+            }
+        }
+
+        m.ele.style.float = "left";
+        m.ele.style.width = Math.floor((m.usedAvg / timeSum) * 98.0) + "%";
+    }
+    else
+    {
+        m.ele.style.width = "100%";
+        m.ele.style.clear = "both";
+        m.ele.style.float = "none";
+    }
+
+    if (m && m.childs && m.childs.length > 0)
+    {
+        let thisTimeSum = 0;
+        for (var i = 0; i < m.childs.length; i++)
+        {
+            m.childs[i].usedAvg = (m.childs[i].usedAvg || m.childs[i].used) * 0.95 + m.childs[i].used * 0.05;
+            thisTimeSum += m.childs[i].usedAvg;
+        }
+        for (var i = 0; i < m.childs.length; i++)
+        {
+            addMeasureChild(m.childs[i], m.ele, thisTimeSum, level + 1);
+        }
+    }
+}
+
+function clearMeasures(p)
+{
+    for (let i = 0; i < p.childs.length; i++) clearMeasures(p.childs[i]);
+    p.childs.length = 0;
+}
+
+function measures()
+{
+    if (!CGL.performanceMeasures) return;
+
+    if (!elementMeasures)
+    {
+        op.log("create measure ele");
+        elementMeasures = document.createElement("div");
+        elementMeasures.style.width = "100%";
+        elementMeasures.style["background-color"] = "#444";
+        elementMeasures.style.bottom = "10px";
+        elementMeasures.style.height = "100px";
+        elementMeasures.style.opacity = "1";
+        elementMeasures.style.position = "absolute";
+        elementMeasures.style["z-index"] = "99999";
+        elementMeasures.innerHTML = "";
+        container.appendChild(elementMeasures);
+    }
+
+    let timeSum = 0;
+    const root = CGL.performanceMeasures[0];
+
+    for (let i = 0; i < root.childs.length; i++) timeSum += root.childs[i].used;
+
+    addMeasureChild(CGL.performanceMeasures[0], elementMeasures, timeSum, 0);
+
+    root.childs.length = 0;
+
+    clearMeasures(CGL.performanceMeasures[0]);
+
+    CGL.performanceMeasures.length = 0;
+    initMeasures = false;
+}
+
+exe.onTriggered = render;
+
+function render()
+{
+    const selfTimeStart = performance.now();
+
+    if (inActive.get())
+    {
+        frameCount++;
+
+        if (glQueryExt && inDoGpu.get() && inShow.get())op.patch.cgl.profileData.doProfileGlQuery = true;
+        else op.patch.cgl.profileData.doProfileGlQuery = false;
+
+        if (fpsStartTime === 0)fpsStartTime = Date.now();
+        if (Date.now() - fpsStartTime >= 1000)
+        {
+        // query=null;
+            fps = frameCount;
+            frameCount = 0;
+            // frames = 0;
+            outFPS.set(fps);
+            if (inShow.get())updateText();
+
+            fpsStartTime = Date.now();
+        }
+
+        const glQueryData = op.patch.cgl.profileData.glQueryData;
+        currentTimeGPU = 0;
+        if (glQueryData)
+        {
+            let count = 0;
+            for (let i in glQueryData)
+            {
+                count++;
+                if (glQueryData[i].time)
+                    currentTimeGPU += glQueryData[i].time;
+            }
+        }
+
+        if (inShow.get())
+        {
+            measures();
+
+            if (opened && !op.patch.cgl.profileData.pause)
+            {
+            // const timeUsed = performance.now() - lastTime;
+                queue.push(op.patch.cgl.profileData.profileFrameDelta);
+                queue.shift();
+
+                timesMainloop.push(childsTime);
+                timesMainloop.shift();
+
+                timesOnFrame.push(op.patch.cgl.profileData.profileOnAnimFrameOps - op.patch.cgl.profileData.profileMainloopMs);
+                timesOnFrame.shift();
+
+                timesGPU.push(currentTimeGPU);
+                timesGPU.shift();
+
+                updateCanvas();
+            }
+        }
+
+        lastTime = performance.now();
+        selfTime = performance.now() - selfTimeStart;
+
+        outCanv.setRef(canvas);
+    }
+    const startTimeChilds = performance.now();
+
+    next.trigger();
+
+    if (inActive.get())
+    {
+        const nChildsTime = performance.now() - startTimeChilds;
+        const nCurrentTimeMainloop = op.patch.cgl.profileData.profileMainloopMs;
+        const nCurrentTimeOnFrame = op.patch.cgl.profileData.profileOnAnimFrameOps - op.patch.cgl.profileData.profileMainloopMs;
+
+        if (smoothGraph.get())
+        {
+            childsTime = childsTime * 0.9 + nChildsTime * 0.1;
+            currentTimeMainloop = currentTimeMainloop * 0.5 + nCurrentTimeMainloop * 0.5;
+            currentTimeOnFrame = currentTimeOnFrame * 0.5 + nCurrentTimeOnFrame * 0.5;
+        }
+        else
+        {
+            childsTime = nChildsTime;
+            currentTimeMainloop = nCurrentTimeMainloop;
+            currentTimeOnFrame = nCurrentTimeOnFrame;
+        }
+
+        op.patch.cgl.profileData.clearGlQuery();
+    }
+}
+
+}
+};
+
+CABLES.OPS["9cd2d9de-000f-4a14-bd13-e7d5f057583c"]={f:Ops.Gl.Performance,objName:"Ops.Gl.Performance"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Vars.VarSetNumber_v2
+// 
+// **************************************************************
+
+Ops.Vars.VarSetNumber_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const val = op.inValueFloat("Value", 0);
+op.varName = op.inDropDown("Variable", [], "", true);
+
+new CABLES.VarSetOpWrapper(op, "number", val, op.varName);
+
+}
+};
+
+CABLES.OPS["b5249226-6095-4828-8a1c-080654e192fa"]={f:Ops.Vars.VarSetNumber_v2,objName:"Ops.Vars.VarSetNumber_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Vars.VarGetNumber_v2
+// 
+// **************************************************************
+
+Ops.Vars.VarGetNumber_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const val = op.outNumber("Value");
+op.varName = op.inValueSelect("Variable", [], "", true);
+
+new CABLES.VarGetOpWrapper(op, "number", op.varName, val);
+
+}
+};
+
+CABLES.OPS["421f5b52-c0fa-47c4-8b7a-012b9e1c864a"]={f:Ops.Vars.VarGetNumber_v2,objName:"Ops.Vars.VarGetNumber_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Vars.VarSetArray_v2
+// 
+// **************************************************************
+
+Ops.Vars.VarSetArray_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const val = op.inArray("Value", null);
+op.varName = op.inDropDown("Variable", [], "", true);
+
+new CABLES.VarSetOpWrapper(op, "array", val, op.varName);
+
+}
+};
+
+CABLES.OPS["8088290f-45d4-4312-b4ca-184d34ca4667"]={f:Ops.Vars.VarSetArray_v2,objName:"Ops.Vars.VarSetArray_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Vars.VarGetArray_v2
+// 
+// **************************************************************
+
+Ops.Vars.VarGetArray_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const val = op.outArray("Value");
+op.varName = op.inValueSelect("Variable", [], "", true);
+
+new CABLES.VarGetOpWrapper(op, "array", op.varName, val);
+
+}
+};
+
+CABLES.OPS["afa79294-aa9c-43bc-a49a-cade000a1de5"]={f:Ops.Vars.VarGetArray_v2,objName:"Ops.Vars.VarGetArray_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Local.DaniSongIdChooser
+// 
+// **************************************************************
+
+Ops.Local.DaniSongIdChooser= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+// welcome to your new op!
+// have a look at the documentation:
+// https://cables.gl/docs/5_writing_ops/dev_ops/dev_ops
+
+const
+    heartship = op.inFloat("Heartship"),
+    serenade  = op.inFloat("Serenade"),
+    antigone  = op.inFloat("Antigone"),
+
+    // extra 6 inputs
+    comet     = op.inFloat("Comet"),
+    lantern   = op.inFloat("Lantern"),
+    aurora    = op.inFloat("Aurora"),
+    ember     = op.inFloat("Ember"),
+    beacon    = op.inFloat("Beacon"),
+    ripple    = op.inFloat("Ripple"),
+
+    exec   = op.inTrigger("Trigger"),
+    result = op.outNumber("Result"),
+    next   = op.outTrigger("Next");
+
+exec.onTriggered = () =>
+{
+    // read all values
+    const h = heartship.get();
+    const s = serenade.get();
+    const a = antigone.get();
+    const c = comet.get();
+    const l = lantern.get();
+    const u = aurora.get();
+    const e = ember.get();
+    const b = beacon.get();
+    const r = ripple.get();
+
+    let output = 0;
+
+    // one-hot logic – assign unique output per input
+    if (h === 1 && s === 0 && a === 0 && c === 0 && l === 0 && u === 0 && e === 0 && b === 0 && r === 0) {
+        output = 2;
+
+    } else if (s === 1 && h === 0 && a === 0 && c === 0 && l === 0 && u === 0 && e === 0 && b === 0 && r === 0) {
+        output = 3;
+
+    } else if (a === 1 && h === 0 && s === 0 && c === 0 && l === 0 && u === 0 && e === 0 && b === 0 && r === 0) {
+        output = 1;
+
+    } else if (c === 1 && h === 0 && s === 0 && a === 0 && l === 0 && u === 0 && e === 0 && b === 0 && r === 0) {
+        output = 4;
+
+    } else if (l === 1 && h === 0 && s === 0 && a === 0 && c === 0 && u === 0 && e === 0 && b === 0 && r === 0) {
+        output = 5;
+
+    } else if (u === 1 && h === 0 && s === 0 && a === 0 && c === 0 && l === 0 && e === 0 && b === 0 && r === 0) {
+        output = 6;
+
+    } else if (e === 1 && h === 0 && s === 0 && a === 0 && c === 0 && l === 0 && u === 0 && b === 0 && r === 0) {
+        output = 7;
+
+    } else if (b === 1 && h === 0 && s === 0 && a === 0 && c === 0 && l === 0 && u === 0 && e === 0 && r === 0) {
+        output = 8;
+
+    } else if (r === 1 && h === 0 && s === 0 && a === 0 && c === 0 && l === 0 && u === 0 && e === 0 && b === 0) {
+        output = 9;
+
+    } else {
+        output = 0;
+    }
+
+    result.set(output);
+    next.trigger();
+};
+
+
+}
+};
+
+CABLES.OPS["ec10a8fd-12a2-4a22-ae08-9b781ce5d1be"]={f:Ops.Local.DaniSongIdChooser,objName:"Ops.Local.DaniSongIdChooser"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.Subtract
+// 
+// **************************************************************
+
+Ops.Math.Subtract= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    number1 = op.inValue("number1", 1),
+    number2 = op.inValue("number2", 1),
+    result = op.outNumber("result");
+
+op.setUiAttribs({ "mathTitle": true });
+
+number1.onChange =
+    number2.onChange = exec;
+exec();
+
+function exec()
+{
+    let v = number1.get() - number2.get();
+    if (!isNaN(v)) result.set(v);
+}
+
+}
+};
+
+CABLES.OPS["a4ffe852-d200-4b96-9347-68feb01122ca"]={f:Ops.Math.Subtract,objName:"Ops.Math.Subtract"};
 
 
 
