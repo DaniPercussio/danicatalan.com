@@ -1907,30 +1907,51 @@ function doTransform()
         const transz = transZ.get();
         const doRot = nrotx || nroty || nrotz;
 
-        for (let i = 0; i < arr.length; i += 3)
+        // Precompute rotation matrix once to avoid per-point rotate calls
+        const len = arr.length;
+        const rotXRad = nrotx * CGL.DEG2RAD;
+        const rotYRad = nroty * CGL.DEG2RAD;
+        const rotZRad = nrotz * CGL.DEG2RAD;
+        let useRotMat = false;
+        let rotMat = null;
+        if (doRot)
         {
-            resultArr[i + 0] = arr[i + 0] * scx;
-            resultArr[i + 1] = arr[i + 1] * scy;
-            resultArr[i + 2] = arr[i + 2] * scz;
-
-            resultArr[i + 0] = resultArr[i + 0] + transx;
-            resultArr[i + 1] = resultArr[i + 1] + transy;
-            resultArr[i + 2] = resultArr[i + 2] + transz;
-
-            if (doRot)
+            useRotMat = (rotXRad !== 0 || rotYRad !== 0 || rotZRad !== 0);
+            if (useRotMat)
             {
-                vec3.set(rotVec,
-                    resultArr[i + 0],
-                    resultArr[i + 1],
-                    resultArr[i + 2]);
+                rotMat = mat4.create();
+                mat4.identity(rotMat);
+                if (rotXRad !== 0) mat4.rotateX(rotMat, rotMat, rotXRad);
+                if (rotYRad !== 0) mat4.rotateY(rotMat, rotMat, rotYRad);
+                if (rotZRad !== 0) mat4.rotateZ(rotMat, rotMat, rotZRad);
+            }
+        }
 
-                if (nrotx != 0) vec3.rotateX(rotVec, rotVec, transVec, nrotx * CGL.DEG2RAD);
-                if (nroty != 0) vec3.rotateY(rotVec, rotVec, transVec, nroty * CGL.DEG2RAD);
-                if (nrotz != 0) vec3.rotateZ(rotVec, rotVec, transVec, nrotz * CGL.DEG2RAD);
+        for (let i = 0; i < len; i += 3)
+        {
+            // scale
+            let vx = arr[i + 0] * scx;
+            let vy = arr[i + 1] * scy;
+            let vz = arr[i + 2] * scz;
 
+            // translate
+            vx += transx;
+            vy += transy;
+            vz += transz;
+
+            if (useRotMat && rotMat)
+            {
+                rotVec[0] = vx; rotVec[1] = vy; rotVec[2] = vz;
+                vec3.transformMat4(rotVec, rotVec, rotMat);
                 resultArr[i + 0] = rotVec[0];
                 resultArr[i + 1] = rotVec[1];
                 resultArr[i + 2] = rotVec[2];
+            }
+            else
+            {
+                resultArr[i + 0] = vx;
+                resultArr[i + 1] = vy;
+                resultArr[i + 2] = vz;
             }
         }
 

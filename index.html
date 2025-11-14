@@ -1,91 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta name="description" content="MainPage2 - made with cables">
+    <meta itemprop="name" content="MainPage2">
+    <meta itemprop="description" content="made with cables">
+    <meta itemprop="image" content="screenshot.png">
+    
     <title>MainPage2</title>
+    
+    <!-- Preload critical scripts for faster loading -->
+    <link rel="preload" as="script" href="js/cables.js">
+    <link rel="prefetch" as="script" href="js/ops.js">
+    
     <style>
-        body {
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: Helvetica, Arial, sans-serif;
-            overflow: hidden; /* disable scrolling / rubberband effect on mobile */
-            height:100vh;
-        }
-
-        canvas {
-            display: block;
-            position: absolute;
-            outline:0;
-        }
-
         * {
-            /* disable on touch highlights of html elements, especially on mobile! */
+            margin: 0;
+            padding: 0;
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            outline: 0;
+        }
+
+        /* Loading screen - hides when patch is ready */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Helvetica, Arial, sans-serif;
+            color: #000;
+            transition: opacity 0.6s ease-out;
+            opacity: 1;
+        }
+
+        #loadingScreen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-    <meta itemprop="name" content="MainPage2">
-    <meta itemprop="description" content="made with cables">
-    <meta itemprop="image" content="screenshot.png">
-    <meta name="description" content="made with cables"/>
-
 </head>
 <body>
-    <canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>
+    <div id="loadingScreen"></div>
+    <canvas id="glcanvas" tabindex="1"></canvas>
 
-    
-    <script type="text/javascript" src="js/cables.js"></script>
-<script type="text/javascript" src="js/ops.js"></script>
+    <script src="js/cables.js"></script>
+    <script src="js/ops.js"></script>
+    <script src="js/cgl_shadermodifier.js"></script>
+    <script src="js/interactionneededbutton.js"></script>
+    <script src="js/subpatchop.js"></script>
 
-    <script type="text/javascript"  src="js/cgl_shadermodifier.js"></script>
-<script type="text/javascript"  src="js/interactionneededbutton.js"></script>
-<script type="text/javascript"  src="js/subpatchop.js"></script>
-<script type="text/javascript"  src="js/vargetset.js"></script>
-
-
-    <script type="text/javascript">
-
-        function showError(errId, errMsg)
-        {
-            // handle critical errors here if needed
+    <script>
+        function showError(errId, errMsg) {
+            console.error(`Cables Error [${errId}]:`, errMsg);
         }
 
-        function patchInitialized(patch)
-        {
-            // You can now access the patch object (patch), register variable watchers and so on
+        function patchInitialized(patch) {
+            console.log('Patch initialized');
         }
 
-        function patchFinishedLoading(patch)
-        {
-            // The patch is ready now, all assets have been loaded
+        function patchFinishedLoading(patch) {
+            console.log('Patch finished loading');
+            // Hide loading screen after 1 second delay for security
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                }, 1000);
+            }
         }
 
-        document.addEventListener("CABLES.jsLoaded", function (event)
-        {
+        // Fallback: hide loading screen after 10 seconds if loading fails
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+                console.warn('Loading timeout - hiding screen');
+                loadingScreen.classList.add('hidden');
+            }
+        }, 10000);
+
+        function initializePatch() {
             CABLES.patch = new CABLES.Patch({
                 patchFile: 'js/MainPage2.json',
-                "prefixAssetPath": "assets/",
-                "assetPath": "assets/",
-                "jsPath": "js/",
-                "glCanvasId": "glcanvas",
-                "glCanvasResizeToWindow": true,
-                "onError": showError,
-                "onPatchLoaded": patchInitialized,
-                "onFinishedLoading": patchFinishedLoading,
-                "canvas": {"alpha":true, "premultipliedAlpha":true } // make canvas transparent
+                prefixAssetPath: 'assets/',
+                assetPath: 'assets/',
+                jsPath: 'js/',
+                glCanvasId: 'glcanvas',
+                glCanvasResizeToWindow: true,
+                onError: showError,
+                onPatchLoaded: patchInitialized,
+                onFinishedLoading: patchFinishedLoading,
+                canvas: { alpha: true, premultipliedAlpha: true }
+            });
+            
+            // Force canvas resize for iframe compatibility
+            setTimeout(() => {
+                const canvas = document.getElementById('glcanvas');
+                if (canvas && canvas.offsetParent) {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    if (CABLES.patch && CABLES.patch.cgl) {
+                        CABLES.patch.cgl.updateSize();
+                    }
+                }
+            }, 500);
+        }
+
+        // Mobile redirect - works normally but won't break iframe
+        (function() {
+            var mobileUrl = "/mobile";
+            var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            var isInIframe = window.self !== window.top;
+            
+            if (isMobile) {
+                if (window.location.href.indexOf(mobileUrl) === -1) {
+                    // If in iframe, redirect only the iframe content
+                    if (isInIframe) {
+                        window.location.replace(mobileUrl);
+                    } 
+                    // If standalone page, redirect normally
+                    else {
+                        window.location.replace(mobileUrl);
+                    }
+                }
+            }
+        })();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('glcanvas');
+            canvas.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+            
+            // Handle window resize (important for iframe)
+            window.addEventListener('resize', () => {
+                if (CABLES.patch && CABLES.patch.cgl) {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    CABLES.patch.cgl.updateSize();
+                }
             });
         });
 
-        // disable rubberband effect on mobile devices
-        document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
+        document.addEventListener('CABLES.jsLoaded', initializePatch);
     </script>
 </body>
 </html>
