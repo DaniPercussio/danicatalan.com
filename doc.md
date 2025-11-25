@@ -1,12 +1,36 @@
 ## Patch Variables:
 
+* __AntigoneArray__ ```Array```
+* __AntigoneClickPosition__ ```Number```
+* __antigoneElement__ ```Object```
+* __antigoneHover__ ```Number```
 * __AntigoneID__ ```Number```
+* __AntigoneState__ ```Number```
+* __CanvasWidthCSS__ ```Number```
+* __HeartshipArray__ ```Array```
+* __HeartshipClickPosition__ ```Number```
+* __heartshipElement__ ```Object```
+* __heartshipHover__ ```Number```
+* __HeartshipID__ ```Number```
+* __HeartshipState__ ```Number```
+* __HeartshipTexture__ ```Texture```
 * __jukebocLimitLeft__ ```Number```
 * __jukeboxLimitRight__ ```Number```
+* __MaschaArray__ ```Array```
+* __MaschaKClickPosition__ ```Number```
+* __MaschaKHover__ ```Number```
+* __MaschaKID__ ```Number```
+* __maschaKState__ ```Number```
+* __SeerenadeHover__ ```Number```
 * __SerenadeArray__ ```Array```
+* __SerenadeClickPosition__ ```Number```
 * __SerenadeID__ ```Number```
 * __SerenadeState__ ```Number```
 * __SturmArray__ ```Array```
+* __SturmClickPosition__ ```Number```
+* __sturmElement__ ```Object```
+* __sturmHover__ ```Number```
 * __SturmID__ ```Number```
 * __SturmState__ ```Number```
+* __timerJukeBox__ ```Number```
 

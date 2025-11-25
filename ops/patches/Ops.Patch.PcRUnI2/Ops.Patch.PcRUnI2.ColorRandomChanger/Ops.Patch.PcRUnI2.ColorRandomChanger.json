@@ -1,0 +1,54 @@
+{
+    "id": "951e705f-78b6-4aa6-904a-d3d40d93b2e3",
+    "created": 1761821176899,
+    "license": "MIT",
+    "authorName": "unknown",
+    "summary": "",
+    "layout": {
+        "portsIn": [
+            {
+                "type": 3,
+                "name": "59tlafryu",
+                "uititle": "Sequence Array"
+            },
+            {
+                "type": 1,
+                "name": "721cku440",
+                "uititle": "Stop"
+            },
+            {
+                "type": 1,
+                "name": "ycqzyx3mg",
+                "uititle": "exe"
+            }
+        ],
+        "portsOut": [
+            {
+                "type": 2,
+                "name": "hhjmki6s5",
+                "uititle": "texture_out",
+                "objType": "texture"
+            }
+        ]
+    },
+    "hasExample": false,
+    "libs": [],
+    "youtubeids": [],
+    "coreLibs": [
+        "subpatchop"
+    ],
+    "changelog": [
+        {
+            "message": "op created",
+            "type": "new op",
+            "author": "danipercussio",
+            "date": 1763295429252
+        },
+        {
+            "message": "Patch.PcRUnI2.SubPatch0 renamed to Ops.Patch.PcRUnI2.ColorRandomChanger",
+            "type": "rename",
+            "author": "danipercussio",
+            "date": 1763296827732
+        }
+    ]
+}

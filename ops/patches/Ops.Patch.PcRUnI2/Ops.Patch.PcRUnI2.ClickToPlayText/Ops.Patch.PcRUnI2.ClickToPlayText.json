@@ -1,0 +1,40 @@
+{
+    "id": "69a03910-2571-479d-80be-af2501604140",
+    "created": 1763717192516,
+    "license": "MIT",
+    "authorName": "danipercussio",
+    "changelog": [
+        {
+            "message": "op created",
+            "type": "new op",
+            "author": "danipercussio",
+            "date": 1763717192542
+        },
+        {
+            "message": "Patch.PcRUnI2.SubPatch0 renamed to Ops.Patch.PcRUnI2.ClickToPlayText",
+            "type": "rename",
+            "author": "danipercussio",
+            "date": 1763717295478
+        }
+    ],
+    "coreLibs": [
+        "subpatchop"
+    ],
+    "layout": {
+        "portsIn": [
+            {
+                "type": 0,
+                "name": "v5hqs98yb",
+                "uititle": "Play",
+                "subType": "boolean"
+            },
+            {
+                "type": 0,
+                "name": "9pig42owu",
+                "uititle": "Boolean",
+                "subType": "boolean"
+            }
+        ],
+        "portsOut": []
+    }
+}

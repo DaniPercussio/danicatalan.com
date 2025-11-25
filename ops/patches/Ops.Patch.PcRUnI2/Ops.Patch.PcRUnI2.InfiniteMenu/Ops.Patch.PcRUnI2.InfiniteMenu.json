@@ -1,0 +1,58 @@
+{
+    "id": "7e4db035-da33-4e8c-b2f5-125839b7f09e",
+    "created": 1762902095894,
+    "license": "MIT",
+    "authorName": "unknown",
+    "summary": "",
+    "layout": {
+        "portsIn": [
+            {
+                "type": 1,
+                "name": "Trigger"
+            },
+            {
+                "type": 0,
+                "name": "Value",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "LimitLeft",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "LimitRight",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "Speed",
+                "subType": "number"
+            }
+        ],
+        "portsOut": [
+            {
+                "type": 1,
+                "name": "Next"
+            },
+            {
+                "type": 0,
+                "name": "Wrapped",
+                "subType": "number"
+            }
+        ]
+    },
+    "hasExample": false,
+    "libs": [],
+    "youtubeids": [],
+    "exampleProjectId": "",
+    "changelog": [
+        {
+            "message": "op created",
+            "type": "new op",
+            "author": "danipercussio",
+            "date": 1763295428735
+        }
+    ]
+}

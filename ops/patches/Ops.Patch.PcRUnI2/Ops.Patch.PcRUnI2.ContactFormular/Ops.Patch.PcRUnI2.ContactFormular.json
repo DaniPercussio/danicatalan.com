@@ -1,0 +1,57 @@
+{
+    "id": "b05b11ae-d537-4c4a-8400-8351b9335ad7",
+    "created": 1761919525967,
+    "license": "MIT",
+    "authorName": "unknown",
+    "summary": "",
+    "layout": {
+        "portsIn": [
+            {
+                "type": 1,
+                "name": "Trigger"
+            },
+            {
+                "type": 5,
+                "name": "Name"
+            },
+            {
+                "type": 5,
+                "name": "Email"
+            },
+            {
+                "type": 5,
+                "name": "Message"
+            },
+            {
+                "type": 5,
+                "name": "Mail Server"
+            }
+        ],
+        "portsOut": [
+            {
+                "type": 5,
+                "name": "Done"
+            },
+            {
+                "type": 1,
+                "name": "Success Trigger"
+            },
+            {
+                "type": 1,
+                "name": "Error Trigger"
+            }
+        ]
+    },
+    "hasExample": false,
+    "libs": [],
+    "youtubeids": [],
+    "exampleProjectId": "",
+    "changelog": [
+        {
+            "message": "op created",
+            "type": "new op",
+            "author": "danipercussio",
+            "date": 1763295428192
+        }
+    ]
+}

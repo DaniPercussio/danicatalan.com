@@ -1,0 +1,83 @@
+{
+    "id": "cef28643-e6b8-4c91-8928-82602d4c2583",
+    "created": 1762218560490,
+    "license": "MIT",
+    "authorName": "unknown",
+    "summary": "",
+    "layout": {
+        "portsIn": [
+            {
+                "type": 0,
+                "name": "Heartship",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "Serenade",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "Antigone",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "Comet",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "Lantern",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "Aurora",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "Ember",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "Beacon",
+                "subType": "number"
+            },
+            {
+                "type": 0,
+                "name": "Ripple",
+                "subType": "number"
+            },
+            {
+                "type": 1,
+                "name": "Trigger"
+            }
+        ],
+        "portsOut": [
+            {
+                "type": 0,
+                "name": "Result",
+                "subType": "number"
+            },
+            {
+                "type": 1,
+                "name": "Next"
+            }
+        ]
+    },
+    "hasExample": false,
+    "libs": [],
+    "youtubeids": [],
+    "exampleProjectId": "",
+    "changelog": [
+        {
+            "message": "op created",
+            "type": "new op",
+            "author": "danipercussio",
+            "date": 1763295428482
+        }
+    ]
+}

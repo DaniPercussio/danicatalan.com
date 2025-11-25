@@ -4,5 +4,7 @@ OP AUTHORS:
 - ops by cables user andro (https://cables.gl/user/andro)
 - ops by cables user tim (https://cables.gl/user/tim)
 - ops by cables user simod (https://cables.gl/user/simod)
+- ops by cables user unknown (https://cables.gl/user/unknown)
+- ops by cables user danipercussio (https://cables.gl/user/danipercussio)
 
 cables is built on open source software and community contributions, check https://cables.gl/support

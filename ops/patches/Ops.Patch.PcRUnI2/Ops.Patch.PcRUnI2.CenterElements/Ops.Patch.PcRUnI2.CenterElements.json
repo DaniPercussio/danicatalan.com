@@ -1,0 +1,50 @@
+{
+    "id": "012317e5-6963-4509-81ce-c3219af1653a",
+    "created": 1763293999101,
+    "license": "MIT",
+    "authorName": "unknown",
+    "summary": "",
+    "layout": {
+        "portsIn": [
+            {
+                "type": 1,
+                "name": "dfb41azsp",
+                "uititle": "Update"
+            },
+            {
+                "type": 5,
+                "name": "jpoys2oln",
+                "uititle": "Classname"
+            },
+            {
+                "type": 0,
+                "name": "lmo2uzftn",
+                "uititle": "number1",
+                "subType": "number"
+            }
+        ],
+        "portsOut": [
+            {
+                "type": 0,
+                "name": "uq17ol8yc",
+                "uititle": "result",
+                "subType": "number"
+            }
+        ]
+    },
+    "hasExample": false,
+    "libs": [],
+    "youtubeids": [],
+    "exampleProjectId": "",
+    "coreLibs": [
+        "subpatchop"
+    ],
+    "changelog": [
+        {
+            "message": "op created",
+            "type": "new op",
+            "author": "danipercussio",
+            "date": 1763295427851
+        }
+    ]
+}

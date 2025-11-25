@@ -1,0 +1,593 @@
+{
+  "ops": [
+    {
+      "opId": "a0d2cc80-0b2f-4422-ba2d-c903ac9ca297",
+      "id": "g1m02w2c4",
+      "uiAttribs": {
+        "translate": {
+          "x": -3241.4853658203333,
+          "y": 2193.0826558624594
+        },
+        "subPatch": "46z9f9s7g",
+        "blueprintSubpatch2": true,
+        "tempSubOldOpId": null
+      },
+      "storage": {},
+      "portsIn": [
+        {
+          "name": "Text",
+          "value": "> click to play <"
+        },
+        {
+          "name": "Position index",
+          "value": 0
+        },
+        {
+          "name": "Position",
+          "value": "Absolute"
+        },
+        {
+          "name": "Interactive index",
+          "value": 0
+        },
+        {
+          "name": "Interactive",
+          "value": "True"
+        },
+        {
+          "name": "Set Size",
+          "value": 0
+        },
+        {
+          "name": "Width",
+          "value": 100
+        },
+        {
+          "name": "Height",
+          "value": 100
+        },
+        {
+          "name": "Size  Units index",
+          "value": 0
+        },
+        {
+          "name": "Size  Units",
+          "value": "px"
+        },
+        {
+          "name": "Overflow index",
+          "value": 1
+        },
+        {
+          "name": "Overflow",
+          "value": "Hidden"
+        },
+        {
+          "name": "Inline Style",
+          "value": "position: fixed;\ntop: 30%;\ncolor: black;\nz-index: 100;"
+        },
+        {
+          "name": "CSS Class",
+          "value": "clickToPlay"
+        },
+        {
+          "name": "Disable CSS Props",
+          "value": ""
+        },
+        {
+          "name": "Display index",
+          "value": 1
+        },
+        {
+          "name": "Display",
+          "value": "Block"
+        },
+        {
+          "name": "Tag Name",
+          "value": "div"
+        },
+        {
+          "name": "Propagate Click-Events",
+          "value": 1
+        },
+        {
+          "name": "Add to DOM",
+          "value": 1
+        }
+      ],
+      "portsOut": [
+        {
+          "name": "DOM Element",
+          "links": [
+            {
+              "portIn": "Element",
+              "portOut": "DOM Element",
+              "objIn": "xti7v1jei",
+              "objOut": "g1m02w2c4"
+            }
+          ]
+        },
+        {
+          "name": "Hovering",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "opId": "aac7f721-208f-411a-adb3-79adae2e471a",
+      "id": "e91ioquxe",
+      "uiAttribs": {
+        "translate": {
+          "x": -3071.209078998292,
+          "y": 2061.721320731191
+        },
+        "subPatch": "46z9f9s7g",
+        "tempSubOldOpId": null,
+        "blueprintSubpatch2": true
+      },
+      "storage": {},
+      "portsIn": [
+        {
+          "name": "Speed",
+          "value": 1
+        },
+        {
+          "name": "Sync to timeline",
+          "value": 0
+        }
+      ],
+      "portsOut": [
+        {
+          "name": "Time",
+          "links": [
+            {
+              "portIn": "Value in",
+              "portOut": "Time",
+              "objIn": "a2qeqzi72",
+              "objOut": "e91ioquxe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opId": "169137db-9853-4384-ac5b-d10a0bbda5c2",
+      "id": "a2qeqzi72",
+      "uiAttribs": {
+        "extendTitle": ">",
+        "translate": {
+          "x": -3071.209078998292,
+          "y": 2103.9624832066693
+        },
+        "subPatch": "46z9f9s7g",
+        "blueprintSubpatch2": true,
+        "tempSubOldOpId": null
+      },
+      "storage": {},
+      "portsIn": [
+        {
+          "name": "Comparison mode index",
+          "value": 0
+        },
+        {
+          "name": "Comparison mode",
+          "value": ">"
+        },
+        {
+          "name": "Condition value",
+          "value": 2,
+          "title": "Condition value"
+        },
+        {
+          "name": "Max",
+          "value": 1
+        }
+      ],
+      "portsOut": [
+        {
+          "name": "Result",
+          "links": [
+            {
+              "portIn": "Value",
+              "portOut": "Result",
+              "objIn": "3z49gt4ph",
+              "objOut": "a2qeqzi72"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opId": "91cf65f1-94ac-423f-a536-af71eed08440",
+      "id": "93igjgy6x",
+      "uiAttribs": {
+        "translate": {
+          "x": -3047.209078998292,
+          "y": 2012.166262138261
+        },
+        "subPatch": "46z9f9s7g",
+        "tempSubOldOpId": null,
+        "blueprintSubpatch2": true
+      },
+      "storage": {},
+      "portsOut": [
+        {
+          "name": "then",
+          "links": [
+            {
+              "portIn": "Reset",
+              "portOut": "then",
+              "objIn": "e91ioquxe",
+              "objOut": "93igjgy6x"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opId": "5677b5b5-753a-4fbf-9e91-64c81ec68a2f",
+      "id": "3z49gt4ph",
+      "uiAttribs": {
+        "translate": {
+          "x": -3083.209078998292,
+          "y": 2147.4870166251103
+        },
+        "subPatch": "46z9f9s7g",
+        "blueprintSubpatch2": true,
+        "tempSubOldOpId": null
+      },
+      "storage": {},
+      "portsIn": [
+        {
+          "name": "Separate inc/dec",
+          "value": 0
+        },
+        {
+          "name": "Inc factor",
+          "value": 4,
+          "title": "Inc/Dec factor"
+        },
+        {
+          "name": "Dec factor",
+          "value": 4
+        }
+      ],
+      "portsOut": [
+        {
+          "name": "Result",
+          "links": [
+            {
+              "portIn": "Opacity",
+              "portOut": "Result",
+              "objIn": "g1m02w2c4",
+              "objOut": "3z49gt4ph"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opId": "0816c999-f2db-466b-9777-2814573574c5",
+      "id": "s86pzgpeh",
+      "uiAttribs": {
+        "title": ">mainLoop",
+        "translate": {
+          "x": -3059.209078998292,
+          "y": 1849.8705889443727
+        },
+        "subPatch": "46z9f9s7g",
+        "blueprintSubpatch2": true,
+        "tempSubOldOpId": null
+      },
+      "storage": {},
+      "portsIn": [
+        {
+          "name": "Named Trigger",
+          "value": "mainLoop"
+        }
+      ],
+      "portsOut": [
+        {
+          "name": "Triggered",
+          "links": [
+            {
+              "portIn": "Input_0",
+              "portOut": "Triggered",
+              "objIn": "utolk7nam",
+              "objOut": "s86pzgpeh"
+            },
+            {
+              "portIn": "Input_1",
+              "portOut": "Triggered",
+              "objIn": "utolk7nam",
+              "objOut": "s86pzgpeh"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opId": "be066ff6-85e2-408a-9570-59fb7abff7b2",
+      "id": "utolk7nam",
+      "uiAttribs": {
+        "translate": {
+          "x": -3059.209078998292,
+          "y": 1920.2943820046728
+        },
+        "subPatch": "46z9f9s7g",
+        "blueprintSubpatch2": true,
+        "tempSubOldOpId": null
+      },
+      "storage": {},
+      "portsIn": [
+        {
+          "name": "Input",
+          "multiPortNum": 2
+        }
+      ],
+      "portsOut": [
+        {
+          "name": "Output",
+          "multiPortNum": 3
+        },
+        {
+          "name": "Output_0",
+          "links": [
+            {
+              "portIn": "Update",
+              "portOut": "Output_0",
+              "objIn": "3z49gt4ph",
+              "objOut": "utolk7nam"
+            }
+          ]
+        },
+        {
+          "name": "Output_1",
+          "title": "add port",
+          "links": [
+            {
+              "portIn": "Exe",
+              "portOut": "Output_1",
+              "objIn": "93igjgy6x",
+              "objOut": "utolk7nam"
+            }
+          ]
+        },
+        {
+          "name": "Output_2",
+          "links": [
+            {
+              "portIn": "dfb41azsp",
+              "portOut": "Output_2",
+              "objIn": "ils2pg3wh",
+              "objOut": "utolk7nam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opId": "8413b842-6b92-487e-b74b-da3c0259bd08",
+      "id": "xti7v1jei",
+      "uiAttribs": {
+        "translate": {
+          "x": -3241.4853658203333,
+          "y": 2280.7578971745816
+        },
+        "subPatch": "46z9f9s7g",
+        "blueprintSubpatch2": true,
+        "tempSubOldOpId": null
+      },
+      "storage": {},
+      "portsIn": [
+        {
+          "name": "Font Family",
+          "value": "verdana"
+        },
+        {
+          "name": "Text Size",
+          "value": 14
+        },
+        {
+          "name": "Font Weight",
+          "value": "normal"
+        },
+        {
+          "name": "Text Align index",
+          "value": 1
+        },
+        {
+          "name": "Text Align",
+          "value": "Center"
+        },
+        {
+          "name": "Overflow Ellipsis",
+          "value": 0
+        },
+        {
+          "name": "Letter Spacing",
+          "value": 1.88
+        },
+        {
+          "name": "Line Height",
+          "value": 0
+        },
+        {
+          "name": "Disable Text Select",
+          "value": 0
+        }
+      ],
+      "portsOut": [
+        {
+          "name": "HTML Element",
+          "links": [
+            {
+              "portIn": "Element",
+              "portOut": "HTML Element",
+              "objIn": "1klophjfi",
+              "objOut": "xti7v1jei"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opId": "c179aa0e-b558-4130-8c2d-2deab2919a07",
+      "id": "1klophjfi",
+      "uiAttribs": {
+        "translate": {
+          "x": -3241.4853658203333,
+          "y": 2397.1697940339996
+        },
+        "subPatch": "46z9f9s7g",
+        "extendTitle": "left",
+        "blueprintSubpatch2": true,
+        "tempSubOldOpId": null
+      },
+      "storage": {},
+      "portsIn": [
+        {
+          "name": "Property",
+          "value": "left"
+        },
+        {
+          "name": "Value Suffix",
+          "value": "px"
+        }
+      ],
+      "portsOut": [
+        {
+          "name": "HTML Element",
+          "links": [
+            {
+              "portIn": "Element",
+              "portOut": "HTML Element",
+              "objIn": "rsfg1dpcb",
+              "objOut": "1klophjfi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opId": "c4e4e933-136e-479e-8de8-0b35b75d9217",
+      "id": "xkp411ow0",
+      "uiAttribs": {
+        "subPatch": "46z9f9s7g",
+        "translate": {
+          "x": -3059.209078998292,
+          "y": 1782.3977784897936
+        },
+        "blueprintSubpatch2": true,
+        "tempSubOldOpId": null
+      },
+      "storage": {},
+      "portsOut": [
+        {
+          "name": "innerOut_v5hqs98yb",
+          "title": "Play",
+          "links": [
+            {
+              "portIn": "Play",
+              "portOut": "innerOut_v5hqs98yb",
+              "objIn": "e91ioquxe",
+              "objOut": "xkp411ow0"
+            },
+            {
+              "portIn": "Boolean",
+              "portOut": "innerOut_v5hqs98yb",
+              "objIn": "93igjgy6x",
+              "objOut": "xkp411ow0"
+            }
+          ]
+        },
+        {
+          "name": "innerOut_9pig42owu",
+          "value": 0,
+          "title": "Boolean"
+        }
+      ]
+    },
+    {
+      "opId": "012317e5-6963-4509-81ce-c3219af1653a",
+      "id": "ils2pg3wh",
+      "uiAttribs": {
+        "subPatchOp": {
+          "version": 2
+        },
+        "translate": {
+          "x": -3217.4853658203333,
+          "y": 2130.354200408799
+        },
+        "subPatch": "46z9f9s7g",
+        "blueprintSubpatch2": true,
+        "tempSubOldOpId": null
+      },
+      "storage": {
+        "blueprintVer": 2,
+        "subPatchVer": 2
+      },
+      "portsIn": [
+        {
+          "name": "dfb41azsp",
+          "title": "Update"
+        },
+        {
+          "name": "jpoys2oln",
+          "value": "clickToPlay",
+          "title": "Classname"
+        },
+        {
+          "name": "lmo2uzftn",
+          "value": 50,
+          "title": "number1"
+        },
+        {
+          "name": "patchId",
+          "value": "ay0058k8b"
+        }
+      ],
+      "portsOut": [
+        {
+          "name": "uq17ol8yc",
+          "title": "result",
+          "links": [
+            {
+              "portIn": "Value",
+              "portOut": "uq17ol8yc",
+              "objIn": "1klophjfi",
+              "objOut": "ils2pg3wh"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opId": "33befabf-7eef-45f6-869f-30e0e4f44739",
+      "id": "rsfg1dpcb",
+      "uiAttribs": {
+        "subPatch": "46z9f9s7g",
+        "translate": {
+          "x": -3241.4853658203333,
+          "y": 2480.0067730939186
+        },
+        "blueprintSubpatch2": true
+      },
+      "storage": {},
+      "portsIn": [
+        {
+          "name": "method index",
+          "value": 7
+        },
+        {
+          "name": "method",
+          "value": "opacity"
+        },
+        {
+          "name": "Value",
+          "value": 50
+        }
+      ]
+    }
+  ]
+}
