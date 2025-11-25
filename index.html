@@ -12,14 +12,6 @@
             height:100vh;
         }
 
-        /* force a crosshair cursor across the page so it's consistent
-           (uses !important to override inline styles coming from the patch)
-           If you want some elements to show a different cursor, set that
-           element's inline style to e.g. `cursor: pointer !important;` */
-        html, body, #glcanvas, body * {
-            cursor: crosshair !important;
-        }
-
         canvas {
             display: block;
             position: absolute;
